@@ -1,0 +1,13 @@
+.header{
+    display: flex;
+    justify-content: space-around;
+    flex:1;
+    align-items: center;
+    background-color: #FE0002;
+
+    &__name{
+
+        width:5rem;
+        overflow: hidden;
+    }
+}

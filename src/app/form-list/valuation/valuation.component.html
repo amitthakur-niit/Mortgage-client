@@ -1,0 +1,124 @@
+<div class="container">
+
+    <br> <br>
+    <div class="heading_1 bold">
+        <b>
+            <p>Your valuation contact details</p>
+        </b>
+    </div>
+    <hr class="line">
+    <br>
+
+    <div class="isScotland">
+        <label class="title">Is the property in Scotland ? *</label>
+        <br>
+        <br>
+        <div class="button_class">
+            <button mat-stroked-button class="button_class-yes" (click)="toggle()">Yes</button>
+            <button mat-stroked-button class="button_class-no" (click)="toggle()" [disabled]="">No</button>
+        </div>
+    </div>
+
+    <br>
+    <h3>What happen next</h3>
+    <br>
+    <p>We'll complete a valuation when you're submitted your application and we've checked your documents.
+        if you required a survey then you shuld arrange this yourself. We've emailed you a 'Straightforward Guide to
+        your Mortgage'
+        which has details about how you could arrange this.
+    </p>
+    <br>
+    <br>
+
+    <h3>Who should we contact if we need to arrange a valuation?*</h3>
+
+
+    <div class="para">
+        <p class="para__info"></p>
+    </div>
+
+    <div class="valuation-form">
+
+        <p class="question"></p>
+
+
+        <form [formGroup]="formGroup" (ngSubmit)="postFormGroup()" class="contact-form">
+
+
+            <mat-form-field class="contact-form-full-width">
+                <mat-label>Select</mat-label>
+                <mat-select formControlName="ContactPerson">
+                    <mat-option *ngFor="let detail of details" [value]="detail.value">
+                        {{detail.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="contact-form-full-width">
+                <input matInput placeholder="Contact name" value="" formControlName="ContactName">
+                <mat-error
+                    *ngIf="!formGroup.controls['ContactName'].valid && formGroup.controls['ContactName'].touched">
+                    {{ required }}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="contact-form-full-width">
+                <input type="number" matInput placeholder="Contact number" value="" formControlName="ContactNumber">
+                <mat-error
+                    *ngIf="!formGroup.controls['ContactNumber'].valid && formGroup.controls['ContactNumber'].touched">
+                    {{ required }}
+                </mat-error>
+            </mat-form-field>
+        </form>
+    </div>
+
+
+
+    <div class="heading_2 bold">
+        <b>
+            <p>Your Purchase</p>
+        </b>
+    </div>
+    <hr class="line">
+    <br>
+
+
+    <div class="your-purchase">
+        <label class="title">Are you purchasing the property from the seller directly as a private sale? e.g. without
+            using an estate agent,
+            property developer or boker *
+        </label>
+        <div class="button_class">
+            <button mat-stroked-button class="button_class-yes">Yes</button>
+            <button mat-stroked-button class="button_class-no">No</button>
+        </div>
+        <br>
+    </div>
+        <div class="navigation">
+            <div class="navigation_button">
+                <button mat-stroked-button class="save_comeback" value="">save_comeback </button>
+                <button mat-stroked-button class="save_continue" (click)="postFormGroup()" value="">save_continue</button>
+            </div>
+            <div class="navigation_link">
+                <a  routerLink=".">Back</a>
+                <a  routerLink=".">Cancel</a>
+            </div>
+
+
+        </div>
+        <br>
+
+        <div class="information">
+            <h3>Important Information</h3>
+            <br>
+            <div class="info-box">
+               <h3> YOUR HOME MAY BE REPOSSESSED IF YOU DO NOT KEEP UP REPAYMENTS ON YOUR MORTGAGE</h3>
+            </div>
+        </div>
+
+
+    </div>
+    
+
+    
+
