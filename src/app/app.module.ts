@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { FormListModule } from './form-list/form-list.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialDesignModule } from './material-design/material-design.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MaterialDesignModule } from './material-design/material-design.module';
     AuthModule,
     FormListModule,
     MaterialDesignModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

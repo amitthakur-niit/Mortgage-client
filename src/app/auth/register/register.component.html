@@ -1,1 +1,165 @@
-<p>register works!</p>
+<div class="container">
+
+    <div class="header">
+        <h1>Get a decision in principle and then apply online</h1>
+    </div>
+
+    <div>
+        <section>
+            <div style="margin: 16px;">
+                <article>
+                    <h3>Before you start we want to let you know: </h3>
+                    <ul class="simple" style="padding: 2rem;">
+                        <li type="square" style="margin: 0 0 3px 0;">we are regulated by the Financial Conduct Authority
+                        </li>
+                        <li type="square" style="margin: 0 0 3px 0;">you will not be charged a fee for this service.
+                            However you may be required to pay other
+                            fees as part of your mortgage application such as product or valuation fees.
+                            Details of these will be provided before you confirm your mortgage product</li>
+                        <li type="square" style="margin: 0 0 3px 0;">we offer other borrowing options, such as
+                            overdrafts, credit cards and personal loans
+                            which may be more
+                            suitable depending on your circumstances
+                        </li>
+                    </ul>
+                    <h3 style="padding-bottom: 1rem;">Applying online without advice </h3>
+                    <p class="text">
+                        By applying online you won’t receive any advice from us.&nbsp;If you’d like advice, you’ll
+                        have the option to choose it after you’ve completed your online decision in principle.
+                    </p>
+                </article>
+                <hr>
+                <article>
+                    <h1>Get started</h1>
+                    <p class="text" style="margin: 10px 0px;">Please fill in the details below to include anyone who
+                        needs to be on the decision in
+                        principle and mortgage application. You’ll also be able to save your progress and continue
+                        with your application as and when it suits you.</p>
+                </article>
+
+                <h3>Applicant information</h3>
+                <span class="fieldRequired">(All the fields are required)</span>&nbsp;<span class="asterisk">*</span>
+                <div class="form-container text">
+                    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="register-form">
+
+                        <!--First name-->
+                        <mat-form-field class="register-form-full-width" id="firstName">
+                            <input matInput placeholder="First Name" formControlName="firstName">
+                            <mat-error *ngIf="formGroup.controls['firstName'].errors?.required">
+                                {{ required }}
+                            </mat-error>
+                            <mat-error *ngIf="formGroup.controls['firstName'].errors?.minlength">
+                                {{lengthError}}
+                            </mat-error>
+                        </mat-form-field>
+
+
+                        <!--Last name-->
+                        <mat-form-field class="register-form-full-width">
+                            <input matInput placeholder="Last Name" formControlName="lastName">
+                            <mat-error *ngIf="formGroup.controls['lastName'].errors?.required">
+                                {{ required }}
+                            </mat-error>
+                            <mat-error *ngIf="formGroup.controls['lastName'].errors?.minlength">
+                                {{lengthError}}
+                            </mat-error>
+                        </mat-form-field>
+                        <!--Date of birth-->
+                        <mat-form-field class="register-form-full-width">
+                            <input matInput [matDatepicker]="dateOfBirth" formControlName="dateOfBirth"
+                                placeholder="Date of Birth">
+                            <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+                            <mat-datepicker #dateOfBirth></mat-datepicker>
+                        </mat-form-field>
+
+                        <!--Email address-->
+                        <mat-form-field class="register-form-full-width">
+                            <input matInput placeholder="Email address" value="" formControlName="email">
+                            <mat-error *ngIf="formGroup.controls['email'].errors?.required">
+                                {{ required }}
+                            </mat-error>
+                            <mat-error *ngIf="formGroup.controls['email'].errors?.email">
+                                Please enter the valid email address.
+                            </mat-error>
+                        </mat-form-field>
+
+                        <!--Password-->
+                        <mat-form-field class="register-form-full-width">
+                            <input matInput placeholder="Password" value="" formControlName="password">
+                            <mat-error *ngIf="formGroup.controls['password'].errors?.required">
+                                {{ required }}
+                            </mat-error>
+                            <mat-error *ngIf="formGroup.controls['password'].errors?.minlength">
+                                Minimum length 8 characters required
+                            </mat-error>
+                        </mat-form-field>
+
+                        <!--Confirm Password-->
+                        <mat-form-field class="register-form-full-width">
+                            <input matInput placeholder="Confirm password" value=""
+                                formControlName="cnfPassword">
+                                <mat-error *ngIf="formGroup.controls['cnfPassword'].errors?.required">
+                                    {{ required }}
+                                </mat-error>
+                                <mat-error *ngIf="formGroup.controls['cnfPassword'].errors?.minlength">
+                                    Minimum length 8 characters required
+                                </mat-error>
+                        </mat-form-field>
+
+                        <!--Security question-->
+                        <mat-form-field class="register-form-full-width">
+                            <mat-select placeholder="Select the question" formControlName="forgetPasswordQ">
+                                <mat-option *ngFor="let question of questions" [value]="question.value">
+                                    {{question.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <!--Answer-->
+                        <mat-form-field class="register-form-full-width">
+                            <input matInput placeholder="Answer" value="" formControlName="forgetPasswordA">
+                            <mat-error *ngIf="formGroup.controls['forgetPasswordA'].errors?.required">
+                                {{ required }}
+                            </mat-error>
+                            <mat-error *ngIf="formGroup.controls['forgetPasswordA'].errors?.minlength">
+                                {{lengthError}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <br>
+                        <button class="continue" mat-raised-button color="warn">continue</button>
+
+                    </form>
+
+                    <div class="information">
+                        <i class="material-icons">info</i>
+                        <p>By providing your email address and / or phone number you’re agreeing we can send you any
+                            documents and updates about your application by email or phone. This may include
+                            contacting you to see if we can help you in completing your application. Your details
+                            won’t be used for marketing purposes without your permission.</p>
+
+                    </div>
+
+                </div>
+                <div class="information-detail">
+                    <h3>Important Information</h3>
+                    <br>
+                    <div class="info-box">
+                        <span class="homeTest">YOUR HOME MAY BE REPOSSESSED IF YOU DO NOT KEEP UP REPAYMENTS ON YOUR
+                            MORTGAGE</span>
+                        <p class="disclaimer">All applications are subject to status and our lending criteria. This
+                            means that the amount
+                            we will lend you will depend on your individual circumstances, the type of property and the
+                            amount you borrow. For example, we may require a higher deposit if you are buying a flat or
+                            a new build property.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+
+
+
+</div>

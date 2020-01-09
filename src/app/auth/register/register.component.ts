@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDatepicker } from '@angular/material';
+import { AuthclientService } from 'src/app/services/authclient.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +10,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  storedSuccess: boolean = false;
+  formGroup: FormGroup;
+  required: string = 'This field is required.';
+  lengthError: string = 'Minimum 2 characters required.';
+  datepicker: MatDatepicker<Date>;
+  formErrors: any;
 
-  ngOnInit() {
+  constructor(private formBuilder: FormBuilder, private registerService: AuthclientService) {
+    this.formGroup = this.formBuilder.group({
+      firstName: [null, [Validators.required, Validators.minLength(2)]],
+      lastName: [null, [Validators.required, Validators.minLength(2)]],
+      dateOfBirth: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.minLength(8)]],
+      cnfPassword: [null, [Validators.required, Validators.minLength(8)]],
+      forgetPasswordQ: [null, Validators.required],
+      forgetPasswordA: [null, [Validators.required, Validators.minLength(2)]],
+    });
+
   }
 
+  ngOnInit() {
+    
+  }
+
+  questions: any[] = [
+    { value: 'pet', viewValue: 'Name of your pet' },
+    { value: 'school', viewValue: 'Name of your first school' },
+    { value: 'novel', viewValue: 'Name of the first novel you read' }
+  ];
+
+  options: string[] = ['Single', 'Joint'];
+
+  onSubmit(data: any) {
+    if (data.password === data.cnfPassword) {
+      this.registerService.registerData(data).subscribe(val => {
+        if (val.userId != null) {
+          this.storedSuccess = true;
+          alert('Success');
+          console.log(val);
+        }
+      });
+    }
+  }
 }

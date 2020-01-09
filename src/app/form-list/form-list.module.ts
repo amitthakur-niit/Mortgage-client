@@ -8,14 +8,22 @@ import { PropertyDetailsComponent } from './property-details/property-details.co
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { ReviewAndSubmitComponent } from './review-and-submit/review-and-submit.component';
 import { FormListroutingModule } from './form-list.routing.module';
+import { ContentComponent } from './content/content.component';
+import { MaterialDesignModule } from '../material-design/material-design.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
 @NgModule({
-  declarations: [HowToApplyComponent, ValuationComponent, MortgageOptionsComponent, ConfirmMortgageComponent, PropertyDetailsComponent, PaymentDetailsComponent, ReviewAndSubmitComponent],
+  declarations: [ContentComponent, HowToApplyComponent, ValuationComponent, MortgageOptionsComponent, ConfirmMortgageComponent, PropertyDetailsComponent, PaymentDetailsComponent, ReviewAndSubmitComponent],
   imports: [
     CommonModule,
-    FormListroutingModule
+    FormListroutingModule,
+    MaterialDesignModule,
+    ReactiveFormsModule,
+    
+
   ]
 })
 export class FormListModule { }

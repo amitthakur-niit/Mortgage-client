@@ -6,12 +6,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FormlistService {
 
-  private url='http://localhost:8765/mortgage-service/api/valuation';
+  //base url : zuul
+  //Keep adding your service name with api
+  private url='http://localhost:8765/';
   constructor(private http:HttpClient) { }
 
   //Valuation Service
   postValuationData(data:any){
-    return this.http.post(this.url,data);
+    return this.http.post(this.url+'mortgage-service/api/valuation',data);
     }
 
+    //property0details-service
+    
 }
