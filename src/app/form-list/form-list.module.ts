@@ -11,7 +11,7 @@ import { FormListroutingModule } from './form-list.routing.module';
 import { ContentComponent } from './content/content.component';
 import { MaterialDesignModule } from '../material-design/material-design.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+
 
 
 

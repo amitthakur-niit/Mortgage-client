@@ -1,0 +1,59 @@
+.container{
+    font-size: .5 rem;
+    /* test dirty trick*/
+    height: 60rem;
+    
+    display: flex;
+    flex-direction: column;
+    
+    flex: 1;
+    margin:3rem;
+    
+}
+
+.mortgageFieldStyle{
+font-weight: bold;
+font-size: 11px;
+font-family: sans-serif;
+}
+
+.mortgageTextSize{
+    font-size: 12px;
+}
+
+.button_class{
+    
+    display : flex;
+    justify-content: space-evenly;
+    font-size: 10px;
+    
+
+}
+.navigation{
+    padding:2rem 2rem;
+    &_button{
+    display: flex;
+    justify-content:space-between;
+    padding:1.2rem;
+        .save_comeback,
+        .select{
+            background-color: red;
+            border-radius:15rem;
+            color: white;
+            font-size: 11px;
+
+        }
+
+    }
+    
+    &_link{
+     display: flex;
+    justify-content:space-between;
+    padding:1.2rem;
+    }
+
+    a{
+        color: grey;
+    }
+
+}
