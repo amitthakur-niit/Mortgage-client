@@ -1,1 +1,227 @@
-<p>property-details works!</p>
+<div class="container">
+
+    <br> <br>
+    <div class="heading_1 bold">
+        <h2>Property details</h2>
+        <br><br>
+        <p></p>
+
+    </div>
+    <label class="title">We need some more information about the property so that we can assess whether it's suitable
+        for us to lend against.</label>
+    <br><br>
+
+    <b>
+        <p>Your property address</p>
+    </b>
+    <hr class="line">
+    <br>
+    <div class="isScotland">
+        <label class="title">Please tell us the address of the property you want to mortgage</label>
+        <br>
+        <br>
+
+    </div>
+
+
+    <br>
+
+
+
+
+    <div class="para">
+        <p class="para__info"></p>
+    </div>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="contact-form">
+
+       
+
+    <div class="valuation-form">
+
+        <p class="question"></p>
+
+        <div class="navigation_button">
+
+                <mat-form-field class="contact-form-full-width" >
+                    <input matInput placeholder="Postcode" value="" formControlName="Postcode" >
+                    <!-- <mat-error *ngIf="!formGroup.controls['Postcode'].valid && formGroup.controls['Postcode'].touched">
+                        {{ required }}
+                    </mat-error> -->
+
+
+                </mat-form-field>
+                <div class="navigation">
+
+                    <button mat-stroked-button class="save_comeback" value="">Find another address </button>
+                </div>
+                <div class="navigation">
+                    <p><u>or enter manually</u></p>
+                </div>
+
+
+
+            </div>
+
+            <!-- <mat-form-field class="contact-form-full-width"   >
+                <input type="number" matInput placeholder="Address" value="" formControlName="Address">
+                <mat-error *ngIf="!formGroup.controls['Address'].valid && formGroup.controls['Address'].touched">
+                    {{ required }}
+                </mat-error>
+            </mat-form-field> -->
+            
+            <mat-form-field class="contact-form-full-width"  > 
+                <input matInput placeholder="Address" value="" formControlName="Address" >
+                <mat-error *ngIf="!formGroup.controls['Address'].valid && formGroup.controls['Address'].touched">
+                    {{ required }}
+                </mat-error>
+            </mat-form-field>
+    </div>
+
+
+
+
+    <div class="heading_2 bold">
+        <b>
+            <p>Your property details</p>
+        </b>
+    </div>
+    <hr class="line">
+    <br>
+    <mat-form-field class="contact-form-full-width">
+        <mat-label>Property type*</mat-label>
+        <mat-select >
+            <mat-option *ngFor="let property of properties" [value]="property.value">
+                {{property.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="contact-form-full-width">
+        <input  matInput placeholder="Number Of Bedrooms" value="" >
+
+    </mat-form-field>
+
+
+
+    <div class="your-purchase">
+        <label class="title">Approximately when was the property built?*
+        </label></div>
+    <br>
+    <div class="button_class">
+    
+        <button mat-stroked-button value="1914" (click)="proprtyBuilt('1914')" class="button_class-yes">Before 1914</button>
+        <button mat-stroked-button value="" (click)="proprtyBuilt('1914 to 1944')" class="button_class-yes">1914 to 1944</button>
+        <button mat-stroked-button value="" (click)="proprtyBuilt('1945 to 1980')" class="button_class-yes">1945 to 1980</button>
+        <button mat-stroked-button value="" (click)="proprtyBuilt('After 1980')" class="button_class-no">After 1980</button>
+    
+    </div>
+    <br>
+
+    <div>
+        
+
+
+            <!-- <mat-label>How old is the property*</mat-label>
+            <mat-select formControlName="age">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                </mat-option>
+            </mat-select> -->
+        
+
+         <mat-form-field class="contact-form-full-width">
+            <mat-label>How old is the property*</mat-label>
+            <mat-select formControlName="propertyAge">
+                <mat-option *ngFor="let properties of oldProperties" [value]="properties.value">
+                    {{properties.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> 
+
+    </div>
+
+    <div>
+        <div class="your-purchase">
+
+            <label class="title">Is the property covered by a structure warranty(e.g. NHBC cover)?* ?
+            </label>
+            <div>                  
+                 <button mat-stroked-button value="yes" (click)="clickMe()" class="">Yes</button>&nbsp;&nbsp;
+                <button mat-stroked-button value="no" class="">No</button> 
+             </div> 
+            <br>
+        </div>
+    </div>
+
+    <div class="your-purchase">
+        <label class="title">Tenure type*
+        </label><br>
+        <div class="button_class">
+           
+            <button mat-stroked-button value="freehold"  class="button_class-no" >Freehold</button>
+            <button mat-stroked-button  value="leasehold" class="button_class-yes">Leasehold</button>
+            <button mat-stroked-button value="commonhold" class="button_class-yes">Commonhold</button>
+            <button mat-stroked-button value="absolutetitle" class="button_class-yes" >Absolute title/feudal</button>
+        
+        </div> 
+        <br>
+    </div>
+  <!-- <div>
+        <mat-button-toggle-group #group = "matButtonToggleGroup">
+            <mat-button-toggle value = "left">
+               <mat-icon>format_align_left</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle value = "center">
+               <mat-icon>format_align_center</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle value = "right">
+               <mat-icon>format_align_right</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle value = "justify" disabled>
+               <mat-icon>format_align_justify</mat-icon>
+            </mat-button-toggle>
+         </mat-button-toggle-group>
+         <div class = "tp-selected-value">Selected value: {{group.value}}</div>
+        </div>  -->
+
+    <div class="navigation">
+        <div class="navigation_button">
+            <button mat-stroked-button class="save_comeback" value="">save_comeback </button>
+            <button mat-stroked-button class="save_continue"  value="">save_continue</button>
+        </div>
+        <div class="navigation_link">
+            <a routerLink=".">Back</a>
+            <a routerLink=".">Cancel</a>
+        </div>    
+    </div>
+</form>
+</div>
+
+<!-- <div class="navigation">
+    <div class="navigation_button">
+        <button mat-stroked-button class="save_comeback" value="">save_comeback </button>
+        <button mat-stroked-button class="save_continue" value="">save_continue</button>
+    </div>
+    <div class="navigation_link">
+        <a routerLink=".">Back</a>
+        <a routerLink=".">Cancel</a>
+    </div>    
+</div> -->
+
+<br>
+
+<div class="navigation">
+    <h3>Importnat Information</h3>
+    <br>
+    <div class="info-box">
+        <h3> YOUR HOME MAY BE REPOSSESSED IF YOU DO NOT KEEP UP REPAYMENTS ON YOUR MORTGAGE</h3><br>
+        <p>All applications are subject to status and our lending criteria. Thia means that the amount we will lend you
+            will depends on<br>
+            your individual circumatances, the type of property and the amout you borrow. For example, we may require a
+            higher<br>
+            deposite if you are buying a flat or a new build property.
+        </p>
+    </div>
+</div>
+
+
