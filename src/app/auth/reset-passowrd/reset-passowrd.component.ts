@@ -1,24 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
-import { LogInService } from '../../log-in-service.service';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { RegisterService } from '../../register.service';
 import { Router } from '@angular/router';
 
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-reset-passowrd',
+  templateUrl: './reset-passowrd.component.html',
+  styleUrls: ['./reset-passowrd.component.scss']
 })
-export class LoginComponent implements OnInit {
-loginForm: FormGroup;
-required: string = 'This field is required';
-email;
-pwd;
-
-  constructor(private fb: FormBuilder, private logInService: LogInService ,
-    private router: Router) {
-   
-  }
+export class ResetPassowrdComponent implements OnInit {
+  loginForm: FormGroup;
+  required: string = 'This field is required';
+  email;
+  pwd;
+  constructor(private fb: FormBuilder, private registerService: RegisterService ,
+    private router: Router) { }
 
   ngOnInit() {
     this.logIn();
@@ -30,8 +26,8 @@ pwd;
     this.loginForm = this.fb.group({
      
       
-      'email': new FormControl([null, Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)]),
       'pwd': new FormControl([null, Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)]),
+      'Confirmpwd': new FormControl([null, Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)]),
     });
 
   }
@@ -41,7 +37,7 @@ pwd;
   // }
 
   onSubmit(data: any) {
-    this.logInService.logInData(data).subscribe(val=>{
+    this.registerService.resetPass(data).subscribe(val=>{
       console.log("val",val);
       if(val)
       { this.router.navigate(['/','how-to-apply']);
@@ -53,5 +49,4 @@ pwd;
     
   }
 
-  }
-
+}

@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="header">
+      <h1>LOGIN </h1>
+  </div>
+    <div class="form-container text">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" class="register-form">
+       <!--Email address-->
+       <mat-form-field class="register-form-full-width">
+        <input type="text" matInput placeholder="Email address" value="" formControlName="email">
+        <mat-error
+            *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched">
+            {{ required }}
+        </mat-error>
+    </mat-form-field>
+  
+  
+    
+    <!--Password-->
+    <mat-form-field class="register-form-full-width">
+        <input type="text" matInput placeholder="Password" value="" formControlName="pwd">
+        <mat-error
+            *ngIf="!loginForm.controls['pwd'].valid && loginForm.controls['pwd'].touched">
+            {{ required }}
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <button class="continue" mat-raised-button  color="warn">Log In</button>
+  <h5>click here if forget your password</h5>
+  <a routerLink="/auth/forgot-password">forget password</a>
+  <br>
+  <a routerLink="/auth/register">register here</a>
+  </form>
+  </div>
+  </div>
+  
+  
