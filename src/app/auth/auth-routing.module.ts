@@ -8,20 +8,20 @@ import { LogoutComponent } from './logout/logout.component';
 
 
 const routes: Routes = [
-    {
-      path : '',
-      redirectTo:'/login',
-      pathMatch:'full'
-    },
-    
-    {
+ /*  {
+    path: ' ',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+ */
+  {
     path: 'login',
     component: LoginComponent
   },
-   {
+  {
     path: 'register',
     component: RegisterComponent
-  }, 
+  },
   {
     path: 'forgotPassword',
     component: ForgotPasswordComponent
@@ -30,10 +30,10 @@ const routes: Routes = [
     path: 'logout',
     component: LogoutComponent
   },
-  ];
-  
-  @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
-  })
-  export class AuthRoutingModule { }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class AuthRoutingModule { }

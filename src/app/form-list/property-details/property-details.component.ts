@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FormlistService } from 'src/app/services/formlist.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-property-details',
@@ -15,7 +16,7 @@ export class PropertyDetailsComponent implements OnInit {
   required: string = 'This field is required';
   buttonClass="button_class-yes";
   propertyBuilt;
-  constructor(private formBuilder : FormBuilder,private propertyService: FormlistService) { }
+  constructor(private formBuilder : FormBuilder,private propertyService: FormlistService, private route: Router) { }
 
   clickMe() {
   }
@@ -65,6 +66,9 @@ export class PropertyDetailsComponent implements OnInit {
 onSubmit(data: any) {
   console.log("Data",data);
   this.propertyService.propertyData(data).subscribe();
+  this.route.navigate([ 'content/howToApply']);
+ // this.route.navigate(['howToApply'])
+ 
 }
 
 }

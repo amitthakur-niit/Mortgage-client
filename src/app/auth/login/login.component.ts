@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.logIn();
+    this.checkUserLoggedIn();
+    //if current user  is false in session status false 
   }
 
   logIn() {
@@ -40,28 +42,24 @@ export class LoginComponent implements OnInit {
   //   this.router.navigate(['/','how-to-apply']);
   // }
 
+  checkUserLoggedIn() {
+    //let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    localStorage.removeItem('currentUser');
+  }
+
   onSubmit(data: any) {
-
-
     this.authService.logInData(data).subscribe(val => {
       if (val) {
-      let userStatus = {
-        userId: val,
-        email: data.email
-      }
-
-      localStorage.setItem("currentUser", JSON.stringify(userStatus));
-
-      
-        this.router.navigate(['/content', [{ outlets: { sidebar: ['howToApply'] } }]]);
+        let userStatus = {
+          userId: val,
+          email: data.email
+        }
+        localStorage.setItem("currentUser", JSON.stringify(userStatus));
+        this.router.navigate(['/content/howToApply']);
       } else {
         alert("Wrong credentials");
       }
-
-
     });
-
-
   }
 
 }

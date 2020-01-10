@@ -13,7 +13,7 @@ export class AuthclientService {
 
   private url = 'http://localhost:8765/';
   constructor(private http: HttpClient, private router: Router) { }
-
+ status:Boolean=false;
   //user-logIn service
   logInData (requestBody: LogIn): Observable<BigInteger> {
     console.log("Login check");
@@ -45,5 +45,6 @@ export class AuthclientService {
   logout(){
    localStorage.removeItem("currentUser");
   }
+
 
 }

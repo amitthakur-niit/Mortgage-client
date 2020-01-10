@@ -3,8 +3,26 @@ h1{
 }
 
 .container{
+    margin:auto;
+    height:100%;
+    width:70%;
+    display: flex;
+    justify-content: center;
+    
+}
 
-    width: 80rem;
-    height:60rem;
-    background-color: black;
+.nav-bar{
+-ms-flex-order: -1;
+flex:0 0 18%;
+border-style: thin solid;
+background-color: #F0F0F0
+}
+
+
+
+.main{
+margin:10rem, 10rem;
+max-width:100rem;
+flex:1;   
+background-color: rgb(228, 11, 11);
 }

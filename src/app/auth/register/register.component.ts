@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDatepicker } from '@angular/material';
 import { AuthclientService } from 'src/app/services/authclient.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
   datepicker: MatDatepicker<Date>;
   formErrors: any;
 
-  constructor(private formBuilder: FormBuilder, private registerService: AuthclientService) {
+  constructor(private formBuilder: FormBuilder, private registerService: AuthclientService, private route:Router) {
     this.formGroup = this.formBuilder.group({
       firstName: [null, [Validators.required, Validators.minLength(2)]],
       lastName: [null, [Validators.required, Validators.minLength(2)]],
@@ -59,7 +60,7 @@ export class RegisterComponent implements OnInit {
 
           this.storedSuccess = true;
           localStorage.setItem("currentUser",JSON.stringify(userStatus));
-
+          this.route.navigate(['/login']);
           alert('Success');
         }
       });

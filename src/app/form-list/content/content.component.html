@@ -1,19 +1,22 @@
+
+<form-header></form-header>
 <div class="container">
-    <div class="navigation">
-        <nav class="user-nav">
-            <mat-nav-list class="arrow">
-                <a mat-list-item href="#" [routerLink]="[{ outlets: { sidebar: ['howToApply'] } }]" routerLinkActive="active">How to apply</a>
-                <a mat-list-item href="#" [routerLink]="[{ outlets: { sidebar: ['mortgageOptions'] } }]">Mortgage options</a>
-                <a mat-list-item href="#" [routerLink]="[{ outlets: { sidebar: ['confirmMortgage'] } }]">Confirm mortgage</a>
-                <a mat-list-item href="#" [routerLink]="[{ outlets: { sidebar: ['propertyDetails'] } }]">Property details</a>
-                <a mat-list-item href="#" [routerLink]="[{ outlets: { sidebar: ['valuation'] } }]">Valuation</a>
-                <a mat-list-item href="#" [routerLink]="[{ outlets: { sidebar: ['how'] } }]">Other occupants</a>
-                <a mat-list-item href="#" [routerLink]="[{ outlets: { sidebar: ['paymentDetails'] } }]">Solicitor/Payment details</a>
-                <a mat-list-item href="#" [routerLink]="[{ outlets: { sidebar: ['reviewSubmit'] } }]">Review and submit</a>
-              </mat-nav-list>
-        </nav>
-        <main class="user-form">
-          <router-outlet name="sidebar"></router-outlet>
-        </main>
-    </div>
+  <div class="navigation">
+    <nav class="user-nav">
+      <mat-nav-list class="arrow">
+        <a mat-list-item href="#" [routerLink]=" ['howToApply'] " routerLinkActive="active">How to apply</a>
+        <a mat-list-item href="#" [routerLink]="['mortgageOptions'] ">Mortgage options</a>
+        <a mat-list-item href="#" [routerLink]="['confirmMortgage']">Confirm mortgage</a>
+        <a mat-list-item href="#" [routerLink]="['propertyDetails']">Property details</a>
+        <a mat-list-item href="#" [routerLink]="['valuation']">Valuation</a>
+        <a mat-list-item href="#" [routerLink]=" ['']">Other occupants</a>
+        <a mat-list-item href="#" [routerLink]=" ['paymentDetails']">Solicitor/Payment details</a>
+        <a mat-list-item href="#" [routerLink]=" ['reviewSubmit']">Review and submit</a>
+      </mat-nav-list>
+    </nav>
+    <main class="user-form">
+      <router-outlet></router-outlet>
+    </main>
+
+  </div>
 </div>

@@ -11,65 +11,58 @@ import { ContentComponent } from './content/content.component';
 
 
 const routes: Routes = [
-    {
-        path:'', 
-        redirectTo:'/content/howToApply',
-        pathMatch:'full'
-    },
-
-    {
-      path:'content',
-      component: ContentComponent,
-      children: [
-        {
-          path: 'howToApply',
-          component: HowToApplyComponent,
-          outlet:'sidebar'
-        },
-        {
-          path : 'valuation',
-          component : ValuationComponent,
-          outlet:'sidebar'
-        },
-        {
-          path: 'mortgageOptions',
-        component: MortgageOptionsComponent,
-        outlet:'sidebar'},
-        {
-            path : 'propertyDetails',
-            component : PropertyDetailsComponent,
-            outlet:'sidebar'
-          },
-          {
-            path : 'paymentDetails',
-            component : PaymentDetailsComponent,
-            outlet:'sidebar'
-          },
-          {
-            path : 'reviewSubmit',
-            component : ReviewAndSubmitComponent,
-            outlet:'sidebar'
-          },
-          {
-            path : 'confirmMortgage',
-            component : ConfirmMortgageComponent,
-            outlet:'sidebar'
-          },
-          {
-            path : 'otherOccupants',
-            component : PaymentDetailsComponent,  //TO BE DONE - CHANGE COMPONENT
-            outlet:'sidebar'
-          }
-      ]
-      
-    },
-   
-   
-    
-  ];
   
-  @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
-  })
-  export class FormListroutingModule{}
+
+  {
+    path: 'content',
+    component: ContentComponent,
+    children:[{
+      path: 'howToApply',
+      component: HowToApplyComponent,
+  
+    },
+    {
+      path: 'valuation',
+      component: ValuationComponent,
+  
+    },
+    {
+      path: 'mortgageOptions',
+      component: MortgageOptionsComponent,
+    },
+    {
+      path: 'propertyDetails',
+      component: PropertyDetailsComponent,
+  
+    },
+    {
+      path: 'paymentDetails',
+      component: PaymentDetailsComponent,
+  
+    },
+    {
+      path: 'reviewSubmit',
+      component: ReviewAndSubmitComponent,
+  
+    },
+    {
+      path: 'confirmMortgage',
+      component: ConfirmMortgageComponent,
+  
+    },
+    {
+      path: 'otherOccupants',
+      component: PaymentDetailsComponent,  //TO BE DONE - CHANGE COMPONENT
+  
+    }]
+  },
+
+  
+
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class FormListroutingModule { }
