@@ -1,0 +1,132 @@
+.header h1 {
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+    line-height: 106.25%;
+    color: #444;
+    align-content: center;
+    text-align: center;
+    margin-top: 250px;
+  }
+  
+  
+  
+  .container{
+     max-width:  1000px;
+     max-height: 1024px;
+     margin-top: 32px;
+    height:60rem;
+     width:50%;
+     margin: auto;
+     background-color: #fff;
+     font-size: 10px;
+     padding: 40px;
+     
+     
+  }
+  h3 {
+    margin-top: 16px;
+    font-family: OpensansRegular, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 125%;
+    color: #444;
+  }
+  
+  ul {
+    font-size: 13px;
+    line-height: 123.0769230769%;
+    color: #5B5A5B;
+    font-family: Arial, sans-serif;
+  }
+  
+  .text {
+    font-size: 13px;
+    line-height: 123.0769230769%;
+    color: #5B5A5B;
+    font-family: Arial, sans-serif;
+  }
+  
+  hr {
+    background-color: #C2C2C2;
+    height: 1px;
+    border: none;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+  
+  .loginForm {
+    min-width: 50rem;
+    max-width: 50rem;
+  }
+  
+  .register-form-full-width {
+    width: 30rem;
+  }
+  
+  .example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+  
+  .button_class{
+    
+    max-width: 20rem;
+    display : flex;
+    justify-content: space-evenly;
+  
+    &-no{
+        background-color: red;
+    }
+  }
+  
+  .form-container{
+   display : flex;
+   max-width:500px;
+   width:100%;
+  align-content: center;
+   justify-content: center;
+   background-color: rgb(253, 250, 224) ;
+   margin-top: auto;
+   margin-left: auto;
+   margin-right: auto;
+   margin-bottom: auto;
+  }
+  
+  form{
+   margin: 1.5em 0 0 4rem;
+   
+  }
+  
+  .continue{
+   border-radius: 1em;
+   font-size: 1em;
+   padding: 0.5em;
+   background-color:rgb(161, 7, 7);
+   color:#fff;
+   margin: 1em 0 1em 0;
+  }
+  
+  .information{
+   width:40rem;
+   height:11em;
+   border: thin;
+   border-style: solid;
+   padding: 1em;
+   margin:4rem -13rem;
+  //margin : 3.7rem 0 0 36rem;
+  border-color: rgb(175, 176, 177);
+  flex: 0 0 45%;
+  
+  }
+  
+  
+  .fieldRequired{
+   font-size: 1.1em;
+   margin-top: 2em;
+  }
+  
