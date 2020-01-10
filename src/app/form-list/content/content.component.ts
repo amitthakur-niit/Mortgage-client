@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthclientService } from 'src/app/services/authclient.service';
 
 @Component({
   selector: 'app-content',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentComponent implements OnInit {
 
-  constructor() { }
+  constructor( private service:AuthclientService) { }
 
   ngOnInit() {
+    this.service.checkAccess();
   }
+
+
 
 }

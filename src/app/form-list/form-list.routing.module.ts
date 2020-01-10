@@ -12,8 +12,8 @@ import { ContentComponent } from './content/content.component';
 
 const routes: Routes = [
     {
-        path:' ', 
-        redirectTo:'/howToApply',
+        path:'', 
+        redirectTo:'/content/howToApply',
         pathMatch:'full'
     },
 

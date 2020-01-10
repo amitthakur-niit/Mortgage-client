@@ -10,6 +10,7 @@ import { AuthclientService } from 'src/app/services/authclient.service';
 })
 export class RegisterComponent implements OnInit {
 
+ 
   storedSuccess: boolean = false;
   formGroup: FormGroup;
   required: string = 'This field is required.';
@@ -44,14 +45,26 @@ export class RegisterComponent implements OnInit {
   options: string[] = ['Single', 'Joint'];
 
   onSubmit(data: any) {
+
+   
+
     if (data.password === data.cnfPassword) {
       this.registerService.registerData(data).subscribe(val => {
         if (val.userId != null) {
+
+          let  userStatus={
+            userId:val.userId,
+            email:val.email
+          }
+
           this.storedSuccess = true;
+          localStorage.setItem("currentUser",JSON.stringify(userStatus));
+
           alert('Success');
-          console.log(val);
         }
       });
     }
+
+
   }
 }
