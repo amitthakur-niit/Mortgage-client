@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   required: string = 'This field is required';
   email;
   pwd;
-
+  isLoggedIn:Boolean;
   constructor(private fb: FormBuilder, private authService: AuthclientService,
     private router: Router) {
 
@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.logIn();
-    this.checkUserLoggedIn();
+    //this.checkUserLoggedIn();
+    this.setIsLoggedIn();
     //if current user  is false in session status false 
   }
 
@@ -43,12 +44,13 @@ export class LoginComponent implements OnInit {
   // }
 
   checkUserLoggedIn() {
+    this.authService.checkAccess();
     //let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    localStorage.removeItem('currentUser');
+   // localStorage.removeItem('currentUser');
   }
 
   onSubmit(data: any) {
-    this.authService.logInData(data).subscribe(val => {
+ /*    this.authService.logInData(data).subscribe(val => {
       if (val) {
         let userStatus = {
           userId: val,
@@ -59,7 +61,22 @@ export class LoginComponent implements OnInit {
       } else {
         alert("Wrong credentials");
       }
-    });
+    }); */
+    this.authService.loclStorageValue();
+    this.router.navigate(['/forms/content/howToApply']);
   }
 
+
+
+  //STEPS
+//global vriable is loggedIn and get the status from the service
+//call this method on ngOnInit
+//
+
+setIsLoggedIn(){
+  this.authService.checkAccess().subscribe( value =>{
+    this.isLoggedIn = value.valueOf();
+    console.log("inside the login comp :",this.isLoggedIn);
+  })
+}
 }

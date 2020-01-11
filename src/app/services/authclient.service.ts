@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { LogIn } from '../Models/logIn';
 import { Question } from '../Models/question';
 import { Register } from '../Models/register';
@@ -17,7 +17,8 @@ export class AuthclientService {
   //user-logIn service
   logInData (requestBody: LogIn): Observable<BigInteger> {
     console.log("Login check");
-    return this.http.post<BigInteger>(this.url + 'user-registration-service/users/logIn', requestBody)
+    return new Observable();
+   // return this.http.post<BigInteger>(this.url + 'user-registration-service/users/logIn', requestBody)
   }
   
   //forgot-password
@@ -30,17 +31,27 @@ export class AuthclientService {
     return this.http.post<any>(this.url + 'user-registration-service/users/register', requestBody)
   }
 
-  checkAccess():boolean{
-    let status=false;
-    let userStatus:any=JSON.parse(localStorage.getItem("currentUser"));
-    if(!userStatus){
-      this.router.navigate(['/']);
-    }
-    else{
-      status=true;
-    }
-    return status;
+   
+
+  checkAccess():BehaviorSubject<Boolean>{
+   let  userStatus:BehaviorSubject<Boolean> = new BehaviorSubject<Boolean>(false);
+   userStatus.next(localStorage.getItem('currentUser') ? true:false);
+   
+  console.log("userStatus :",userStatus);
+   return userStatus;
   }
+
+  loclStorageValue(){
+    let userStatus = {
+      userId: 1,
+      email:"random"
+    }
+    localStorage.setItem("currentUser", JSON.stringify(userStatus));
+  }
+
+  //
+
+  
 
   logout(){
    localStorage.removeItem("currentUser");
@@ -48,3 +59,9 @@ export class AuthclientService {
 
 
 }
+
+//STEPS TO FOLLOW
+
+//step1: hit API to check login details and then set local storage
+//step2: create a BS object and write logc to set status accordingly
+//step3:  use that in required component  

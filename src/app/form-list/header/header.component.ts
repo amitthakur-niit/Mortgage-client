@@ -14,14 +14,20 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.check();
+    this.setIsLoggedIn();
   }
 
-check(){
+/* check(){
   this.status=this.service.checkAccess();
   //console.log(this.status);
-}
+} */
 
+setIsLoggedIn(){
+  this.service.checkAccess().subscribe( value =>{
+    this.status = value.valueOf();
+    console.log("inside the header compo:",this.status);
+  })
+}
 logout(){
   this.service.logout();
 }

@@ -6,13 +6,10 @@ import { AuthclientService } from '../services/authclient.service';
     templateUrl: './auth.component.html',
     
   })
-  export class AuthComponent implements OnInit, OnDestroy{
-    ngOnDestroy(){
-      this.service.logout();
-      this.check();
-    }
+  export class AuthComponent implements OnInit{
+    
 
-    status=1;
+    status:Boolean=false;
     constructor(private service: AuthclientService) { 
     //  this.check();
     }
@@ -24,8 +21,10 @@ import { AuthclientService } from '../services/authclient.service';
     }
   
   check(){
-   // this.status=this.service.checkAccess();
-    console.log("status :", this.status);
+    this.service.checkAccess().subscribe( value =>{
+      this.status = value.valueOf();
+      console.log("inside the auth compo:",this.status);
+    })
   }
   
   //clear local storage in 10sec of inactivity

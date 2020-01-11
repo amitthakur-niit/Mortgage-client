@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
   status:boolean=false;
 
   ngOnInit(){
-    this.check();
+    this.setIsLoggedIn()
   }
 
   
@@ -22,10 +22,17 @@ export class AppComponent implements OnInit{
     this.check();
   },100) */
 
-  check(){
+  /* check(){
     this.status=this.service.checkAccess();
     console.log(this.status);
-  }
+  } */
+
+  setIsLoggedIn(){
+  this.service.checkAccess().subscribe( value =>{
+    this.status = value.valueOf();
+    console.log("inside the app compo:",this.status);
+  })
+}
 
   onStatusChange(data : any) {
     console.log('emitted data '+data);
