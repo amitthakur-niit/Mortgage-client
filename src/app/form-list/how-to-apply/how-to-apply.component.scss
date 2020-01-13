@@ -1,10 +1,36 @@
-h1{
-    z-index:10;
+mat-grid-tile {
+    background: lightblue;
+  }
+  .column {
+    text-align: center;
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .heading_1 {
+ 
+    font-size: 18px;  
+    align-items: space-between;
+    
 }
 
 .container{
-
-    width: 80rem;
-    height:60rem;
-    background-color: black;
+  font-size: 1.5rem;
+   height: inherit;
+   display: flex;
+   flex-direction: column;
+   
+   flex: 1;
+   margin:3rem;
+   
 }
+  
