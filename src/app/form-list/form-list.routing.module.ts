@@ -8,6 +8,7 @@ import { PaymentDetailsComponent } from './payment-details/payment-details.compo
 import { ReviewAndSubmitComponent } from './review-and-submit/review-and-submit.component';
 import { ConfirmMortgageComponent } from './confirm-mortgage/confirm-mortgage.component';
 import { ContentComponent } from './content/content.component';
+import { OtherOccupantsComponent } from './other-occupants/other-occupants.component';
 
 
 const routes: Routes = [
@@ -57,7 +58,7 @@ const routes: Routes = [
           },
           {
             path : 'otherOccupants',
-            component : PaymentDetailsComponent,  //TO BE DONE - CHANGE COMPONENT
+            component : OtherOccupantsComponent,  //TO BE DONE - CHANGE COMPONENT
             outlet:'sidebar'
           }
       ]
