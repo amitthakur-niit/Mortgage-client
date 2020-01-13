@@ -20,7 +20,7 @@
   
   <!--Password-->
   <mat-form-field class="register-form-full-width">
-      <input type="text" matInput placeholder="Password" value="" formControlName="pwd">
+      <input type="password" matInput placeholder="Password" value="" formControlName="pwd">
       <mat-error
           *ngIf="!loginForm.controls['pwd'].valid && loginForm.controls['pwd'].touched">
           {{ required }}
