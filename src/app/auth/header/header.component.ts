@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthclientService } from 'src/app/services/authclient.service';
 
 @Component({
-  selector: 'app-header',
+  selector: 'auth-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 check(){
   this.status=this.service.checkAccess();
-  console.log(this.status);
+ // console.log(this.status);
 }
 
 logout(){
@@ -26,7 +26,7 @@ logout(){
 }
 
 ngOnDestroy(){
-  this.service.logout();
+ // this.service.logout();
 }
 
 }

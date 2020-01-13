@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
 
 
     this.authService.logInData(data).subscribe(val => {
+      console.log("login : "+val)
       if (val) {
       let userStatus = {
         userId: val,
@@ -54,8 +55,8 @@ export class LoginComponent implements OnInit {
 
       localStorage.setItem("currentUser", JSON.stringify(userStatus));
 
-      
-        this.router.navigate(['/content', [{ outlets: { sidebar: ['howToApply'] } }]]);
+     // console.log(localStorage.getItem("currentUser"));
+        this.router.navigateByUrl('/content/(sidebar:howToApply)');
       } else {
         alert("Wrong credentials");
       }

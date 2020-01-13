@@ -16,7 +16,6 @@ export class AuthclientService {
 
   //user-logIn service
   logInData (requestBody: LogIn): Observable<BigInteger> {
-    console.log("Login check");
     return this.http.post<BigInteger>(this.url + 'user-registration-service/users/logIn', requestBody)
   }
   
@@ -33,7 +32,8 @@ export class AuthclientService {
   checkAccess():boolean{
     let status=false;
     let userStatus:any=JSON.parse(localStorage.getItem("currentUser"));
-    if(!userStatus){
+    if(userStatus===null){
+      this.logout();
       this.router.navigate(['/']);
     }
     else{
