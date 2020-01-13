@@ -17,6 +17,7 @@ const routes: Routes = [
         redirectTo:'/content/howToApply',
         pathMatch:'full'
     },
+   
 
     {
       path:'content',
