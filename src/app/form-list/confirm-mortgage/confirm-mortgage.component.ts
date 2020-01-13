@@ -1,15 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
+import { FormlistService } from 'src/app/services/formlist.service';
+
+
+export interface ConfirmMortgage{
+  buyerType: string;
+  repaymentMethod:string;
+  mortgageTerm:string;
+  estimatedPropertyValue:number;
+  borrowingAmount:number;
+  loanToValue:number;
+  initialrate:number;
+  followOnRate:number;
+  rateFinishDate:number;
+  productFee:number;
+  productfeeAddedToLoanAmt:number;
+  monthlyRepayment:number;
+}
+
 @Component({
   selector: 'app-confirm-mortgage',
   templateUrl: './confirm-mortgage.component.html',
   styleUrls: ['./confirm-mortgage.component.scss']
 })
+
 export class ConfirmMortgageComponent implements OnInit {
 
-  constructor() { }
+
+  confMortgageData :any;
+  displayedColumns: string[] = ['buyerType', 'repaymentMethod', 'mortgageTerm', 'estimatedPropertyValue','borrowingAmount','loanToValue','initialrate','followOnRate','rateFinishDate','productFee','productfeeAddedToLoanAmt','monthlyRepayment'];
+  constructor(private apiService:FormlistService,private router: Router) { }
 
   ngOnInit() {
+    this.apiService.fetchConfirmMortgageDetails().subscribe((data)=>{
+      console.log("confMortgageData",data);
+      this.confMortgageData =data;
+    });
   }
+
+  public selectDiffMortgage(){
+    this.router.navigate(['/', 'mortgage-options']);
+  };
+
 
 }
