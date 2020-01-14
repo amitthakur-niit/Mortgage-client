@@ -16,6 +16,11 @@ import { OtherOccupantsComponent } from './other-occupants/other-occupants.compo
 import { HeaderComponent } from './header/header.component';
 
 
+import { OtherOccupantsComponent } from './other-occupants/other-occupants.component';
+import { HeaderComponent } from './header/header.component';
+
+
+
 
 @NgModule({
   declarations: [HeaderComponent, ContentComponent, HowToApplyComponent, ValuationComponent, MortgageOptionsComponent, ConfirmMortgageComponent, PropertyDetailsComponent, PaymentDetailsComponent, ReviewAndSubmitComponent, OtherOccupantsComponent],
@@ -25,6 +30,10 @@ import { HeaderComponent } from './header/header.component';
     MaterialDesignModule,
     ReactiveFormsModule
     
+
+    ReactiveFormsModule
+    
+
 
   ]
 })

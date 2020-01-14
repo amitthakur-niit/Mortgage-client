@@ -78,6 +78,7 @@
  
      }
      
+     
      &_link{
       display: flex;
      justify-content:space-between;
@@ -99,3 +100,12 @@
     
  
  }
+
+ .message{
+
+    border: 1px solid #C2C2C2;
+    margin:16px 0;
+    padding: 0 16px;
+    background-color: #f9f9f9;
+    overflow: hidden;
+  }
