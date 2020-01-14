@@ -11,13 +11,11 @@ import { FormListroutingModule } from './form-list.routing.module';
 import { ContentComponent } from './content/content.component';
 import { MaterialDesignModule } from '../material-design/material-design.module';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { OtherOccupantsComponent } from './other-occupants/other-occupants.component';
 import { HeaderComponent } from './header/header.component';
 
 
-import { OtherOccupantsComponent } from './other-occupants/other-occupants.component';
-import { HeaderComponent } from './header/header.component';
+
 
 
 
@@ -29,12 +27,7 @@ import { HeaderComponent } from './header/header.component';
     FormListroutingModule,
     MaterialDesignModule,
     ReactiveFormsModule
-    
-
-    ReactiveFormsModule
-    
-
-
+  
   ]
 })
 export class FormListModule { }
