@@ -65,8 +65,8 @@ export class PropertyDetailsComponent implements OnInit {
 
 onSubmit(data: any) {
   console.log("Data",data);
- // this.propertyService.propertyData(data).subscribe();
-  this.router.navigateByUrl('/content/(sidebar:howToApply)');
+  this.propertyService.propertyData(data).subscribe();
+  this.router.navigateByUrl('/content/(sidebar:valuation)');
 
 }
 
