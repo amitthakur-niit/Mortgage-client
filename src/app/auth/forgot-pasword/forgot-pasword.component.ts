@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { throwMatDialogContentAlreadyAttachedError } from '@angular/material';
-import { RegisterService } from 'src/app/services/register.service';
+import { AuthclientService } from 'src/app/services/authclient.service';
 
 
 
@@ -26,7 +26,7 @@ export class ForgotPaswordComponent implements OnInit {
   toggle2:boolean =false;
   
     constructor(private fb: FormBuilder,
-      private router: Router,private registerService: RegisterService) {
+      private router: Router,private registerService: AuthclientService) {
      
     }
   

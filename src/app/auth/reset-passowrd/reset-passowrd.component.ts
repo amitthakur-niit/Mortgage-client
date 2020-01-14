@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RegisterService } from 'src/app/services/register.service';
+import { AuthclientService } from 'src/app/services/authclient.service';
 
 @Component({
   selector: 'app-reset-passowrd',
@@ -14,7 +14,7 @@ export class ResetPassowrdComponent implements OnInit {
   email;
   pwd;
   message:any;
-  constructor(private fb: FormBuilder, private registerService: RegisterService ,
+  constructor(private fb: FormBuilder, private registerService: AuthclientService ,
     private router: Router) {
       console.log("val rest pas");
       this.registerService.getMessage().subscribe(val=>{
