@@ -6,9 +6,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule, MatDatepickerModule, MatNativeDateModule, } from '@angular/material';
+import { MatInputModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -25,7 +25,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatSelectModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTableModule
   ],
   exports:[
     MatToolbarModule,
@@ -37,7 +38,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTableModule
  ]
 })
 export class MaterialDesignModule { }

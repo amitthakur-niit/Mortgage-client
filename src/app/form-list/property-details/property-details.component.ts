@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FormlistService } from 'src/app/services/formlist.service';
+
 import { Router,Route } from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-property-details',
@@ -12,6 +16,7 @@ export class PropertyDetailsComponent implements OnInit {
 
   formGroup: FormGroup;
   required: string = 'This field is required';
+
   buttonClass1 = "button_class-yes";
   buttonClass2 = "button_class-yes";
   buttonClass3 = "button_class-yes";
@@ -23,8 +28,14 @@ export class PropertyDetailsComponent implements OnInit {
   buttonClassC = "button_class-yes";
   buttonClassA = "button_class-yes";
 
-
+  buttonClass="button_class-yes";
   propertyBuilt;
+  // constructor(private formBuilder : FormBuilder,private propertyService: FormlistService, private router:Router) { }
+
+
+  userId;
+  useId= localStorage.getItem('key');
+ 
   isPropertyCovered;
   tenureType;
   constructor(private formBuilder: FormBuilder, private propertyService: FormlistService,private router: Router) { }
@@ -128,6 +139,7 @@ export class PropertyDetailsComponent implements OnInit {
   }
   onSelect() { }
 
+
   onSubmit() {
     let data = {
       propertyAddress: this.formGroup.value.Address,
@@ -141,6 +153,15 @@ export class PropertyDetailsComponent implements OnInit {
     console.log("Data", data);
     this.propertyService.propertyData(data).subscribe();
     //this.router.navigate(['/forms/content/(sidebar:valuation)']);
+    this.router.navigateByUrl('/content/(sidebar:valuation)');
   }
+
+// onSubmit(data: any) {
+//   console.log("Data",data);
+//  // this.propertyService.propertyData(data).subscribe();
+//   this.router.navigateByUrl('/content/(sidebar:howToApply)');
+
+// }
+
 
 }

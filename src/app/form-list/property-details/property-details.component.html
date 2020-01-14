@@ -50,13 +50,13 @@
 
 
                 </mat-form-field>
-                <div class="navigation">
+                <!-- <div class="navigation">
 
                     <button mat-stroked-button class="save_comeback" value="">Find another address </button>
                 </div>
                 <div class="navigation">
                     <p><u>or enter manually</u></p>
-                </div>
+                </div> -->
 
 
 
@@ -193,7 +193,7 @@
          <div class = "tp-selected-value">Selected value: {{group.value}}</div>
         </div>  -->
 
-    <div class="navigation">
+    <!-- <div class="navigation">
         <div class="navigation_button">
             <button mat-stroked-button class="save_comeback" value="">save_comeback </button>
             <button mat-stroked-button class="save_continue" (click)="onSubmit()" value="">save_continue</button>
@@ -202,35 +202,36 @@
             <a routerLink=".">Back</a>
             <a routerLink=".">Cancel</a>
         </div>    
-    </div>
+    </div> -->
 </form>
-</div>
 
-<!-- <div class="navigation">
+
+<div class="navigation">
     <div class="navigation_button">
         <button mat-stroked-button class="save_comeback" value="">save_comeback </button>
-        <button mat-stroked-button class="save_continue" value="">save_continue</button>
+        <button mat-stroked-button class="save_continue" (click)="onSubmit()" value="">save_continue</button>
     </div>
     <div class="navigation_link">
         <a routerLink=".">Back</a>
         <a routerLink=".">Cancel</a>
     </div>    
-</div> -->
+</div>
 
 <br>
 
-<div class="navigation">
-    <h3>Importnat Information</h3>
+<div class="information">
+    <h3>Important Information</h3>
     <br>
-    <div class="info-box">
-        <h3> YOUR HOME MAY BE REPOSSESSED IF YOU DO NOT KEEP UP REPAYMENTS ON YOUR MORTGAGE</h3><br>
-        <p>All applications are subject to status and our lending criteria. Thia means that the amount we will lend you
-            will depends on<br>
-            your individual circumatances, the type of property and the amout you borrow. For example, we may require a
-            higher<br>
-            deposite if you are buying a flat or a new build property.
+    <div class="message">
+        <p>
+            <br>
+          <strong>YOUR HOME MAY BE REPOSSESSED IF YOU DO NOT KEEP UP REPAYMENTS ON YOUR MORTGAGE </strong>
         </p>
-    </div>
+        <br>
+        <p>All applications are subject to status and our lending criteria. This means that the amount we will lend you will depend on your individual circumstances, the type of property and the amount you borrow. For example, we may require a
+          higher deposit if you are buying a flat or a new build property.</p>
+          <br>
+      </div>
 </div>
-
+</div>
 

@@ -11,15 +11,16 @@ import { Router } from '@angular/router';
 export class HowToApplyComponent implements OnInit {
   
   constructor(private formBuilder: FormBuilder,private router: Router) { 
-    // this.formGroup = this.formBuilder.group({
-    //   'Postcode': new FormControl(null, Validators.required),
-    //   'Address': new FormControl(null, Validators.required),
-    //   'propertyType': new FormControl(null, Validators.required),
-    //   'NumberOfBedrooms': new FormControl(null, Validators.required),
-    //   'propertyAge': new FormControl(null, Validators.required),
-    // });
+  
 
   }
+
+  public continueOnline(){
+    //console.log("Route pending...to mortgage options page..");
+    
+    this.router.navigateByUrl('/content/(sidebar:mortgageOptions)');
+  }
+
 
 
   ngOnInit() {

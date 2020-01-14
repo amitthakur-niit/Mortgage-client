@@ -1,1 +1,115 @@
-<p>mortgage-options works!</p>
+<div class="container">
+    <div class="pageHeading">
+        Mortgage Options
+    </div>
+
+    <br> <br>
+    <div class="pageSubHeading">
+        <p> <b>></b> Filter Mortgage options</p>
+    </div>
+
+    <br><br><br>
+
+    <div class="isScotland">
+        <p> The APRC is not shown in this table because it's based on the product you choose.
+            You 'll be able to check your APRC on the mortgage illustration when you've chosen a mortgage product.
+            you can compare as many Mortgage illustrations as you want to help you decide on the right product for you.
+        </p>
+    </div>
+    <br>
+    <br>
+    <div class="para">
+
+        <table mat-table [dataSource]="optionsData">
+
+
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef class="rowStyle"> Description </th>
+                <td mat-cell *matCellDef="let element" class="valStyle"> {{element.description}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="initialRate">
+                <th mat-header-cell *matHeaderCellDef class="rowStyle"> Initial Rate </th>
+                <td mat-cell *matCellDef="let element" class="valStyle"> {{element.initialRate}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="monthlyRepayment">
+                <th mat-header-cell *matHeaderCellDef class="rowStyle"> Monthly Repayment </th>
+                <td mat-cell *matCellDef="let element" class="valStyle"> {{element.monthlyRepayment}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="productFee">
+                <th mat-header-cell *matHeaderCellDef class="rowStyle"> Product Fee </th>
+                <td mat-cell *matCellDef="let element" class="valStyle"> {{element.productFee}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="optionId">
+                <th mat-header-cell *matHeaderCellDef class="rowStyle">Select a mortgage <br>product </th>
+                <td mat-cell *matCellDef="let element" class="valStyle">
+                    <div class="navigation">
+                        <div class="navigation_button">
+                            <button mat-stroked-button class="selectBtn" (click)="selectAction(element)" value="">Select
+                            </button>
+                        </div>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
+    <br> <br>
+    <div class="heading_1 bold">
+        <b>Free valuation -</b> Availability on a property valued up to £2.5 million.
+    </div>
+    <br>
+    <div class="heading_1 bold">
+        <b>Early Repayment charges (ending your mortgage):</b>
+    </div>
+    <br>
+    <br>
+    <div class="heading_1 bold">
+        <b>. Fixed rates - </b> You can overpayup to 10% each calendar year (January to December) on your fixed rate
+        loan amount without paying
+        an early repayment charge. A minimum payment of £500 applies. If you want to pay off more than 10%. you'll need
+        to pay an early repayment
+        charge.
+    </div>
+    <br>
+    <div class="heading_1 bold">
+        <b>. Tracker rates - </b> You can make unlimited overpayments on our tracker rate mortgages without paying an
+        ealrly repayment charge.
+        A minimum payment of £500 applies.
+    </div>
+    <br>
+    <div class="heading_1 bold">
+        <b>*1% cashback for 1/2/3 Current Account and 1/2/3 Lite current Account customers - </b> for more details visit
+        <a href="https://www.santander.co.uk/personal/current-accounts">santander.co.uk/personal/current-accounts</a>
+    </div>
+
+    <div class="heading_1 bold">
+        <b>Important information</b>
+
+    </div>
+    <br>
+    <div class="heading_1 bold">
+
+        <table border="1" width=100%>
+            <div class="heading_1 bold">
+                <b>YOUR HOME MAY BE REPOSSESSED IF YOU DO NOT KEEP UP REPAYMENTS ON YOUR MORTGAGE</b>
+            </div>
+            <br>
+            <div class="heading_1 bold">
+                All applications are subject to status and our lending criteria. This means that the amount we will lend
+                you will depend on your circumstances, the type of property and the amount you borrow. For example, we
+                may require
+                a higher deposit if you are buying a flat or a new build property.
+            </div>
+        </table>
+
+
+    </div>
+</div>

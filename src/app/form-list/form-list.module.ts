@@ -14,14 +14,24 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 
+import { OtherOccupantsComponent } from './other-occupants/other-occupants.component';
+import { HeaderComponent } from './header/header.component';
+
+
+
 
 @NgModule({
-  declarations: [ContentComponent, HowToApplyComponent, ValuationComponent, MortgageOptionsComponent, ConfirmMortgageComponent, PropertyDetailsComponent, PaymentDetailsComponent, ReviewAndSubmitComponent],
+  declarations: [HeaderComponent, ContentComponent, HowToApplyComponent, ValuationComponent, MortgageOptionsComponent, ConfirmMortgageComponent, PropertyDetailsComponent, PaymentDetailsComponent, ReviewAndSubmitComponent, OtherOccupantsComponent],
   imports: [
     CommonModule,
     FormListroutingModule,
     MaterialDesignModule,
+
     ReactiveFormsModule,
+
+    ReactiveFormsModule
+    
+
 
   ]
 })

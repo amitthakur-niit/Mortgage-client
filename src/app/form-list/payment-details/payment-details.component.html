@@ -1,1 +1,154 @@
-<p>payment-details works!</p>
+<div class="container">
+    <br> <br>
+    <div class="heading_1 bold">
+        <b>
+            <h1>Payment Details</h1>
+        </b>
+    </div>
+<br>
+
+<p>We'd like to confirm some payment details for your mortgage and also understand if you're expecting any change to your<br>
+circumstances</p>
+<br>
+<b>Your current Circumstances</b>
+<hr class="line">
+<br>
+<br>
+<p> We appreciate this may change in the future. Over the life of the mortgage there may be events that could increase or<br>
+decrease your income and/or outgoing jobs. for example, changing jobs, redundancy. stating a family, retirement, school fees<br>
+or property repairs
+<br>
+<br>
+it's important that you consider whether you can still afford your repayments if any significant changes occur.<br>
+ if any changes are known then tell us below and provide details of how you'll still be able to afford your mortgage.
+</p>
+
+<br>
+<br>
+
+<b> Are you currently aware of any changes to your circumstances in the next 2 years that may affect<br> your ability
+to pay this mortgage?*</b>
+<br>
+<br>
+<div class="button_class">
+    <button mat-stroked-button class="button_class-yes" (click)="toggle()">Yes</button>
+    <button mat-stroked-button class="button_class-no" (click)="toggle()" [disabled]="">No</button>
+</div>
+<br>
+
+<div class="heading_1 bold">
+    <b>
+        <b>Your Direct Debit details</b>
+    </b>
+</div>
+<br>
+
+<hr class="line">
+<br>
+<br>
+which account do you want your monthly payments to be made from?
+<br>
+<br>
+<b>Sort code*</b>
+<br>
+<div class="shape">
+    <input  type="text" class="shape_input">
+    <input  type="text" class="shape_input">
+    <input  type="text" class="shape_input">
+</div>
+<br>
+<b>Account number *</b>
+<br>
+<input  type="text" class="account">
+<br>
+<b>Account holder name *</b>
+<br>
+<input  type="text" class="account">
+<br>
+<div class="firstday">
+    <button mat-stroked-button class="button_class-no" (click)="toggle()">On first day of each of month</button>
+    <button mat-stroked-button class="button_class-yes" (click)="toggle()" [disabled]="">On a specific day each month</button>
+</div>
+
+<br>
+<br>
+<div class="box">
+
+               <b class="a"> Direct Debt guarantee</b><br><br>
+    This guarantee is offered by all banks and building societies that accept instructions to pay Direct Debts.<br><br>
+    
+        
+        <li >If there are any changes to the amount date, or frequency of your Direct Debit Sanatander
+         will notify you five working days in advance of your account being debited or as otherwise agreed.</li><br>
+        <li>
+            If you request Sanatander to collect a payment confirmation of the amount and date wil be given to you  at the 
+            time of the request.
+        </li>
+        <br>
+        <li>
+            If an error is made in the payment of your Direct Debt, either by us, Santander UK plc, or by your bank or building
+            society. You are entitled to a full and immediate refund from your bank or building society.
+        </li>
+        <br>
+        <li>
+            If you recieve a refund you are not entitled to, you must pay it back when Santander UK plc asks you to. 
+        </li>
+        <br>
+        <li>
+            You can cancel a Direct debit at any time by simply contacting your bank or building society. written confirmation
+            may be required.
+        </li>
+        
+        
+        
+      
+
+</div>
+<br>
+<br>
+
+<div class="navigation">
+    <div class="navigation_button">
+        <button mat-stroked-button class="save_comeback" value="">save_comeback </button>
+        <button mat-stroked-button class="save_continue" (click)="postFormGroup()" value="">save_continue</button>
+    </div>
+    <div class="navigation_link">
+        <a routerLink=".">Back</a>
+        <a routerLink=".">Cancel</a>
+    </div>
+
+
+</div>
+<br>
+
+<div class="information">
+    <h3>Important Information</h3>
+    <br>
+    <div class="message">
+        <p>
+            <br>
+          <strong>YOUR HOME MAY BE REPOSSESSED IF YOU DO NOT KEEP UP REPAYMENTS ON YOUR MORTGAGE </strong>
+        </p>
+        <br>
+        <p>All applications are subject to status and our lending criteria. This means that the amount we will lend you will depend on your individual circumstances, the type of property and the amount you borrow. For example, we may require a
+          higher deposit if you are buying a flat or a new build property.</p>
+          <br>
+      </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

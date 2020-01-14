@@ -1,17 +1,18 @@
 <div class="container">
+  
 
 
-<div class="heading_1 bold">
-  <h2>How to apply for your mortgage</h2>
+  <h1>How to apply for your mortgage</h1>
   <br>
-</div>
-<p>You can continue and complete your mortgage application by choosing from one of the options below.</p>
-</div>
+<label class="title">You can continue and complete your mortgage application by choosing from one of the options below.</label>
+
 <div class="row">
   <div class="column" style="background-color:#ffff;">
-    <h2>Online</h2>
     <br>
-    <h4>Without advice</h4>
+<div class="head">
+    <h2 >Online</h2>
+    <br>
+    <h4>Without advice</h4></div>
     <br>
     <br>
     <p>Continue online if you're comfortable selecting your own<br> mortgage. You'ii choose and select a mortgage from our<br> range without receiving
@@ -26,14 +27,19 @@
       <p>If you're making a joint application online, both applicants can view the information provided and documents submitted. Santander may share information about you and any information returned
         as part of the credit search with all applications.
       </p>
-      <br>
-      <br>
-      <button type="button" onclick="">Continue onlinee</button>
+      <div class="navigation_button">
+        <div class="navigation">
+
+         <button mat-stroked-button (click)="continueOnline()" class="save_comeback" value="">Continue online</button>
+     </div></div> 
   </div>
   <div class="column" style="background-color:#ffff;">
-    <h2>By phone</h2>
     <br>
-    <h4>with advice</h4>
+
+    <div class="head">
+      <h2 >By phone</h2>
+      <br>
+      <h4>With advice</h4></div>
     <br>
     <br>
     <p>Continue by phone and one of our Santander Mortgage<br>Adviser will advice and make a<br> 
@@ -49,19 +55,43 @@
          <h4>you won't be able to log back into this application and continue online.</h4>
          <br>
          <br>
-         <button type="button" onclick="">Continue by phone</button>
-  </div>
+         <div class="navigation_button">
+         <div class="navigation">
+
+          <button mat-stroked-button class="save_comeback" value="">Continue by phone</button>
+      </div></div>        </div>
 <br>
 <br>
 <br>
 </div>
-<h3>Important Information</h3>
-    <br>
-    <div class="info-box">
-        <h3> YOUR HOME MAY BE REPOSSESSED IF YOU DO NOT KEEP UP REPAYMENTS ON YOUR MORTGAGE</h3><br>
-        <p>All applications are subject to status and our lending criteria. Thia means that the amount we will lend you
-            will depends on<br>
-            your individual circumatances, the type of property and the amout you borrow. For example, we may require a
-            higher<br>
-            deposite if you are buying a flat or a new build property.
-        </p>
+<br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br> <br>
+        <br>
+        <br>
+        <br><br> <br>
+        <br>
+        <br>
+        <br>
+        
+        <div class="information">
+          <h3>Important Information</h3>
+          <div class="message">
+              <p>
+                  <br>
+                <strong>YOUR HOME MAY BE REPOSSESSED IF YOU DO NOT KEEP UP REPAYMENTS ON YOUR MORTGAGE </strong>
+              </p>
+              <br>
+              <p>All applications are subject to status and our lending criteria. This means that the amount we will lend you will depend on your individual circumstances, the type of property and the amount you borrow. For example, we may require a
+                higher deposit if you are buying a flat or a new build property.</p>
+                <br>
+            </div>
+      </div>
+
