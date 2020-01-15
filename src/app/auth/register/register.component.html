@@ -67,8 +67,8 @@
                         </mat-form-field>
                         <!--Date of birth-->
                         <mat-form-field class="register-form-full-width">
-                            <input matInput [matDatepicker]="dateOfBirth" formControlName="dateOfBirth"
-                                placeholder="Date of Birth">
+                            <input matInput [matDatepicker]="dateOfBirth" formControlName="dateOfBirth" [min]="minDate"
+                            [max]="maxDate" placeholder="Date of Birth">
                             <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
                             <mat-datepicker #dateOfBirth></mat-datepicker>
                         </mat-form-field>
@@ -90,8 +90,8 @@
                             <mat-error *ngIf="formGroup.controls['password'].errors?.required">
                                 {{ required }}
                             </mat-error>
-                            <mat-error *ngIf="formGroup.controls['password'].errors?.minlength">
-                                Minimum length 8 characters required
+                            <mat-error *ngIf="formGroup.controls['password'].errors?.pattern">
+                                Minimum 8 characters and must contain atleast 1 uppercase, lowercase, speacial character and numeric.
                             </mat-error>
                         </mat-form-field>
 
@@ -101,9 +101,6 @@
                                 formControlName="cnfPassword">
                                 <mat-error *ngIf="formGroup.controls['cnfPassword'].errors?.required">
                                     {{ required }}
-                                </mat-error>
-                                <mat-error *ngIf="formGroup.controls['cnfPassword'].errors?.minlength">
-                                    Minimum length 8 characters required
                                 </mat-error>
                         </mat-form-field>
 
