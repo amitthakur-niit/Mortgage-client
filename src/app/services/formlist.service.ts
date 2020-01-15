@@ -11,6 +11,7 @@ export class FormlistService {
   //base url : zuul
   //Keep adding your service name with api
   private url='http://localhost:8765/';
+  private urlP = 'http://localhost:9002/';
   constructor(private http:HttpClient) { }
 
   //Valuation Service
@@ -23,6 +24,13 @@ export class FormlistService {
       //registerData(data: Register) : Observable < Register > {
         return this.http.post<any>(this.url + 'mortgage-service/api/propertyDetails', requestBody)
       }
+
+    //property0details-serviceGet
+    public propertyDataById():Observable<any>{
+         return  this.http.get<any>(this.urlP + `api/propertyDetailsById/5`);
+         
+        
+        }
 
       //confirmMortgage
       public fetchConfirmMortgageDetails():Observable<any>{
