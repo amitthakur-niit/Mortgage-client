@@ -3,7 +3,7 @@ import { FormlistService } from 'src/app/services/formlist.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-valuation',
@@ -28,6 +28,7 @@ export class ValuationComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.createForm();
+    
   }
 
   createForm() {
@@ -75,11 +76,11 @@ export class ValuationComponent implements OnInit, OnDestroy {
     document.getElementById('No').classList.toggle('highlight');
   }
 
-  postFormGroup():Boolean {
+  postFormGroup(){
     let status:Boolean=false;  
     let userId = JSON.stringify(localStorage.getItem('currentItem'));
     let valuationData={
-          userId:userId,
+         userId:userId,
          isPropertyInScotland : this.isPropertyInScotland,
          contactPerson : this.formGroup.value.ContactPerson,
          contactName : this.formGroup.value.ContactName,
@@ -88,7 +89,7 @@ export class ValuationComponent implements OnInit, OnDestroy {
        }
 
     //console.log(this.formGroup.value.ContactPerson);
-    this.subscription = this.service.postValuationData(valuationData).subscribe((data)=>{
+     return this.service.postValuationData(valuationData).subscribe((data)=>{
       
      // console.log("Check response",data)
       this.notifyService.notify('Valuation details posted!')
@@ -100,7 +101,7 @@ export class ValuationComponent implements OnInit, OnDestroy {
       this.notifyService.alert('Oops! Something went wrong')
     });
 
-       return status;
+       //return status;
     }
 
     postAndNavigateForward(){
@@ -127,7 +128,7 @@ export class ValuationComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-      this.subscription.unsubscribe();
+      //this.subscription.unsubscribe();
     }
 
 }
