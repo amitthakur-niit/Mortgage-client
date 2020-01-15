@@ -73,6 +73,9 @@
          .save_continue{
              background-color: rgb(250, 85, 85);
              border-radius:15rem;
+             color: darken($color: #292828, $amount: 1);
+             cursor: pointer;
+             border: none;
          }
  
      }
