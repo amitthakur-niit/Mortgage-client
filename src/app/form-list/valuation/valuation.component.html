@@ -94,7 +94,7 @@
     <div class="navigation">
         <div class="navigation_button">
             <button mat-stroked-button class="save_comeback" value="">save_comeback </button>
-            <button mat-stroked-button class="save_continue" (click)="postFormGroup()" value="">save_continue</button>
+            <button mat-stroked-button class="save_continue" (click)="postFormGroup()" value="" [disabled]="!formGroup.valid">save_continue</button>
         </div>
         <div class="navigation_link">
             <a routerLink=".">Back</a>

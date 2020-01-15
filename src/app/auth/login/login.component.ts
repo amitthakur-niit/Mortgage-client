@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { AuthclientService } from 'src/app/services/authclient.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   pwd;
 
   constructor(private fb: FormBuilder, private authService: AuthclientService,
-    private router: Router) {
+    private router: Router, private notifyService : NotificationService) {
 
   }
 
@@ -29,11 +30,12 @@ export class LoginComponent implements OnInit {
   logIn() {
     let name_regexg = "";
     let number_regex = "";
+    console.log("login :",this.loginForm);
     this.loginForm = this.fb.group({
 
 
-      'email': new FormControl([null, Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)]),
-      'pwd': new FormControl([null, Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)]),
+      email:[null, [Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)]],
+      pwd: [null, [Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)]],
     });
 
   }
@@ -55,10 +57,12 @@ export class LoginComponent implements OnInit {
 
       localStorage.setItem("currentUser", JSON.stringify(userStatus));
 
-     // console.log(localStorage.getItem("currentUser"));
+     
         this.router.navigateByUrl('/content/(sidebar:howToApply)');
+        this.notifyService.notify('Login Successful');
       } else {
-        alert("Wrong credentials");
+       
+        this.notifyService.alert('Wrong credentials');
       }
 
 

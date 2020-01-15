@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { MatDatepicker } from '@angular/material';
 import { AuthclientService } from 'src/app/services/authclient.service';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   maxDate: Date;
   minDate: Date;
 
-  constructor(private formBuilder: FormBuilder, private registerService: AuthclientService, private router: Router, private toastr: ToastrService) {
+  constructor(private formBuilder: FormBuilder, private registerService: AuthclientService, private router:Router, private notifyService : NotificationService) {
     this.formGroup = this.formBuilder.group({
       firstName: [null, [Validators.required, Validators.minLength(2)]],
       lastName: [null, [Validators.required, Validators.minLength(2)]],
@@ -65,16 +65,17 @@ export class RegisterComponent implements OnInit {
           this.storedSuccess = true;
           localStorage.setItem("currentUser", JSON.stringify(userStatus));
 
-          alert('Success');
-          //this.toastr.success('Hello world!', 'Toastr fun!');
+          //alert('Success');
+          this.notifyService.notify('Registration Successful');
         }
       });
 
       this.router.navigate(['/auth/login']);
 
     }
-    else {
-      alert("passwords don't match!!!");
+    else{
+      //alert("passwords don't match!!!");
+      this.notifyService.alert("passwords don't match!!!");
     }
 
 

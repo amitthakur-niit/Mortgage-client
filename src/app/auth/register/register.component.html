@@ -125,7 +125,7 @@
                         </mat-form-field>
 
                         <br>
-                        <button class="continue" mat-raised-button color="warn">continue</button>
+                        <button class="continue" mat-raised-button color="warn" [disabled]="!formGroup.valid">continue</button>
 
                     </form>
 

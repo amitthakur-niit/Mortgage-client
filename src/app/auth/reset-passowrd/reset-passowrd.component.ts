@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthclientService } from 'src/app/services/authclient.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-reset-passowrd',
@@ -15,13 +16,13 @@ export class ResetPassowrdComponent implements OnInit {
   pwd;
   message:any;
   constructor(private fb: FormBuilder, private registerService: AuthclientService ,
-    private router: Router) {
-      console.log("val rest pas");
+    private router: Router, private notifyService : NotificationService) {
+      //console.log("val rest pas");
       this.registerService.getMessage().subscribe(val=>{
         this.message =val.text;
-        console.log("val rest passssssss",this.message);
+       // console.log("val rest passssssss",this.message);
       });
-      console.log("iop ");
+     // console.log("iop ");
      }
 
   ngOnInit() {
@@ -48,11 +49,13 @@ export class ResetPassowrdComponent implements OnInit {
 
     }
     if(userData.pwd!=this.ResetPassWordForm.value.cnfPassword){
-alert("Password did not match");
-    }
+    //alert("Password did not match");
+    this.notifyService.alert('Password did not match')
+  }
     else{
     this.registerService.resetPass(userData).subscribe(val=>{
 
+      this.notifyService.notify('Password reset successful');
       this.router.navigate(['/auth/login']);
 
     });}
