@@ -8,6 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule, MatDatepickerModule, MatNativeDateModule, } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -25,7 +26,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatSelectModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatExpansionModule
   ],
   exports:[
     MatToolbarModule,
@@ -37,7 +39,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatExpansionModule
  ]
 })
 export class MaterialDesignModule { }
