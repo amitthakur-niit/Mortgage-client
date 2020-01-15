@@ -2,11 +2,9 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Personal data
+          Property Details 
         </mat-panel-title>
-        <mat-panel-description>
-          Type your name and age
-        </mat-panel-description>
+        
       </mat-expansion-panel-header>
   
       <mat-form-field>
@@ -17,16 +15,135 @@
         <input matInput placeholder="Age">
       </mat-form-field>
     </mat-expansion-panel>
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Self aware panel
-        </mat-panel-title>
-        <mat-panel-description>
-          Currently I am {{panelOpenState ? 'open' : 'closed'}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
-    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Valuation
+          </mat-panel-title>
+          
+        </mat-expansion-panel-header>
+    
+        <mat-form-field>
+          <input matInput placeholder="First name">
+        </mat-form-field>
+    
+        <mat-form-field>
+          <input matInput placeholder="Age">
+        </mat-form-field>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+           Other Occupants
+          </mat-panel-title>
+          
+        </mat-expansion-panel-header>
+    
+        <mat-form-field>
+          <input matInput placeholder="First name">
+        </mat-form-field>
+    
+        <mat-form-field>
+          <input matInput placeholder="Age">
+        </mat-form-field>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Solicitor Details
+          </mat-panel-title>
+          
+        </mat-expansion-panel-header>
+    
+        <mat-form-field>
+          <input matInput placeholder="First name">
+        </mat-form-field>
+    
+        <mat-form-field>
+          <input matInput placeholder="Age">
+        </mat-form-field>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+           Payment Details
+          </mat-panel-title>
+          
+        </mat-expansion-panel-header>
+    
+        <mat-form-field>
+          <input matInput placeholder="First name">
+        </mat-form-field>
+    
+        <mat-form-field>
+          <input matInput placeholder="Age">
+        </mat-form-field>
+      </mat-expansion-panel>
   </mat-accordion>
+
+
+  <div class="container">
+
+    <br> <br>
+    <div class="heading_1 bold">
+        <b>
+            <p>Declaration</p>
+        </b>
+    </div>
+    <hr class="line">
+    <br>
+    <br>
+    <h3>By Selecting to continue Below:</h3>
+    <br>
+    <p>You confirm that the details in this application are accurate and you have entitled to discuss information about any joint
+        applicants,partners/spouse or other third party named on the application.
+
+        You understand that Santander will use your information to carry out a soft credit check against all applicants with credits
+        reference agencies. A soft credit check will show on your credit file so you will know that the search has taken place but it doesnot 
+        affect your credit rating.
+
+        You have read the Data Protection Statement below.You understand that Santander will use your personal data and make checks
+        on you as described in the Data Protection Statement.
+
+
+    </p>
+    <br>
+    <br>
+
+    <h3><u>General Mortgage Declaration</u>></h3>
+    <br><br>
+    <h3><u>Data Protection Statement</u>></h3>
+    <br>
+    <br>
+    <p>If there is anything within this applicants that you are unsure about please contact us before processing</p>
+
+    <br><input type = "checkbox"> I agree to the Declaration,General Mortgage Declaration and Data Protection Statement<br>
+    
+
+
+      
+    <div class="navigation">
+        <div class="navigation_button">
+            <button mat-stroked-button class="save_comeback" value="">save_comeback </button>
+            <button mat-stroked-button class="save_continue" (click)="postFormGroup()" value="">save_continue</button>
+        </div>
+        <div class="navigation_link">
+            <a routerLink=".">Back</a>
+            <a routerLink=".">Cancel</a>
+        </div>
+
+
+    </div>
+    <br>
+
+    <div class="information">
+        <h3>Important Information</h3>
+        <br>
+        <div class="info-box">
+            <h3> YOUR HOME MAY BE REPOSSESSED IF YOU DO NOT KEEP UP REPAYMENTS ON YOUR MORTGAGE</h3>
+        </div>
+    </div>
+
+
+</div>
+  
