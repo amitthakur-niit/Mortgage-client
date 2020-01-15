@@ -27,14 +27,51 @@ export class MortgageOptionsComponent implements OnInit {
   }
 
     ngOnInit() {
-      this.apiService.fetchMortgageOptions().subscribe((data)=>{
-        console.log("data",data);
+
+      this.putDummyValues()
+      /* this.apiService.fetchMortgageOptions().subscribe((data)=>{
+        console.log("data:",data);
         this.optionsData =data;
-      });
+      }); */
     }
 
-    public selectAction(){
-      this.router.navigate(['/', 'confirm-mortgage']);
+    public selectAction(element){
+      
+      this.router.navigateByUrl('/content/(sidebar:confirmMortgage)',element);
+    }
+
+    putDummyValues(){
+      this.optionsData = [{
+        description:'Fixed 5 Years',
+        initialRate:'1',
+        monthlyRepayment:'514',
+        productFee:'70'
+
+      },
+      {
+        description:'Fixed 10 Years',
+        initialRate:'0.9',
+        monthlyRepayment:'123',
+        productFee:'100'
+
+      },
+      {
+        description:'Fixed 15 Years',
+        initialRate:'0.6',
+        monthlyRepayment:'314',
+        productFee:'17'
+      },
+      {
+        description:'Fixed 3 Years',
+        initialRate:'1.3',
+        monthlyRepayment:'714',
+        productFee:'78'
+      }
+    
+    
+    
+    
+    ]
     }
   }
 
