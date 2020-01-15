@@ -9,7 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
-
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 @NgModule({
@@ -26,7 +26,8 @@ import {MatTableModule} from '@angular/material/table';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonToggleModule
   ],
   exports:[
     MatToolbarModule,
@@ -39,7 +40,8 @@ import {MatTableModule} from '@angular/material/table';
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonToggleModule
  ]
 })
 export class MaterialDesignModule { }

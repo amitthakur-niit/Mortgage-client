@@ -5,6 +5,7 @@ import { LogIn } from '../Models/logIn';
 import { Question } from '../Models/question';
 import { Register } from '../Models/register';
 import { Router } from '@angular/router';
+import { PaymentDetails } from '../Models/PaymentDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class AuthclientService {
   
   registerData (requestBody: Register): Observable<any> {
     return this.http.post<any>(this.url + 'user-registration-service/users/register', requestBody)
+  }
+
+  updatePaymentDetails (requestBody: PaymentDetails): Observable<any> {
+    return this.http.post<any>(this.url + 'mortgage-service/api/payment-details', requestBody)
   }
 
   checkAccess():boolean{

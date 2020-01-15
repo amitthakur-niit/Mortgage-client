@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDatepicker } from '@angular/material';
 import { AuthclientService } from 'src/app/services/authclient.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
   datepicker: MatDatepicker<Date>;
   formErrors: any;
 
-  constructor(private formBuilder: FormBuilder, private registerService: AuthclientService) {
+  constructor(private formBuilder: FormBuilder, private registerService: AuthclientService, private router:Router) {
     this.formGroup = this.formBuilder.group({
       firstName: [null, [Validators.required, Validators.minLength(2)]],
       lastName: [null, [Validators.required, Validators.minLength(2)]],
@@ -46,8 +47,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(data: any) {
 
-   
-
+  
     if (data.password === data.cnfPassword) {
       this.registerService.registerData(data).subscribe(val => {
         if (val.userId != null) {
@@ -63,6 +63,12 @@ export class RegisterComponent implements OnInit {
           alert('Success');
         }
       });
+
+this.router.navigate(['/auth/login']);
+
+    }
+    else{
+      alert("passwords don't match!!!");
     }
 
 
