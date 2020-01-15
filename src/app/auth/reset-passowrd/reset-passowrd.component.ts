@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-
 import { Router } from '@angular/router';
 import { AuthclientService } from 'src/app/services/authclient.service';
 
@@ -10,43 +9,53 @@ import { AuthclientService } from 'src/app/services/authclient.service';
   styleUrls: ['./reset-passowrd.component.scss']
 })
 export class ResetPassowrdComponent implements OnInit {
-  loginForm: FormGroup;
+  ResetPassWordForm: FormGroup;
   required: string = 'This field is required';
   email;
   pwd;
+  message:any;
   constructor(private fb: FormBuilder, private registerService: AuthclientService ,
-    private router: Router) { }
+    private router: Router) {
+      console.log("val rest pas");
+      this.registerService.getMessage().subscribe(val=>{
+        this.message =val.text;
+        console.log("val rest passssssss",this.message);
+      });
+      console.log("iop ");
+     }
 
   ngOnInit() {
-    this.logIn();
+    this.resetForm();
   }
 
-  logIn() {
+  resetForm() {
     let name_regexg = "";
     let number_regex = "";
-    this.loginForm = this.fb.group({
+    this.ResetPassWordForm = this.fb.group({
      
-      
-      'pwd': new FormControl([null, Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)]),
-      'Confirmpwd': new FormControl([null, Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)]),
+     
+      pwd: [null, [Validators.required, Validators.minLength(8)]],
+      cnfPassword: [null, [Validators.required, Validators.minLength(8)]],
     });
 
+   
   }
-  // public onLoginClick(){
-  //   //this.logInService.validateUserDetails(this.email,this.pwd);
-  //   this.router.navigate(['/','how-to-apply']);
-  // }
-
+ 
   onSubmit(data: any) {
-    this.registerService.registerData(data).subscribe(val=>{
-      console.log("val",val);
-      if(val)
-      { this.router.navigate(['/','how-to-apply']);
-    }else{
-      alert("Wrong credentials");
-    }
+     let userData = {
+      email: this.message,
+      pwd:this.ResetPassWordForm.value.pwd,
 
-    });
+    }
+    if(userData.pwd!=this.ResetPassWordForm.value.cnfPassword){
+alert("Password did not match");
+    }
+    else{
+    this.registerService.resetPass(userData).subscribe(val=>{
+
+      this.router.navigate(['/auth/login']);
+
+    });}
     
   }
 

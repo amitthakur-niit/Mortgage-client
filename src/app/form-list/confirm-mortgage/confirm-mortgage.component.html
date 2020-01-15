@@ -1,1 +1,174 @@
-<p>confirm-mortgage works!</p>
+<div class="container" style="overflow-y: scroll;">
+    <div class="pageHeading">
+        Confirm mortgage
+    </div>
+    <br>
+    <br>
+    <div class="mortgageTextSize">
+        Thank you for selection a mortgage product. You can download the Mortgage illustrations below. Please confirm
+        that you'd like to proceed with your chosen product or alternatively go back and choose a different rate.
+    </div>
+    <br>
+    <div class="pageSubHeading">
+        Your chosen mortgage
+        <hr>
+    </div>
+    <br>
+
+
+
+    <div>
+        <div class="pageSubHeading">
+            Fixed 5 Years
+        </div>
+        <br>
+        <div>
+            <table border="0" width=100%>
+                <tr>
+                    <td class="mortgageFieldStyle">Buyer Type ?</td>
+                    <td class="mortgageFieldStyle">Repayment method ?</td>
+                </tr>
+                <tr>
+                    <td>{{confMortgageData.buyerType}}</td>
+                    <td>{{confMortgageData.repaymentMethod}}</td>
+                </tr>
+                <br>
+                <tr>
+                    <td class="mortgageFieldStyle">Mortgage term ?</td>
+                    <td class="mortgageFieldStyle">Early repayment charge(ending your mortgage) ?</td>
+                </tr>
+                <tr>
+                    <td>{{confMortgageData.mortgageTerm}}</td>
+                    <td>5% of the outstanding balance </td>
+                </tr>
+                <br>
+                <tr>
+                    <td class="mortgageFieldStyle">Estimated property value or purchase price</td>
+                    <td class="mortgageFieldStyle">Borrowing amount</td>
+                </tr>
+                <tr>
+                    <td>{{confMortgageData.estimatedPropertyValue}}</td>
+                    <td>{{confMortgageData.borrowingAmount}}</td>
+                </tr>
+                <br>
+                <tr>
+                    <td class="mortgageFieldStyle">Loan to value(LTV) ?</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>{{confMortgageData.loanToValue}}</td>
+                    <td></td>
+                </tr>
+                <br>
+                <tr>
+                    <td class="mortgageFieldStyle">Initial rate</td>
+                    <td class="mortgageFieldStyle">Then changing to Santander's Follow-on rate(currently)</td>
+                </tr>
+                <tr>
+                    <td>{{confMortgageData.initialRate}}</td>
+                    <td>{{confMortgageData.followOnRate}}</td>
+                </tr>
+                <br>
+                <tr>
+                    <td class="mortgageFieldStyle">Differential to bank of England base rate</td>
+                    <td class="mortgageFieldStyle">When does this rate finish</td>
+                </tr>
+                <tr>
+                    <td>n/a</td>
+                    <td>{{confMortgageData.rateFinishedDate}}</td>
+                </tr>
+                <br>
+                <tr>
+                    <td class="mortgageFieldStyle">Product fee</td>
+                    <td class="mortgageFieldStyle">Product fee added to loan amount</td>
+                </tr>
+                <tr>
+                    <td>{{confMortgageData.productFee}}</td>
+                    <td>{{confMortgageData.productFeeAddedToLoanAmt}}</td>
+                </tr>
+                <br>
+                <tr>
+                    <td class="mortgageFieldStyle">Additional benefits ?</td>
+                    <td class="mortgageFieldStyle">Montly payment amount</td>
+                </tr>
+                <tr>
+                    <td>See your Mortage Illustration for details </td>
+                    <td>{{confMortgageData.monthlyRepayment}}</td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <!-- <div>
+            <button class="navigation" type="button" onclick="alert('Work in progress')">Select a different
+                mortgage</button>
+        </div> -->
+
+        <div class="navigation">
+            <div class="navigation_button">
+                <button mat-stroked-button class="select" (click)="selectDiffMortgage()" value="">Select a different
+                    mortgage
+                </button>
+            </div>
+        </div>
+
+
+
+    </div>
+    <br><br>
+    <div class="pageSubHeading">
+        Download your Mortgage illustartion
+        <hr>
+    </div>
+    <div>
+        Most of our customers print of download the Mortgage illustrations for thier records as we don't send it
+        seperately
+        by post.
+        you can view and print as many Mortgage illustrations as you want. However only the mortgage you select and
+        submit
+        will be valid.
+    </div>
+    <div>
+        <br>
+        <table width=100% border=1>
+            <tr>
+                <td>Mortgageillustration.pdf</td>
+                <td>
+                    <div class="navigation_button">
+                        <button mat-stroked-button class="select" value="">Download
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div>
+        <input type="checkbox" name="completeApplication" value="Bike"> I have chosen to complete my application online
+        and as such i have not
+        been provided with any advice. This means i will not benefit from the protection that advice provides and
+        Santander
+        have not accessed the suitability of my mortgage for me.<br>
+        <input type="checkbox" name="proceedWithProduct" value="Bike"> I am happy to proceed with the product I have
+        selected.
+    </div>
+    <div>
+        <br>
+        <table width=100%>
+            <tr>
+                <td>
+                    <div class="navigation_button">
+                        <button mat-stroked-button class="select" value="">Save and back later
+                        </button>
+                    </div>
+                </td>
+                <td>
+                    <div class="navigation_button">
+                        <button mat-stroked-button class="select" value="">continue
+                        </button>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

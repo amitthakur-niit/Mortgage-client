@@ -1,0 +1,86 @@
+<div class="container">
+
+    <h1>Other Occupants</h1>
+    <br>
+    <br>
+
+<p>Please provide details of anyone over the age of 17 who will be living at the property
+     but who isn't named on the mortgage application. <br> We'll meed the details so that we can
+      send them a standard deed of consant form to make sure they don't claim
+rights<br> over the property while they're living in it </p>
+
+<br>
+<br>
+<h3>Other Occupants</h3>
+
+<hr class="line">
+<br>
+<b>Will there be anyone over the age of 17 living with you who is not named on the mortgage?*</b>
+<br>
+
+<div class="button_class">
+    <button mat-stroked-button class="button_class-yes" (click)="toggle()">Yes</button>
+    <button mat-stroked-button class="button_class-no" (click)="toggle()" [disabled]="">No</button>
+</div>
+<br>
+
+<div class="container">
+
+    <h1>Solicitor details</h1>
+    <br>
+    <br>
+
+<p>You'll need a Solicitor or conveyancer to deal with things like land registry,stamp duty charges and collecting and transferring<br> 
+    money for the property</p>
+
+<br>
+<br>
+<h3>About your solicitor</h3>
+
+<hr class="line">
+<br>
+<div class="align">
+<b>you must appoint a Santander approved solicitor/conveyancer to deal with your mortgage application</b>
+<br>
+
+<b>Would you like to search and select a solicitor or conveyancer from our approved panel now?*</b>>
+<br>
+<br>
+</div>
+
+<div class="button_class">
+    <button mat-stroked-button class="button_class-yes" (click)="toggle()">Yes</button>
+    <button mat-stroked-button class="button_class-no" (click)="toggle()" [disabled]="">No</button>
+</div>
+
+<br>
+
+<b>Do you want to submit this application without solicitor or conveyancer details and provide them later? This<br>
+could delay your application.*</b>
+<br>
+<div class="button_class">
+    <button mat-stroked-button class="button_class-yes" (click)="toggle()">Yes</button>
+    <button mat-stroked-button class="button_class-no" (click)="toggle()" [disabled]="">No</button>
+</div>
+<br>
+
+<br>
+<div class="navigation">
+    <div class="navigation_button">
+        <button mat-stroked-button class="save_comeback" value="">save_comeback </button>
+        <button mat-stroked-button class="save_continue" (click)="postFormGroup()" value="">save_continue</button>
+    </div>
+    <br><br>
+
+    <div class="navigation_link">
+        <a routerLink=".">Back</a>
+        <a routerLink=".">Cancel</a>
+    </div>
+
+
+</div>
+
+
+
+
+</div>

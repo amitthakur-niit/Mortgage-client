@@ -8,14 +8,16 @@ import { PaymentDetailsComponent } from './payment-details/payment-details.compo
 import { ReviewAndSubmitComponent } from './review-and-submit/review-and-submit.component';
 import { ConfirmMortgageComponent } from './confirm-mortgage/confirm-mortgage.component';
 import { ContentComponent } from './content/content.component';
+import { OtherOccupantsComponent } from './other-occupants/other-occupants.component';
 
 
 const routes: Routes = [
     {
-        path:' ', 
-        redirectTo:'/howToApply',
+        path:'', 
+        redirectTo:'/content/howToApply',
         pathMatch:'full'
     },
+   
 
     {
       path:'content',
@@ -34,7 +36,9 @@ const routes: Routes = [
         {
           path: 'mortgageOptions',
         component: MortgageOptionsComponent,
-        outlet:'sidebar'},
+        outlet:'sidebar',
+          
+      },
         {
             path : 'propertyDetails',
             component : PropertyDetailsComponent,
@@ -57,7 +61,7 @@ const routes: Routes = [
           },
           {
             path : 'otherOccupants',
-            component : PaymentDetailsComponent,  //TO BE DONE - CHANGE COMPONENT
+            component : OtherOccupantsComponent,  //TO BE DONE - CHANGE COMPONENT
             outlet:'sidebar'
           }
       ]

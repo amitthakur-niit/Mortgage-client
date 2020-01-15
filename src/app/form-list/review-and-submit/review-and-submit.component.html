@@ -6,14 +6,54 @@
         </mat-panel-title>
         
       </mat-expansion-panel-header>
-  
-      <mat-form-field>
-        <input matInput placeholder="First name">
-      </mat-form-field>
-  
-      <mat-form-field>
-        <input matInput placeholder="Age">
-      </mat-form-field>
+      
+
+      <div class="usernav">
+        <div class="row">
+            <table class="table">
+                <thead class="thead-inverse">
+                <tr>
+                    <th >propertyAddress</th>
+                    <th >propertyType</th>
+                    <th >numberOfBedrooms</th>
+                    <th >propertyBuilt</th>
+                    <th >propertyAge</th>
+                    <th >isPropertyCovered</th>
+                    <th >tenureType</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr >
+                    <td  style="width: 15px;">{{prop.propertyAddress}}</td>
+                    <td  style="width: 15px;">{{prop.propertyType}}</td>
+                    <td  style="width: 200px;">{{prop.numberOfBedrooms}}</td>
+                    <td  style="width: 200px;">{{prop.propertyBuilt}}</td>
+                    <td  style="width: 200px;">{{prop.propertyAge}}</td>
+                    <td  style="width: 200px;">{{prop.isPropertyCovered}}</td>
+                    <td  style="width: 200px;">{{prop.tenureType}}</td>
+                    <td >{{prop.body}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+     
+
+        <!-- <nav class="user-nav">
+            <mat-nav-list class="arrow">
+                <a  href="#" [routerLink]="[{ outlets: { sidebar: ['propertyDetails'] } }]">Property details</a>
+                <div class="displayPropertyDetails" >
+                    <div class="displayPropertyDetails_A"> {{propertyDetails.propertyAddress | async}}</div>
+                    <div class="displayPropertyDetails_B">{{propertyDetails.propertyType | async}}</div>
+                    <div class="displayPropertyDetails_C">{{propertyDetails.numberOfBedrooms | async}}</div>
+                    <div class="displayPropertyDetails_D">{{propertyDetails.propertyBuilt | async}}</div>
+                    <div class="displayPropertyDetails_E">{{propertyDetails.propertyAge | async}}</div>
+                    <div class="displayPropertyDetails_E">{{propertyDetails.isPropertyCovered | async}}</div>
+                </div>
+            </mat-nav-list>
+        </nav> -->
+       
+      
     </mat-expansion-panel>
     <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -63,7 +103,26 @@
           <input matInput placeholder="Age">
         </mat-form-field>
       </mat-expansion-panel>
+
       <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Payment Details
+          </mat-panel-title>
+          
+        </mat-expansion-panel-header>
+    
+        <mat-form-field>
+          <input matInput placeholder="First name">
+        </mat-form-field>
+    
+        <mat-form-field>
+          <input matInput placeholder="Age">
+        </mat-form-field>
+      </mat-expansion-panel>
+     
+     
+      <!-- <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
            Payment Details
@@ -78,7 +137,47 @@
         <mat-form-field>
           <input matInput placeholder="Age">
         </mat-form-field>
-      </mat-expansion-panel>
+      </mat-expansion-panel> -->
+
+      <!-- <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Payment Details 
+          </mat-panel-title>
+          
+        </mat-expansion-panel-header>
+        
+  
+        <div class="usernav">
+          <div class="row">
+              <table class="table">
+                  <thead class="thead-inverse">
+                  <tr>
+                      <th >propertyAddress</th>
+                      <th >propertyType</th>
+                      <th >numberOfBedrooms</th>
+                      <th >propertyBuilt</th>
+                      <th >propertyAge</th>
+                      <th >isPropertyCovered</th>
+                      <th >tenureType</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr >
+                      <td  style="width: 15px;">{{prop.propertyAddress}}</td>
+                      <td  style="width: 15px;">{{prop.propertyType}}</td>
+                      <td  style="width: 200px;">{{prop.numberOfBedrooms}}</td>
+                      <td  style="width: 200px;">{{prop.propertyBuilt}}</td>
+                      <td  style="width: 200px;">{{prop.propertyAge}}</td>
+                      <td  style="width: 200px;">{{prop.isPropertyCovered}}</td>
+                      <td  style="width: 200px;">{{prop.tenureType}}</td>
+                      <td >{{prop.body}}</td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div> -->
+       
   </mat-accordion>
 
 

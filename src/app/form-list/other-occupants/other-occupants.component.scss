@@ -1,34 +1,30 @@
 .container{
-    font-size: .5 rem;
-    /* test dirty trick*/
-    height: 60rem;
-    
-    display: flex;
-    flex-direction: column;
-    
-    flex: 1;
-    margin:3rem;
-    
+    font-size: 1.5rem;
+     height: inherit;
+     display: flex;
+     flex-direction: column;
+     
+     flex: 1;
+     margin:3rem;
 }
 
-.mortgageFieldStyle{
-font-weight: bold;
-font-size: 11px;
-font-family: sans-serif;
-}
+.line{
+ 
+    border: 1px solid black;
 
-.mortgageTextSize{
-    font-size: 12px;
 }
 
 .button_class{
-    
+     
+    max-width: 20rem;
     display : flex;
     justify-content: space-evenly;
-    font-size: 10px;
-    
 
+    &-no{
+        background-color: rgb(243, 51, 51);
+    }
 }
+
 .navigation{
     padding:2rem 2rem;
     &_button{
@@ -36,12 +32,9 @@ font-family: sans-serif;
     justify-content:space-between;
     padding:1.2rem;
         .save_comeback,
-        .select{
-            background-color: red;
+        .save_continue{
+            background-color: rgb(245, 42, 42);
             border-radius:15rem;
-            color: white;
-            font-size: 11px;
-
         }
 
     }
@@ -55,5 +48,16 @@ font-family: sans-serif;
     a{
         color: grey;
     }
+
+size{
+
+font-weight: normal;
+
+}
+
+.align{
+
+    font-weight: normal;
+}
 
 }

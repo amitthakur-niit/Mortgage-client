@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDatepicker } from '@angular/material';
 import { AuthclientService } from 'src/app/services/authclient.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,7 @@ import { AuthclientService } from 'src/app/services/authclient.service';
 })
 export class RegisterComponent implements OnInit {
 
+ 
   storedSuccess: boolean = false;
   formGroup: FormGroup;
   required: string = 'This field is required.';
@@ -17,7 +19,7 @@ export class RegisterComponent implements OnInit {
   datepicker: MatDatepicker<Date>;
   formErrors: any;
 
-  constructor(private formBuilder: FormBuilder, private registerService: AuthclientService) {
+  constructor(private formBuilder: FormBuilder, private registerService: AuthclientService, private router:Router) {
     this.formGroup = this.formBuilder.group({
       firstName: [null, [Validators.required, Validators.minLength(2)]],
       lastName: [null, [Validators.required, Validators.minLength(2)]],
@@ -44,14 +46,31 @@ export class RegisterComponent implements OnInit {
   options: string[] = ['Single', 'Joint'];
 
   onSubmit(data: any) {
+
+  
     if (data.password === data.cnfPassword) {
       this.registerService.registerData(data).subscribe(val => {
         if (val.userId != null) {
+
+          let  userStatus={
+            userId:val.userId,
+            email:val.email
+          }
+
           this.storedSuccess = true;
+          localStorage.setItem("currentUser",JSON.stringify(userStatus));
+
           alert('Success');
-          console.log(val);
         }
       });
+
+this.router.navigate(['/auth/login']);
+
     }
+    else{
+      alert("passwords don't match!!!");
+    }
+
+
   }
 }
