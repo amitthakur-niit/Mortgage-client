@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { RegisterService } from '../../register.service';
+
 import { Router } from '@angular/router';
+import { AuthclientService } from 'src/app/services/authclient.service';
 
 @Component({
   selector: 'app-reset-passowrd',
@@ -13,7 +14,7 @@ export class ResetPassowrdComponent implements OnInit {
   required: string = 'This field is required';
   email;
   pwd;
-  constructor(private fb: FormBuilder, private registerService: RegisterService ,
+  constructor(private fb: FormBuilder, private registerService: AuthclientService ,
     private router: Router) { }
 
   ngOnInit() {
@@ -37,7 +38,7 @@ export class ResetPassowrdComponent implements OnInit {
   // }
 
   onSubmit(data: any) {
-    this.registerService.resetPass(data).subscribe(val=>{
+    this.registerService.registerData(data).subscribe(val=>{
       console.log("val",val);
       if(val)
       { this.router.navigate(['/','how-to-apply']);

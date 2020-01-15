@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
-import { LogInService } from '../../log-in-service.service';
+
 import { Router } from '@angular/router';
+import { AuthclientService } from 'src/app/services/authclient.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ required: string = 'This field is required';
 email;
 pwd;
 
-  constructor(private fb: FormBuilder, private logInService: LogInService ,
+  constructor(private fb: FormBuilder, private logInService: AuthclientService ,
     private router: Router) {
    
   }
