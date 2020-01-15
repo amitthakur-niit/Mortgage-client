@@ -36,7 +36,9 @@ const routes: Routes = [
         {
           path: 'mortgageOptions',
         component: MortgageOptionsComponent,
-        outlet:'sidebar'},
+        outlet:'sidebar',
+          
+      },
         {
             path : 'propertyDetails',
             component : PropertyDetailsComponent,

@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="header">
+
+  </div>
+    <div class="form-container text">
+    <form [formGroup]="ResetPassWordForm" (ngSubmit)="onSubmit(ResetPassWordForm.value)" class="register-form">
+
+    <!--Password-->
+    <mat-form-field class="register-form-full-width">
+        <input matInput type="password" placeholder="Password" value="" formControlName="pwd">
+        <mat-error *ngIf="ResetPassWordForm.controls['pwd'].errors?.required"> {{ required }} </mat-error>
+        <mat-error *ngIf="ResetPassWordForm.controls['pwd'].errors?.minlength"> Minimum length 8 characters required</mat-error>
+    </mat-form-field>
+
+    <!--Confirm Password-->
+    <mat-form-field class="register-form-full-width">
+        <input matInput type="password" placeholder="Confirm password" value="" formControlName="cnfPassword">
+            <mat-error *ngIf="ResetPassWordForm.controls['cnfPassword'].errors?.required"> {{ required }}</mat-error>
+            <mat-error *ngIf="ResetPassWordForm.controls['cnfPassword'].errors?.minlength">
+                Minimum length 8 characters required
+            </mat-error>
+    </mat-form-field>
+    <br>
+    <button class="continue" mat-raised-button  color="warn">Submit</button>
+  
+  </form>
+  </div>
+  </div>
+  
+  

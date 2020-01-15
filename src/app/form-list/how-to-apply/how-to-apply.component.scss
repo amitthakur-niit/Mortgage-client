@@ -1,10 +1,157 @@
+.head{
+  text-align: center;
+  }
+mat-grid-tile {
+    background: lightblue;
+  }
+  .column {
+    text-align: left;
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+ 
+  .heading_1 {
+ 
+    font-size: 18px;  
+    align-items: space-between;
+    
+    
 h1{
     z-index:20;
+
 }
 
 .container{
+  font-size: 1.5rem;
+   height: inherit;
+   display: flex;
+   flex-direction: column;
+   
+   flex: 1;
+   margin:3rem;
+   
+}
+
+
+
+.boxed {
+  border: 1px solid #000000 ;
+}
+  
 
     width: 100rem;
     height:80rem;
     background-color: #FFFF;
+}
+
+
+
+.container{
+  font-size: 1.5rem;
+   height: inherit;
+   display: flex;
+   flex-direction: column;
+   
+   flex: 1;
+   margin:3rem;
+   
+}
+
+.heading_1 {
+
+   font-size: 18px;  
+   align-items: space-between;
+   
+}
+.heading_2{
+   align-items: space-between;
+   font-size: 18px;
+}
+.isScotland{
+   align-items: space-between;
+   
+}
+
+.para{
+   align-items: space-between;
+   
+   
+}
+
+
+
+
+.line{
+
+   border: 1px solid black;
+
+}
+
+
+.contact-form {
+   min-width: 50rem;
+   max-width: 50rem;
+ 
+ }
+ 
+ .contact-form-full-width {
+   width: 30rem;
+ }
+.button_class{
+   
+   max-width: 50rem;
+   display : flex;
+   justify-content: space-evenly;
+   &-no{
+       background-color: red;
+       color: white;
+   }
+}
+.navigation{
+   padding:2rem 2rem;
+   &_button{
+   display: flex;
+   justify-content:space-between;
+   padding:1.2rem;
+       .save_comeback,
+       .save_continue{
+           background-color: red;
+           border-radius:15rem;
+           color:white;
+           margin-left: 115px;
+
+       }
+
+   }
+   
+   &_link{
+    display: flex;
+   justify-content:space-between;
+   padding:1.2rem;
+   }
+
+   a{
+       color: grey;
+   }
+
+}
+
+ 
+
+.message{
+
+  border: 1px solid #C2C2C2;
+  margin:16px 0;
+  padding: 0 16px;
+  background-color: #f9f9f9;
+  overflow: hidden;
 }
