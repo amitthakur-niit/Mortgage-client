@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { Forget } from '../auth/forgot-pasword/forgetPassword';
 import { Reset } from '../auth/reset-passowrd/resetPassword';
 import { PaymentDetails } from '../Models/PaymentDetails';
+import { stringify } from 'querystring';
 
 @Injectable({
   providedIn: 'root'
@@ -58,9 +59,26 @@ getMessage(): Observable<any> {
     return this.subject.asObservable();
 }
 
-  checkAccess():boolean{
+//LocalStorage Methods
+setLocalStorage(userKey,userValue){
+  localStorage.setItem(userKey,JSON.stringify(userValue));
+}
+
+getLocalStorageValue(userKey):String{
+  return JSON.parse(localStorage.getItem(userKey));
+}
+
+removeLocalStorageData(userKey){
+  localStorage.removeItem(userKey);
+}
+logout(){
+ localStorage.clear();
+}
+
+//Check Access
+checkAccess():boolean{
     let status=false;
-    let userStatus:any=JSON.parse(localStorage.getItem("currentUser"));
+    let userStatus:any = this.getLocalStorageValue('currentUser');
     if(userStatus===null){
       this.logout();
       this.router.navigate(['/']);
@@ -71,8 +89,6 @@ getMessage(): Observable<any> {
     return status;
   }
 
-  logout(){
-   localStorage.removeItem("currentUser");
-  }
+  
 
 }

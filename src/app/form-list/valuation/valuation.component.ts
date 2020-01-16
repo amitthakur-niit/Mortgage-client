@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Subscription, Observable } from 'rxjs';
+import { AuthclientService } from 'src/app/services/authclient.service';
 
 @Component({
   selector: 'app-valuation',
@@ -18,7 +19,7 @@ export class ValuationComponent implements OnInit, OnDestroy {
   required: string = 'This field is required';
   maxLength:string = 'MaxLength is 10'
   subscription : Subscription;
-  constructor(private formBuilder: FormBuilder, private service: FormlistService, private router : Router, private notifyService : NotificationService) { }
+  constructor(private formBuilder: FormBuilder, private service: FormlistService, private router : Router, private authService:AuthclientService, private notifyService : NotificationService) { }
 
   details: any = [
     { value: 'Current Account', viewValue: 'Current Account' },
@@ -57,7 +58,7 @@ export class ValuationComponent implements OnInit, OnDestroy {
 
   private getButtonClass1() {
     document.querySelector('.button_class-yes').classList.toggle('highlight');
-    document.getElementById('no').classList.toggle('highlight');
+    document.getElementById('no').classList.add('highlight');
   }
 
   
@@ -78,7 +79,8 @@ export class ValuationComponent implements OnInit, OnDestroy {
 
   postFormGroup(){
     let status:Boolean=false;  
-    let userId = JSON.stringify(localStorage.getItem('currentItem'));
+    let userId = this.authService.getLocalStorageValue('currentUser');
+    
     let valuationData={
          userId:userId,
          isPropertyInScotland : this.isPropertyInScotland,
