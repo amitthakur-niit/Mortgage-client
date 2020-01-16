@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { logging } from 'protractor';
 import { Router } from '@angular/router';
 import { FormlistService } from 'src/app/services/formlist.service';
+import { AuthclientService } from 'src/app/services/authclient.service';
 
 
 
@@ -23,7 +24,7 @@ export interface PeriodicElement {
 export class MortgageOptionsComponent implements OnInit {
   optionsData :any;
   displayedColumns: string[] = ['description', 'initialRate', 'monthlyRepayment', 'productFee','optionId'];
-  constructor(private apiService: FormlistService,private router: Router) { 
+  constructor(private apiService: FormlistService,private router: Router, private authService : AuthclientService) { 
   }
 
     ngOnInit() {
@@ -73,6 +74,8 @@ export class MortgageOptionsComponent implements OnInit {
     
     ]
     }
+    //get LocalStorage Data
+    
   }
 
 

@@ -166,6 +166,6 @@ export class PropertyDetailsComponent implements OnInit {
   }
 
 
-
+  //getLocalStorage
 
 }

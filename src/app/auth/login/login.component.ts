@@ -55,8 +55,8 @@ export class LoginComponent implements OnInit {
         email: data.email
       }
 
-      localStorage.setItem("currentUser", JSON.stringify(userStatus));
-
+     // localStorage.setItem("currentUser", JSON.stringify(userStatus));
+      this.authService.setLocalStorage("currentUser",userStatus);
      
         this.router.navigateByUrl('/content/(sidebar:howToApply)');
         this.notifyService.notify('Login Successful');
