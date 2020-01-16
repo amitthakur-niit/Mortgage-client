@@ -33,15 +33,37 @@ export class ConfirmMortgageComponent implements OnInit {
   constructor(private apiService:FormlistService,private router: Router) { }
 
   ngOnInit() {
-    this.apiService.fetchConfirmMortgageDetails().subscribe((data)=>{
+    /* this.apiService.fetchConfirmMortgageDetails().subscribe((data)=>{
       console.log("confMortgageData",data);
       this.confMortgageData =data;
-    });
+    }); */
+
+    this.putDummyData();
   }
 
   public selectDiffMortgage(){
-    this.router.navigate(['/', 'mortgage-options']);
+    this.router.navigateByUrl('/content/(sidebar:mortgageOptions)');
   };
 
+  putDummyData(){
+    this.confMortgageData ={
+      buyerType:'New Mortgage Buyer',
+      repaymentMethod:'Repayment',
+      mortgageTerm:'5 years 1 month',
+      estimatedPropertyValue:'$300,000',
+      borrowingAmount:'$30,000',
+      loanToValue:'10.00%',
+      initialRate:'1.49%',
+      followOnRate:'4.00%',
+      rateFinishedDate:'02 April 2025',
+      productFee: '$999',
+      productFeeAddedToLoanAmt: 'Yes',
+      monthlyRepayment:'$528'
+    }
+  }
+
+  Navigate(){
+    this.router.navigateByUrl('/content/(sidebar:propertyDetails)');
+  }
 
 }
