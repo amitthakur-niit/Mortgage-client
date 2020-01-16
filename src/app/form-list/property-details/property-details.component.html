@@ -43,8 +43,8 @@
         <div class="navigation_button">
 
                 <mat-form-field class="contact-form-full-width" >
-                    <input matInput placeholder="Postcode" value="" formControlName="Postcode" >
-                    <mat-error *ngIf="!formGroup.controls['Postcode'].valid && formGroup.controls['Postcode'].touched">
+                    <input matInput placeholder="PostCode" [(ngModel)]="postCode" formControlName="postCode" >
+                    <mat-error *ngIf="!formGroup.controls['PostCode'].valid && formGroup.controls['PostCode'].touched">
                         {{ required }}
                     </mat-error> 
 
@@ -70,7 +70,7 @@
             </mat-form-field> -->
             
             <mat-form-field class="contact-form-full-width"  > 
-                <input matInput placeholder="Address" value="" formControlName="Address" >
+                <input matInput placeholder="Address" [(ngModel)]="address" formControlName="Address" >
                 <mat-error *ngIf="!formGroup.controls['Address'].valid && formGroup.controls['Address'].touched">
                     {{ required }}
                 </mat-error>
@@ -89,8 +89,8 @@
     <br>
     <mat-form-field class="contact-form-full-width">
         <mat-label>Property type*</mat-label>
-        <mat-select formControlName="propertyType" >
-            <mat-option *ngFor="let property of properties" [value]="property.value">
+        <mat-select formControlName="propertyType" [(ngModel)]="propertyType" >
+            <mat-option *ngFor="let property of properties"  [value]="property.value">
                 {{property.viewValue}}
             </mat-option>
         </mat-select>
@@ -100,7 +100,7 @@
     </mat-form-field>
 
     <mat-form-field class="contact-form-full-width">
-        <input  type="number" matInput placeholder="Number Of Bedrooms" value=""  formControlName="NumberOfBedrooms" >
+        <input  type="number" matInput placeholder="Number Of Bedrooms" [(ngModel)]="noOfBedrooms"  formControlName="NumberOfBedrooms" >
         <mat-error *ngIf="!formGroup.controls['NumberOfBedrooms'].valid && formGroup.controls['NumberOfBedrooms'].touched">
             {{ required }}
         </mat-error>
@@ -125,6 +125,7 @@
     <div>
         
 
+        
 
             <!-- <mat-label>How old is the property*</mat-label>
             <mat-select formControlName="age">
@@ -136,7 +137,7 @@
 
          <mat-form-field class="contact-form-full-width">
             <mat-label>How old is the property*</mat-label>
-            <mat-select type="number" formControlName="propertyAge">
+            <mat-select  formControlName="propertyAge" [(ngModel)]="propertyAge"  >
                 <mat-option  *ngFor="let properties of oldProperties" [value]="properties.value">
                     {{properties.viewValue}}
                 </mat-option>

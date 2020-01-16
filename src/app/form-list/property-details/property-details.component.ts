@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { FormlistService } from 'src/app/services/formlist.service';
 
 import { Router,Route } from '@angular/router';
+import { Key } from 'protractor';
 
 
 
@@ -16,6 +17,18 @@ export class PropertyDetailsComponent implements OnInit {
 
   formGroup: FormGroup;
   required: string = 'This field is required';
+  ids=localStorage.getItem('currentUser');
+  json = JSON.parse(this.ids);
+  userId:Number= this.json["userId"];
+  //console.log("userId",this.userId);
+
+  postCode;
+  address;
+  propertyType;
+  noOfBedrooms;
+  propertyAge;
+
+
 
   buttonClass1 = "button_class-yes";
   buttonClass2 = "button_class-yes";
@@ -33,8 +46,10 @@ export class PropertyDetailsComponent implements OnInit {
   // constructor(private formBuilder : FormBuilder,private propertyService: FormlistService, private router:Router) { }
 
 
-  userId;
-  useId= localStorage.getItem('key');
+  
+
+ //var currentUser =localStorage.get('currentUser');
+  
  
   isPropertyCovered;
   tenureType;
@@ -123,20 +138,42 @@ export class PropertyDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+    this.getPropertyDetails();
   }
 
   createForm() {
     let name_regex = "";
     let number_regex = "";
     this.formGroup = this.formBuilder.group({
-      'Postcode': new FormControl(null, Validators.required),
+      'PostCode': new FormControl(null, Validators.required),
       'Address': new FormControl(null, Validators.required),
       'propertyType': new FormControl(null, Validators.required),
       'NumberOfBedrooms': new FormControl(null, Validators.required),
       'propertyAge': new FormControl(null, Validators.required),
+      'postCode': new FormControl(null, Validators.required),
+
     });
 
   }
+
+  getPropertyDetails(){
+
+    this.propertyService.getPropertyDetails(this.userId).subscribe((data)=>{
+      console.log("data from property details",this.userId);
+      //console.log("data from property details",data.propertyAge);
+       
+
+      this.postCode=data.postCode;
+      this.address=data.propertyAddress;
+      this.propertyType=data.propertyType; 
+      this.noOfBedrooms=data.numberOfBedrooms; 
+      this.propertyAge=data.propertyAge;
+
+    });
+
+  }
+
+  
   onSelect() { }
 
 
@@ -145,11 +182,14 @@ export class PropertyDetailsComponent implements OnInit {
       propertyAddress: this.formGroup.value.Address,
       propertyType: this.formGroup.value.propertyType,
       numberOfBedrooms: this.formGroup.value.NumberOfBedrooms,
-      propertyAge:this.formGroup.value.propertyAge,
+      propertyAge: this.formGroup.value.propertyAge,
       propertyBuilt: this.propertyBuilt,
       isPropertyCovered: this.isPropertyCovered,
-      tenureType: this.tenureType
+      tenureType: this.tenureType,
+      postCode: this.formGroup.value.postCode,
+      userId:this.userId
     }
+
     console.log("Data", data);
     this.propertyService.propertyData(data).subscribe();
     //this.router.navigate(['/forms/content/(sidebar:valuation)']);
@@ -165,3 +205,10 @@ export class PropertyDetailsComponent implements OnInit {
 
 
 }
+
+
+// var movies = localStorage.getItem("currentUser");
+// movies     = JSON.parse(movies);
+// console.dir(movies);
+
+ 

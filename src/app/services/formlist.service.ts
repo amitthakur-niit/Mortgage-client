@@ -18,11 +18,16 @@ export class FormlistService {
     return this.http.post(this.url+'mortgage-service/api/valuation',data);
     }
 
-    //property0details-service
+    //property0details-service getPropertyDetails
     propertyData (requestBody:Property): Observable<any> {
       //registerData(data: Register) : Observable < Register > {
         return this.http.post<any>(this.url + 'mortgage-service/api/propertyDetails', requestBody)
       }
+
+      getPropertyDetails (userId:Number): Observable<any> {
+        //registerData(data: Register) : Observable < Register > {
+          return this.http.get<any>(this.url + 'mortgage-service/api/propertyDetailsById/'+userId);
+        }
 
       //confirmMortgage
       public fetchConfirmMortgageDetails():Observable<any>{
