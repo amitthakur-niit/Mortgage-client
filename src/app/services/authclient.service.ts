@@ -9,6 +9,7 @@ import { Forget } from '../auth/forgot-pasword/forgetPassword';
 import { Reset } from '../auth/reset-passowrd/resetPassword';
 import { PaymentDetails } from '../Models/PaymentDetails';
 import { stringify } from 'querystring';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class AuthclientService {
 
   private url = 'http://localhost:8765/';
   public subject: BehaviorSubject<any> = new BehaviorSubject<any>([]);
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private notify:NotificationService) { }
 
   //user-logIn service
   logInData (requestBody: LogIn): Observable<BigInteger> {
@@ -72,6 +73,7 @@ removeLocalStorageData(userKey){
   localStorage.removeItem(userKey);
 }
 logout(){
+  this.notify.notify("User Logged Out");
  localStorage.clear();
 }
 

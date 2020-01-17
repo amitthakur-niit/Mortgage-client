@@ -37,10 +37,10 @@
         class="payment-details-form">
         <mat-button-toggle-group #circumstanceGroup="matButtonToggleGroup"
             (change)="circumstanceValChange(circumstanceGroup.value)" class="button_class">
-            <mat-button-toggle value="1" class="button_class-yes">
+            <mat-button-toggle value="1" class="button_class-yes" (click)="buttonToggleColorCircumstance()" id="yess">
                 Yes
             </mat-button-toggle>
-            <mat-button-toggle value="0" class="button_class-yes">
+            <mat-button-toggle value="0" class="button_class-yes" id="nos" (click)="buttonToggleColorCircumstance()">
                 No
             </mat-button-toggle>
         </mat-button-toggle-group>
@@ -86,13 +86,14 @@
                 {{lengthError}}
             </mat-error>
         </mat-form-field>
-
+        <br>
+        <br>
         <mat-button-toggle-group #dayOfPaymentGroup="matButtonToggleGroup"
             (change)="onEndpointValChange(dayOfPaymentGroup.value)" class="firstday">
-            <mat-button-toggle value="0" class="button_class-yes">
+            <mat-button-toggle value="0" class="button_class-yes" id="day" (click)="buttonToggleColorDay()">
                 On first day of each of month
             </mat-button-toggle>
-            <mat-button-toggle value="1" class="button_class-yes">
+            <mat-button-toggle value="1" class="button_class-yes" id="specDay" (click)="buttonToggleColorDay()">
                 On a specific day each
                 month
             </mat-button-toggle>
