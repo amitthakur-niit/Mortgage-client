@@ -43,11 +43,11 @@
         <div class="navigation_button">
 
                 <mat-form-field class="contact-form-full-width" >
-                    <input matInput placeholder="PostCode" [(ngModel)]="postCode" formControlName="postCode" >
-                    <mat-error *ngIf="!formGroup.controls['PostCode'].valid && formGroup.controls['PostCode'].touched">
+                    <input type="number" onKeyPress="if(this.value.length==7) return false;"  matInput placeholder="PostCode" [(ngModel)]="postCode" formControlName="postCode" >
+                    <mat-error *ngIf="!formGroup.controls['postCode'].valid && formGroup.controls['postCode'].touched">
                         {{ required }}
                     </mat-error> 
-
+                  
 
                 </mat-form-field>
                 <!-- <div class="navigation">
@@ -70,7 +70,7 @@
             </mat-form-field> -->
             
             <mat-form-field class="contact-form-full-width"  > 
-                <input matInput placeholder="Address" [(ngModel)]="address" formControlName="Address" >
+                <input matInput maxlength="50" placeholder="Address" [(ngModel)]="address" formControlName="Address" >
                 <mat-error *ngIf="!formGroup.controls['Address'].valid && formGroup.controls['Address'].touched">
                     {{ required }}
                 </mat-error>
@@ -100,7 +100,7 @@
     </mat-form-field>
 
     <mat-form-field class="contact-form-full-width">
-        <input  type="number" matInput placeholder="Number Of Bedrooms" [(ngModel)]="noOfBedrooms"  formControlName="NumberOfBedrooms" >
+        <input  type="number" onKeyPress="if(this.value.length==1) return false;"  matInput placeholder="Number Of Bedrooms" [(ngModel)]="noOfBedrooms"  formControlName="NumberOfBedrooms" >
         <mat-error *ngIf="!formGroup.controls['NumberOfBedrooms'].valid && formGroup.controls['NumberOfBedrooms'].touched">
             {{ required }}
         </mat-error>
@@ -114,10 +114,10 @@
     <br>
     <div class="button_class">
     
-        <button mat-stroked-button value="1914" (click)="proprtyBuilt('1914')" [ngClass]="buttonClass1">Before 1914</button>
-        <button mat-stroked-button value="" (click)="proprtyBuilt('1914 to 1944')" [ngClass]="buttonClass2" >1914 to 1944</button>
-        <button mat-stroked-button value="" (click)="proprtyBuilt('1945 to 1980')" [ngClass]="buttonClass3" >1945 to 1980</button>
-        <button mat-stroked-button value="" (click)="proprtyBuilt('After 1980')" [ngClass]="buttonClass4" >After 1980</button>
+        <button mat-stroked-button  (click)="proprtyBuilt('1914')" [ngClass]="buttonClass1">Before 1914</button>
+        <button mat-stroked-button  (click)="proprtyBuilt('1914 to 1944')" [ngClass]="buttonClass2" >1914 to 1944</button>
+        <button mat-stroked-button  (click)="proprtyBuilt('1945 to 1980')" [ngClass]="buttonClass3" >1945 to 1980</button>
+        <button mat-stroked-button  (click)="proprtyBuilt('After 1980')" [ngClass]="buttonClass4" >After 1980</button>
     
     </div>
     <br>

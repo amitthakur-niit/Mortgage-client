@@ -56,6 +56,7 @@ export class PropertyDetailsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private propertyService: FormlistService,private router: Router) { }
 
   proprtyBuilt(v: string) {
+    console.log("After fetching data",v);
     this.propertyBuilt = v;
    if(v=="1914"){
     this.buttonClass1 = "button_class-no";
@@ -95,6 +96,8 @@ export class PropertyDetailsComponent implements OnInit {
      }
 
   };
+
+
   tenureTypeSelected(v: string) {
     this.tenureType = v;
     console.log("V",v);
@@ -145,12 +148,12 @@ export class PropertyDetailsComponent implements OnInit {
     let name_regex = "";
     let number_regex = "";
     this.formGroup = this.formBuilder.group({
-      'PostCode': new FormControl(null, Validators.required),
+      'PostCode': new FormControl(null, [Validators.required,Validators.maxLength(7)]),
       'Address': new FormControl(null, Validators.required),
       'propertyType': new FormControl(null, Validators.required),
       'NumberOfBedrooms': new FormControl(null, Validators.required),
       'propertyAge': new FormControl(null, Validators.required),
-      'postCode': new FormControl(null, Validators.required),
+      'postCode': new FormControl(null, Validators.required)
 
     });
 
@@ -159,7 +162,7 @@ export class PropertyDetailsComponent implements OnInit {
   getPropertyDetails(){
 
     this.propertyService.getPropertyDetails(this.userId).subscribe((data)=>{
-      console.log("data from property details",this.userId);
+      console.log("data from property details",data);
       //console.log("data from property details",data.propertyAge);
        
 
@@ -168,6 +171,13 @@ export class PropertyDetailsComponent implements OnInit {
       this.propertyType=data.propertyType; 
       this.noOfBedrooms=data.numberOfBedrooms; 
       this.propertyAge=data.propertyAge;
+      this.isPropertyCovered=data.isPropertyCovered;
+      this.propertyBuilt=data.propertyBuilt;
+      console.log("propertyBuilt from property details",this.propertyBuilt);
+      this.tenureType=data.tenureType;
+      this.proprtyBuilt(this.propertyBuilt);
+      this.IsPropertyCovered(this.isPropertyCovered);
+      this.tenureTypeSelected(this.tenureType);
 
     });
 
