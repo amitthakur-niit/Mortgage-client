@@ -1,5 +1,12 @@
 <mat-toolbar color="warn" class="header">
     <span class="header__name"> <img src="../../../assets/logo.png" alt="Santander">  </span>
-    <span class="header__info" ><a routerLink="/auth/login" (click)="logout()">Logout</a></span> 
+    <div class="userInfo">
+        <div class="userName">Welcome, {{userName | uppercase}}</div>
+        
+        
+        
+   
+    <a mat-raised-button routerLink="/auth/login" (click)="logout()">Logout</a>
+</div> 
 
 </mat-toolbar>

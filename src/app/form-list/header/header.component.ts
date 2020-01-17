@@ -7,19 +7,17 @@ import { AuthclientService } from 'src/app/services/authclient.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  status:boolean=false;
+ 
+  userName:string='UserXOXO'
   constructor(private service: AuthclientService) { 
   //  this.check();
   }
 
   ngOnInit() {
-    this.check();
+    
   }
 
-check(){
-  this.status=this.service.checkAccess();
-  console.log(this.status);
-}
+
 
 logout(){
   this.service.logout();

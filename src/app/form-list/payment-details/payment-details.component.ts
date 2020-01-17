@@ -11,8 +11,8 @@ import { PaymentDetails } from 'src/app/Models/PaymentDetails';
 export class PaymentDetailsComponent implements OnInit {
 
   paymentDetailsFormGroup: FormGroup;
-  circumstance: Number;
-  dayOfPayment: Number;
+  circumstance: Number = 0;
+  dayOfPayment: Number = 0;
   currentUser: any;
   paymentDetailObject : PaymentDetails;
   required: string = 'This field is required.';
@@ -27,6 +27,8 @@ export class PaymentDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.buttonToggleColorCircumstance();
+    this.buttonToggleColorDay();
   }
 
   onEndpointValChange(data: any) {
@@ -52,6 +54,32 @@ export class PaymentDetailsComponent implements OnInit {
     }); 
   
   }
+
+buttonToggleColorCircumstance(){
+
+   if(this.circumstance===0){
+    document.getElementById('nos').classList.add('highlight');
+    document.getElementById('yess').classList.remove('highlight');
+  }
+
+  if(this.circumstance===1){
+  document.getElementById('yess').classList.add('highlight');
+  document.getElementById('nos').classList.remove('highlight');
+  }
+}
+ 
+buttonToggleColorDay(){
+
+  if(this.dayOfPayment===0){
+   document.getElementById('day').classList.add('highlight');
+   document.getElementById('specDay').classList.remove('highlight');
+ }
+
+ if(this.dayOfPayment===1){
+ document.getElementById('specDay').classList.add('highlight');
+ document.getElementById('day').classList.remove('highlight');
+ }
+}
 
 }
 
