@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { FormlistService } from 'src/app/services/formlist.service';
+import { AuthclientService } from 'src/app/services/authclient.service';
 
 
 export interface ConfirmMortgage{
@@ -30,18 +31,26 @@ export class ConfirmMortgageComponent implements OnInit {
 
   confMortgageData :any;
   displayedColumns: string[] = ['buyerType', 'repaymentMethod', 'mortgageTerm', 'estimatedPropertyValue','borrowingAmount','loanToValue','initialrate','followOnRate','rateFinishDate','productFee','productfeeAddedToLoanAmt','monthlyRepayment'];
-  constructor(private apiService:FormlistService,private router: Router) { }
+  constructor(private apiService:FormlistService,private router: Router, private authService: AuthclientService) { }
 
   ngOnInit() {
     this.apiService.fetchConfirmMortgageDetails().subscribe((data)=>{
       console.log("confMortgageData",data);
       this.confMortgageData =data;
-    });
-  }
+    }); 
 
+    
+  }
+  
   public selectDiffMortgage(){
-    this.router.navigate(['/', 'mortgage-options']);
+    this.router.navigateByUrl('/content/(sidebar:mortgageOptions)');
   };
 
 
+  Navigate(){
+    this.router.navigateByUrl('/content/(sidebar:propertyDetails)');
+  }
+
+  //getLocalStorageData
+  //this.authService.
 }

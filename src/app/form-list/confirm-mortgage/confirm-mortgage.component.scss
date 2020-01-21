@@ -1,7 +1,7 @@
 .container{
-    font-size: .5 rem;
-    /* test dirty trick*/
-    height: 60rem;
+    font-size: 1.6 rem;
+   
+   
     
     display: flex;
     flex-direction: column;
@@ -12,13 +12,17 @@
 }
 
 .mortgageFieldStyle{
-font-weight: bold;
-font-size: 11px;
+font-weight: bolder;
+font-size: 1.4rem;
 font-family: sans-serif;
 }
 
 .mortgageTextSize{
-    font-size: 12px;
+    font-size: 1.3rem;
+}
+td{
+    font-size: 1.3rem;
+   // background-color: rgb(197, 197, 197);
 }
 
 .button_class{

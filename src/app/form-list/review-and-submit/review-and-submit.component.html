@@ -4,56 +4,80 @@
         <mat-panel-title>
           Property Details 
         </mat-panel-title>
-        
-      </mat-expansion-panel-header>
-      
 
-      <div class="usernav">
-        <div class="row">
-            <table class="table">
-                <thead class="thead-inverse">
-                <tr>
-                    <th >propertyAddress</th>
-                    <th >propertyType</th>
-                    <th >numberOfBedrooms</th>
-                    <th >propertyBuilt</th>
-                    <th >propertyAge</th>
-                    <th >isPropertyCovered</th>
-                    <th >tenureType</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr >
-                    <td  style="width: 15px;">{{prop.propertyAddress}}</td>
-                    <td  style="width: 15px;">{{prop.propertyType}}</td>
-                    <td  style="width: 200px;">{{prop.numberOfBedrooms}}</td>
-                    <td  style="width: 200px;">{{prop.propertyBuilt}}</td>
-                    <td  style="width: 200px;">{{prop.propertyAge}}</td>
-                    <td  style="width: 200px;">{{prop.isPropertyCovered}}</td>
-                    <td  style="width: 200px;">{{prop.tenureType}}</td>
-                    <td >{{prop.body}}</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+
+      </mat-expansion-panel-header>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+        
+        <!-- Position Column -->
+        <ng-container matColumnDef="userId">
+          <th mat-header-cell *matHeaderCellDef class="rowStyle" > UserId</th>
+          <td mat-cell *matCellDef="let element"  class="valStyle"> {{element.userId}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="property_id">
+          <th mat-header-cell *matHeaderCellDef class="rowStyle" > PropertyId</th>
+          <td mat-cell *matCellDef="let element"  class="valStyle"> {{element.property_id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="postCode">
+          <th mat-header-cell *matHeaderCellDef class="rowStyle" > Post code</th>
+          <td mat-cell *matCellDef="let element"  class="valStyle"> {{element.postCode}} </td>
+        </ng-container>
+
+        
+
+        <ng-container matColumnDef="propertyAddress">
+          <th mat-header-cell *matHeaderCellDef class="rowStyle" > PropertyAddress</th>
+          <td mat-cell *matCellDef="let element"  class="valStyle"> {{element.propertyAddress}} </td>
+        </ng-container>
+
+        
+        <!-- Name Column -->
+        <ng-container matColumnDef="propertyType">
+          <th mat-header-cell *matHeaderCellDef class="rowStyle" > PropertyType </th>
+          <td mat-cell *matCellDef="let element" class="valStyle"> {{element.propertyType}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="numberOfBedrooms">
+          <th mat-header-cell *matHeaderCellDef class="rowStyle"> NumberOfBedrooms </th>
+          <td mat-cell *matCellDef="let element" class="valStyle"> {{element.numberOfBedrooms}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="propertyBuilt">
+          <th mat-header-cell *matHeaderCellDef class="rowStyle"> PropertyBuilt </th>
+          <td mat-cell *matCellDef="let element" class="valStyle"> {{element.propertyBuilt}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="propertyAge">
+          <th mat-header-cell *matHeaderCellDef class="rowStyle"> PropertyAge </th>
+          <td mat-cell *matCellDef="let element" class="valStyle"> {{element.propertyAge}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="isPropertyCovered">
+          <th mat-header-cell *matHeaderCellDef class="rowStyle"> IsPropertyCovered </th>
+          <td mat-cell *matCellDef="let element" class="valStyle"> {{element.isPropertyCovered}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tenureType">
+          <th mat-header-cell *matHeaderCellDef class="rowStyle"> TenureType </th>
+          <td mat-cell *matCellDef="let element" class="valStyle"> {{element.tenureType}} </td>
+        </ng-container>
+
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
      
 
-        <!-- <nav class="user-nav">
-            <mat-nav-list class="arrow">
-                <a  href="#" [routerLink]="[{ outlets: { sidebar: ['propertyDetails'] } }]">Property details</a>
-                <div class="displayPropertyDetails" >
-                    <div class="displayPropertyDetails_A"> {{propertyDetails.propertyAddress | async}}</div>
-                    <div class="displayPropertyDetails_B">{{propertyDetails.propertyType | async}}</div>
-                    <div class="displayPropertyDetails_C">{{propertyDetails.numberOfBedrooms | async}}</div>
-                    <div class="displayPropertyDetails_D">{{propertyDetails.propertyBuilt | async}}</div>
-                    <div class="displayPropertyDetails_E">{{propertyDetails.propertyAge | async}}</div>
-                    <div class="displayPropertyDetails_E">{{propertyDetails.isPropertyCovered | async}}</div>
-                </div>
-            </mat-nav-list>
-        </nav> -->
-       
-      
+     
+           
     </mat-expansion-panel>
     <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -62,14 +86,63 @@
           </mat-panel-title>
           
         </mat-expansion-panel-header>
-    
-        <mat-form-field>
-          <input matInput placeholder="First name">
-        </mat-form-field>
-    
-        <mat-form-field>
-          <input matInput placeholder="Age">
-        </mat-form-field>
+        <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+          <!-- Position Column -->
+          <ng-container matColumnDef="isPropertyInScotland">
+            <th mat-header-cell *matHeaderCellDef class="rowStyle" > IsPropertyInScotland </th>
+            <td mat-cell *matCellDef="let element"  class="valStyle"> {{element.isPropertyInScotland}} </td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="contactPerson">
+            <th mat-header-cell *matHeaderCellDef class="rowStyle" > ContactPerson </th>
+            <td mat-cell *matCellDef="let element" class="valStyle"> {{element.contactPerson}} </td>
+          </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="contactName">
+            <th mat-header-cell *matHeaderCellDef class="rowStyle"> ContactName </th>
+            <td mat-cell *matCellDef="let element" class="valStyle"> {{element.contactName}} </td>
+          </ng-container>
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="contactNumber">
+            <th mat-header-cell *matHeaderCellDef class="rowStyle"> ContactNumber </th>
+            <td mat-cell *matCellDef="let element" class="valStyle"> {{element.contactNumber}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+        </table>
+        <!-- <div class="usernav">
+          <div class="row">
+              <table class="table">
+                  <thead class="thead-inverse">
+                  <tr>
+                      <th >isPropertyInScotland</th>
+                      <th >contactPerson</th>
+                      <th >contactName</th>
+                      <th >contactNumber</th>
+              
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr >
+                      <td  style="width: 15px;">{{prop1.isPropertyInScotland}}</td>
+                      <td  style="width: 15px;">{{prop1.contactPerson}}</td>
+                      <td  style="width: 200px;">{{prop1.numberOfBedrooms}}</td>
+                      <td  style="width: 200px;">{{prop1.contactName}}</td>
+                      <td  style="width: 200px;">{{prop1.contactNumber}}</td>
+                      <td >{{prop1.body}}</td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div> -->
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -78,14 +151,34 @@
           </mat-panel-title>
           
         </mat-expansion-panel-header>
-    
-        <mat-form-field>
-          <input matInput placeholder="First name">
-        </mat-form-field>
-    
-        <mat-form-field>
-          <input matInput placeholder="Age">
-        </mat-form-field>
+        <div class="container">
+
+          <!-- <h1>Other Occupants</h1> -->
+         
+      
+      <p>Please provide details of anyone over the age of 17 who will be living at the property
+           but who isn't named on the mortgage application. <br> We'll meed the details so that we can
+            send them a standard deed of consant form to make sure they don't claim
+      rights<br> over the property while they're living in it </p>
+      
+      <br>
+      <br>
+      <h3>Other Occupants</h3>
+      
+      <hr class="line">
+      <br>
+      <b>Will there be anyone over the age of 17 living with you who is not named on the mortgage?*</b>
+      <br>
+      
+      <div class="button_class">
+          <button mat-stroked-button class="button_class-yes" (click)="toggle()">Yes</button>
+          <button mat-stroked-button class="button_class-no" (click)="toggle()" [disabled]="">No</button>
+      </div>
+      <br>
+      
+     
+      </div>
+        
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -95,88 +188,126 @@
           
         </mat-expansion-panel-header>
     
-        <mat-form-field>
-          <input matInput placeholder="First name">
-        </mat-form-field>
-    
-        <mat-form-field>
-          <input matInput placeholder="Age">
-        </mat-form-field>
+        <div class="container">
+
+          <!-- <h1>Solicitor details</h1> -->
+          <br>
+          <br>
+      
+      <p>You'll need a Solicitor or conveyancer to deal with things like land registry,stamp duty charges and collecting and transferring<br> 
+          money for the property</p>
+      
+      <br>
+      <br>
+      <h3>About your solicitor</h3>
+      
+      <hr class="line">
+      <br>
+      <div class="align">
+      <b>you must appoint a Santander approved solicitor/conveyancer to deal with your mortgage application</b>
+      <br>
+      
+      <b>Would you like to search and select a solicitor or conveyancer from our approved panel now?*</b>>
+      <br>
+      <br>
+      </div>
+      
+      <div class="button_class">
+          <button mat-stroked-button class="button_class-yes" (click)="toggle()">Yes</button>
+          <button mat-stroked-button class="button_class-no" (click)="toggle()" [disabled]="">No</button>
+      </div>
+      
+      <br>
+      
+      <b>Do you want to submit this application without solicitor or conveyancer details and provide them later? This<br>
+      could delay your application.*</b>
+      <br>
+      <div class="button_class">
+          <button mat-stroked-button class="button_class-yes" (click)="toggle()">Yes</button>
+          <button mat-stroked-button class="button_class-no" (click)="toggle()" [disabled]="">No</button>
+      </div>
+      <br>
+      
+      <br>
+      <div class="navigation">
+          <div class="navigation_button">
+              <button mat-stroked-button class="save_comeback" value="">save_comeback </button>
+              <button mat-stroked-button class="save_continue" (click)="postFormGroup()" value="">save_continue</button>
+          </div>
+          <br><br>
+      
+          <div class="navigation_link">
+              <a routerLink=".">Back</a>
+              <a routerLink=".">Cancel</a>
+          </div>
+      
+      
+      </div>
+      
+      
+      
+      
+      </div>
       </mat-expansion-panel>
+
+          
+
+
 
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Payment Details
+            PaymentsDetails 
           </mat-panel-title>
-          
-        </mat-expansion-panel-header>
-    
-        <mat-form-field>
-          <input matInput placeholder="First name">
-        </mat-form-field>
-    
-        <mat-form-field>
-          <input matInput placeholder="Age">
-        </mat-form-field>
-      </mat-expansion-panel>
-     
-     
-      <!-- <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-           Payment Details
-          </mat-panel-title>
-          
-        </mat-expansion-panel-header>
-    
-        <mat-form-field>
-          <input matInput placeholder="First name">
-        </mat-form-field>
-    
-        <mat-form-field>
-          <input matInput placeholder="Age">
-        </mat-form-field>
-      </mat-expansion-panel> -->
-
-      <!-- <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Payment Details 
-          </mat-panel-title>
-          
-        </mat-expansion-panel-header>
-        
   
-        <div class="usernav">
-          <div class="row">
-              <table class="table">
-                  <thead class="thead-inverse">
-                  <tr>
-                      <th >propertyAddress</th>
-                      <th >propertyType</th>
-                      <th >numberOfBedrooms</th>
-                      <th >propertyBuilt</th>
-                      <th >propertyAge</th>
-                      <th >isPropertyCovered</th>
-                      <th >tenureType</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr >
-                      <td  style="width: 15px;">{{prop.propertyAddress}}</td>
-                      <td  style="width: 15px;">{{prop.propertyType}}</td>
-                      <td  style="width: 200px;">{{prop.numberOfBedrooms}}</td>
-                      <td  style="width: 200px;">{{prop.propertyBuilt}}</td>
-                      <td  style="width: 200px;">{{prop.propertyAge}}</td>
-                      <td  style="width: 200px;">{{prop.isPropertyCovered}}</td>
-                      <td  style="width: 200px;">{{prop.tenureType}}</td>
-                      <td >{{prop.body}}</td>
-                  </tr>
-                  </tbody>
-              </table>
-          </div>
-      </div> -->
+  
+        </mat-expansion-panel-header>
+        <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
+  
+
+      
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+          
+          <!-- Position Column -->
+          <ng-container matColumnDef="sortCode">
+            <th mat-header-cell *matHeaderCellDef class="rowStyle" > Sort Code</th>
+            <td mat-cell *matCellDef="let element"  class="valStyle"> {{element.sortCode}} </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="accountHolderName">
+            <th mat-header-cell *matHeaderCellDef class="rowStyle" > Account Holder Name</th>
+            <td mat-cell *matCellDef="let element"  class="valStyle"> {{element.accountHolderName}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="accountNumber">
+            <th mat-header-cell *matHeaderCellDef class="rowStyle" > Account Number</th>
+            <td mat-cell *matCellDef="let element"  class="valStyle"> {{element.accountNumber}} </td>
+          </ng-container>
+  
+          
+  
+          <ng-container matColumnDef="dayofPayment">
+            <th mat-header-cell *matHeaderCellDef class="rowStyle" > Day Of Payment</th>
+            <td mat-cell *matCellDef="let element"  class="valStyle"> {{element.dayOfPayment}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="currentCircumstances">
+            <th mat-header-cell *matHeaderCellDef class="rowStyle" > Current Circumstances</th>
+            <td mat-cell *matCellDef="let element"  class="valStyle"> {{element.currentcircumstances}} </td>
+          </ng-container>
+          
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+        </table>
+      
+       
+  
+       
+             
+      </mat-expansion-panel>
+      
        
   </mat-accordion>
 
@@ -215,8 +346,8 @@
     <br>
     <br>
     <p>If there is anything within this applicants that you are unsure about please contact us before processing</p>
-
-    <br><input type = "checkbox"> I agree to the Declaration,General Mortgage Declaration and Data Protection Statement<br>
+<div>
+    <br><input type = "checkbox">I agree to the Declaration,General Mortgage Declaration and Data Protection Statement<br></div>
     
 
 

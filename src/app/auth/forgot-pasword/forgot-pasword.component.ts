@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { throwMatDialogContentAlreadyAttachedError } from '@angular/material';
 import { AuthclientService } from 'src/app/services/authclient.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 
 
@@ -26,7 +27,7 @@ export class ForgotPaswordComponent implements OnInit {
   toggle2:boolean =false;
   
     constructor(private fb: FormBuilder,
-      private router: Router,private registerService: AuthclientService) {
+      private router: Router,private registerService: AuthclientService, private notifyService : NotificationService) {
      
     }
   
@@ -45,9 +46,9 @@ export class ForgotPaswordComponent implements OnInit {
 
       this.forgetPasswordQForm = this.fb.group({
        
-        'email2': new FormControl([this.email, Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)]),
-        'question2': new FormControl([this.question, Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)]),
-        'answer': new FormControl([null, Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)])
+        'email2': [this.email, [Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)]],
+        'question2': [this.question, [Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)]],
+        'answer': [null, [Validators.required, Validators.minLength(3), Validators.pattern(name_regexg)]]
       });
 
 
@@ -57,8 +58,8 @@ export class ForgotPaswordComponent implements OnInit {
 
     onSubmit(data: any) {
      this.registerService.forgotPaswd(data).subscribe(val=>{
-      console.log("data",data);
-       console.log("val",val);
+    //  console.log("data",data);
+     //  console.log("val",val);
        if(val.email!=null)
        {
          this.question=val.question;  
@@ -81,7 +82,7 @@ export class ForgotPaswordComponent implements OnInit {
           question:this.question,
           answer:this.forgetPasswordQForm.value.answer
         }
-        console.log("Data", userData);
+       // console.log("Data", userData);
 
         this.registerService.forgotPaswd2(userData).subscribe(val=>{
           console.log('val from service',val);
@@ -91,7 +92,7 @@ export class ForgotPaswordComponent implements OnInit {
             this.email2 = val.email;
             this.sendMessage();
             //this.router.navigateByUrl('/content/(sidebar:valuation)');
-
+            
             this.router.navigate(['/resetPassword']);
          //console.log('email2',this.email2);
            

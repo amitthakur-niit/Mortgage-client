@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { logging } from 'protractor';
 import { Router } from '@angular/router';
 import { FormlistService } from 'src/app/services/formlist.service';
+import { AuthclientService } from 'src/app/services/authclient.service';
 
 
 
@@ -13,7 +14,7 @@ export interface PeriodicElement {
   initialRate: number;
   monthlyRepaymentght: number;
   productFee: string;
-  optionId : number;
+  optionId: number;
 }
 @Component({
   selector: 'app-mortgage-options',
@@ -21,21 +22,24 @@ export interface PeriodicElement {
   styleUrls: ['./mortgage-options.component.scss']
 })
 export class MortgageOptionsComponent implements OnInit {
-  optionsData :any;
-  displayedColumns: string[] = ['description', 'initialRate', 'monthlyRepayment', 'productFee','optionId'];
-  constructor(private apiService: FormlistService,private router: Router) { 
+  optionsData: any;
+  displayedColumns: string[] = ['description', 'initialRate', 'monthlyRepayment', 'productFee', 'optionId'];
+  constructor(private apiService: FormlistService, private router: Router, private authService: AuthclientService) {
   }
 
-    ngOnInit() {
-      this.apiService.fetchMortgageOptions().subscribe((data)=>{
-        console.log("data",data);
-        this.optionsData =data;
-      });
-    }
+  ngOnInit() {
 
-    public selectAction(){
-      this.router.navigate(['/', 'confirm-mortgage']);
-    }
+    this.apiService.fetchMortgageOptions().subscribe((data) => {
+      console.log("data:", data);
+      this.optionsData = data;
+    });
   }
+
+  public selectAction(element) {
+
+    this.router.navigateByUrl('/content/(sidebar:confirmMortgage)', element);
+  }
+
+}
 
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Property } from '../Models/property';
 import { Observable } from 'rxjs';
+import { valuation } from '../Models/valuation';
 
 @Injectable({
   providedIn: 'root'
@@ -25,21 +26,44 @@ export class FormlistService {
         return this.http.post<any>(this.url + 'mortgage-service/api/propertyDetails', requestBody)
       }
 
+      // propertyDetailsAll
+      public PropertyDetailAll(): Observable<any>{
+        return this.http.get<any>(this.urlP + '/api/propertyDetailAll');
+      } 
+
+
+       // propertyDetailsAll
+       public PaymentDetailById(data:Number): Observable<any>{
+        return  this.http.get<any>(this.urlP + `api/getPaymentDetailsById/`+data);
+      } 
+
     //property0details-serviceGet
     public propertyDataById():Observable<any>{
-         return  this.http.get<any>(this.urlP + `api/propertyDetailsById/5`);
+         return  this.http.get<any>(this.urlP + `api/propertyDetailsById/2`);
          
         
         }
 
       //confirmMortgage
       public fetchConfirmMortgageDetails():Observable<any>{
-        return this.http.get<any>(`mortgage-service/api/confirmMortgage/5`);
+        return this.http.get<any>(this.url + `mortgage-service/api/confirmMortgage/5`);  
       }
 
+
+      // ValuationService
+      public valuationDataById():Observable<valuation[]>{
+        return this.http.get<any>(this.urlP + '/api/valuation/29');
+
+      }
+
+      // // valuationAll
+      // public valuationsAll():Observable<any[]>{
+      //   return this.http.get<any>(this.urlP + '/api/valuationAll');
+
+      // }
       //mortgage-options
       public fetchMortgageOptions():Observable<any>{
-        return this.http.get<any>(`mortgage-service/api/mortgageOptions`);
+        return this.http.get<any>(this.url + `mortgage-service/api/mortgageOptions`);
     
         //return this.httpClient.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
     

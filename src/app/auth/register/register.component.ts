@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { MatDatepicker } from '@angular/material';
 import { AuthclientService } from 'src/app/services/authclient.service';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-register',
@@ -11,22 +12,24 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
- 
+
   storedSuccess: boolean = false;
   formGroup: FormGroup;
   required: string = 'This field is required.';
   lengthError: string = 'Minimum 2 characters required.';
   datepicker: MatDatepicker<Date>;
   formErrors: any;
+  maxDate: Date;
+  minDate: Date;
 
-  constructor(private formBuilder: FormBuilder, private registerService: AuthclientService, private router:Router) {
+  constructor(private formBuilder: FormBuilder, private registerService: AuthclientService, private router:Router, private notifyService : NotificationService) {
     this.formGroup = this.formBuilder.group({
       firstName: [null, [Validators.required, Validators.minLength(2)]],
       lastName: [null, [Validators.required, Validators.minLength(2)]],
       dateOfBirth: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required, Validators.minLength(8)]],
-      cnfPassword: [null, [Validators.required, Validators.minLength(8)]],
+      password: [null, [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
+      cnfPassword: [null, [Validators.required]],
       forgetPasswordQ: [null, Validators.required],
       forgetPasswordA: [null, [Validators.required, Validators.minLength(2)]],
     });
@@ -34,7 +37,9 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    let now: Date = new Date();
+    this.maxDate = new Date((now.getFullYear() - 18), now.getMonth(), now.getDate());
+    this.minDate = new Date((now.getFullYear() - 100), now.getMonth(), now.getDate());
   }
 
   questions: any[] = [
@@ -47,28 +52,30 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(data: any) {
 
-  
+
     if (data.password === data.cnfPassword) {
       this.registerService.registerData(data).subscribe(val => {
         if (val.userId != null) {
 
-          let  userStatus={
-            userId:val.userId,
-            email:val.email
+          let userStatus = {
+            userId: val.userId,
+            email: val.email
           }
 
           this.storedSuccess = true;
-          localStorage.setItem("currentUser",JSON.stringify(userStatus));
+          localStorage.setItem("currentUser", JSON.stringify(userStatus));
 
-          alert('Success');
+          //alert('Success');
+          this.notifyService.notify('Registration Successful');
         }
       });
 
-this.router.navigate(['/auth/login']);
+      this.router.navigate(['/auth/login']);
 
     }
     else{
-      alert("passwords don't match!!!");
+      //alert("passwords don't match!!!");
+      this.notifyService.alert("passwords don't match!!!");
     }
 
 
