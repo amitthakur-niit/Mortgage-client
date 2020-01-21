@@ -9,7 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule, MatTableModule } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import {MatProgressSpinnerModule} from '@angular/material'
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
@@ -30,6 +30,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatExpansionModule,
     MatTableModule,
     MatButtonToggleModule,
+    MatProgressSpinnerModule
+    
     
     
   ],
@@ -48,6 +50,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatTableModule,
     MatButtonToggleModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule
     
  ]
 })

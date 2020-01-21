@@ -34,12 +34,12 @@ export class FormlistService {
 
        // propertyDetailsAll
        public PaymentDetailById(data:Number): Observable<any>{
-        return  this.http.get<any>(this.urlP + `api/getPaymentDetailsById/`+data);
+        return  this.http.get<any>(this.urlP + `api/getPaymentDetailsById/`+data.toLocaleString());
       } 
 
     //property0details-serviceGet
     public propertyDataById(id:Number):Observable<any>{
-         return  this.http.get<any>(this.urlP + `api/propertyDetailsById/`+id);
+         return  this.http.get<any>(this.urlP + `api/propertyDetailsById/`+id.toLocaleString());
          
         
         }
@@ -52,7 +52,7 @@ export class FormlistService {
 
       // ValuationService
       public valuationDataById(id:Number):Observable<valuation[]>{
-        return this.http.get<any>(this.urlP + '/api/valuation/'+id);
+        return this.http.get<any>(this.urlP + '/api/valuation/'+id.toLocaleString());
 
       }
 
