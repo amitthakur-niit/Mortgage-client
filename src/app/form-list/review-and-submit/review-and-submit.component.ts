@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormlistService } from 'src/app/services/formlist.service';
 import { Property } from 'src/app/Models/property';
 import { Router } from '@angular/router';
-
+import { valuation } from 'src/app/Models/valuation';
 import { MatTableDataSource } from '@angular/material';
 import { PaymentDetails } from 'src/app/Models/PaymentDetails';
-import { AuthclientService } from 'src/app/services/authclient.service';
 
 @Component({
   selector: 'app-review-and-submit',

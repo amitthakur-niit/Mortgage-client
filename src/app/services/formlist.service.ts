@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Property } from '../Models/property';
 import { Observable } from 'rxjs';
+import { valuation } from '../Models/valuation';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class FormlistService {
   //base url : zuul
   //Keep adding your service name with api
   private url='http://localhost:8765/';
+  private urlP = 'http://localhost:9002/';
   constructor(private http:HttpClient) { }
 
   //Valuation Service

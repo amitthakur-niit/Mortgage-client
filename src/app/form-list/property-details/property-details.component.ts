@@ -149,7 +149,8 @@ export class PropertyDetailsComponent implements OnInit {
       propertyAge:this.formGroup.value.propertyAge,
       propertyBuilt: this.propertyBuilt,
       isPropertyCovered: this.isPropertyCovered,
-      tenureType: this.tenureType
+      tenureType: this.tenureType,
+	   postCode: '',
     }
     console.log("Data", data);
     this.propertyService.propertyData(data).subscribe( data =>{
