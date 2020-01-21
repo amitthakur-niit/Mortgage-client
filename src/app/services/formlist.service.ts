@@ -24,11 +24,41 @@ export class FormlistService {
         return this.http.post<any>(this.url + 'mortgage-service/api/propertyDetails', requestBody)
       }
 
+      // propertyDetailsAll
+      public PropertyDetailAll(): Observable<any>{
+        return this.http.get<any>(this.urlP + '/api/propertyDetailAll');
+      } 
+
+
+       // propertyDetailsAll
+       public PaymentDetailById(data:Number): Observable<any>{
+        return  this.http.get<any>(this.urlP + `api/getPaymentDetailsById/`+data);
+      } 
+
+    //property0details-serviceGet
+    public propertyDataById(id:Number):Observable<any>{
+         return  this.http.get<any>(this.urlP + `api/propertyDetailsById/`+id);
+         
+        
+        }
+
       //confirmMortgage
       public fetchConfirmMortgageDetails():Observable<any>{
         return this.http.get<any>(this.url + `mortgage-service/api/confirmMortgage/5`);  
       }
 
+
+      // ValuationService
+      public valuationDataById(id:Number):Observable<valuation[]>{
+        return this.http.get<any>(this.urlP + '/api/valuation/'+id);
+
+      }
+
+      // // valuationAll
+      // public valuationsAll():Observable<any[]>{
+      //   return this.http.get<any>(this.urlP + '/api/valuationAll');
+
+      // }
       //mortgage-options
       public fetchMortgageOptions():Observable<any>{
         return this.http.get<any>(this.url + `mortgage-service/api/mortgageOptions`);
