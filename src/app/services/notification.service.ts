@@ -10,7 +10,7 @@ export class NotificationService {
 
 
 
-  public notify(message,action='close',duration=5000){
+  public notify(message,action='Close',duration=5000){
     this.zone.run(()=>{
       this.snackBar.open(message,action,{duration,
         verticalPosition: 'top',
@@ -20,7 +20,7 @@ export class NotificationService {
     });
   }
 
-  public alert(message,action='close',duration=5000){
+  public alert(message,action='Close',duration=5000){
     this.zone.run(()=>{
       this.snackBar.open(message,action,{duration,
         verticalPosition: 'top',

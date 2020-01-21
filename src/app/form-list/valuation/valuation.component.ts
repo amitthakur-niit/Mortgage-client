@@ -58,10 +58,10 @@ export class ValuationComponent implements OnInit, OnDestroy {
 
   postFormGroup(){
     let status:Boolean=false;  
-    let userId = this.authService.getLocalStorageValue('currentUser');
+    let userData = this.authService.getLocalStorageValue('currentUser');
     
     let valuationData={
-         userId:userId,
+         userId:userData.userId,
          isPropertyInScotland : this.isPropertyInScotland,
          contactPerson : this.formGroup.value.ContactPerson,
          contactName : this.formGroup.value.ContactName,
