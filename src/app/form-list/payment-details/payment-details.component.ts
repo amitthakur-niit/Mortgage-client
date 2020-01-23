@@ -4,6 +4,7 @@ import { AuthclientService } from 'src/app/services/authclient.service';
 import { PaymentDetails } from 'src/app/Models/PaymentDetails';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Router } from '@angular/router';
+import { FormlistService } from 'src/app/services/formlist.service';
 
 @Component({
   selector: 'app-payment-details',
@@ -20,7 +21,7 @@ export class PaymentDetailsComponent implements OnInit {
   required: string = 'This field is required.';
   lengthError: string = 'This field requires 12 characters.';
 
-  constructor(private formBuilder: FormBuilder, private paymentDetailsService: AuthclientService, private notifyService : NotificationService,  private router: Router) {
+  constructor(private formBuilder: FormBuilder, private paymentDetailsService: AuthclientService, private notifyService : NotificationService,  private router: Router, private formListService : FormlistService) {
     this.paymentDetailsFormGroup = this.formBuilder.group({
       sortCode: [null, [Validators.required, Validators.pattern("^[0-9]{12}$")]],
       accountNumber: [null, [Validators.required, Validators.pattern("^[0-9]{12}$")]],
@@ -31,6 +32,23 @@ export class PaymentDetailsComponent implements OnInit {
   ngOnInit() {
     this.buttonToggleColorCircumstance();
     this.buttonToggleColorDay();
+    //get the data from the database of payment details
+    this.prePopulateData();
+  }
+
+  prePopulateData() {
+    //get the user id from session storage
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    //call the getpaymentdetailsby id api
+    if(this.currentUser) {
+      this.formListService.PaymentDetailById(this.currentUser.userId).subscribe(val => {
+        this.paymentDetailsFormGroup.controls['sortCode'].setValue(val.sortCode);
+        this.paymentDetailsFormGroup.controls['accountNumber'].setValue(val.accountNumber);
+        this.paymentDetailsFormGroup.controls['accountHolderName'].setValue(val.accountHolderName);
+      });
+      
+    }
+
   }
 
   onEndpointValChange(data: any) {
