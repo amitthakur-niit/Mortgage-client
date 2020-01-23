@@ -19,7 +19,7 @@ export class ValuationComponent implements OnInit, OnDestroy {
   required: string = 'This field is required';
   maxLength:string = 'MaxLength is 10'
   subscription : Subscription;
-    
+  IsLoading:Boolean = false;  
 
 
   constructor(private formBuilder: FormBuilder, private service: FormlistService, private router : Router, private authService:AuthclientService, private notifyService : NotificationService) { }
@@ -57,11 +57,12 @@ export class ValuationComponent implements OnInit, OnDestroy {
   
 
   postFormGroup(){
+    this.IsLoading= true;
     let status:Boolean=false;  
-    let userId = this.authService.getLocalStorageValue('currentUser');
+    let userData = this.authService.getLocalStorageValue('currentUser');
     
     let valuationData={
-         userId:userId,
+         userId:userData.userId,
          isPropertyInScotland : this.isPropertyInScotland,
          contactPerson : this.formGroup.value.ContactPerson,
          contactName : this.formGroup.value.ContactName,
@@ -72,6 +73,7 @@ export class ValuationComponent implements OnInit, OnDestroy {
     //console.log(this.formGroup.value.ContactPerson);
      return this.service.postValuationData(valuationData).subscribe((data)=>{
       
+      this.IsLoading= false;
      // console.log("Check response",data)
       this.notifyService.notify('Valuation details posted!')
       //status = true;
@@ -79,6 +81,7 @@ export class ValuationComponent implements OnInit, OnDestroy {
     },
     (error)=>{
       console.log("an error occured:",error)
+      this.IsLoading= false;
       this.notifyService.alert('Oops! Something went wrong')
     });
 
