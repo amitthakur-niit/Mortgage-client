@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthclientService } from 'src/app/services/authclient.service';
 import { PaymentDetails } from 'src/app/Models/PaymentDetails';
+import { NotificationService } from 'src/app/services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment-details',
@@ -16,12 +18,12 @@ export class PaymentDetailsComponent implements OnInit {
   currentUser: any;
   paymentDetailObject : PaymentDetails;
   required: string = 'This field is required.';
-  lengthError: string = 'Minimum 12 characters required.';
+  lengthError: string = 'This field requires 12 characters.';
 
-  constructor(private formBuilder: FormBuilder, private paymentDetailsService: AuthclientService) {
+  constructor(private formBuilder: FormBuilder, private paymentDetailsService: AuthclientService, private notifyService : NotificationService,  private router: Router) {
     this.paymentDetailsFormGroup = this.formBuilder.group({
-      sortCode: [null, [Validators.required, Validators.min(2), Validators.pattern("^[0-9]{12,}$")]],
-      accountNumber: [null, [Validators.required, Validators.min(12),  Validators.pattern("^[0-9]{12,}$")]],
+      sortCode: [null, [Validators.required, Validators.pattern("^[0-9]{12}$")]],
+      accountNumber: [null, [Validators.required, Validators.pattern("^[0-9]{12}$")]],
       accountHolderName: [null, [Validators.required, Validators.minLength(2)]]
     });
   }
@@ -49,9 +51,12 @@ export class PaymentDetailsComponent implements OnInit {
    
     this.paymentDetailsService.updatePaymentDetails(data).subscribe(val => {
       if (val.userId != null) {
-        alert('Success');
+        this.notifyService.notify('Payment Successful!')
+        this.router.navigateByUrl('/content/(sidebar:reviewSubmit)');
       }
-    }); 
+    }, error =>{
+      this.notifyService.alert('Something went wrong!')
+   }); 
   
   }
 
