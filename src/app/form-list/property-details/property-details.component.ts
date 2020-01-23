@@ -21,7 +21,7 @@ export class PropertyDetailsComponent implements OnInit {
   json = JSON.parse(this.ids);
   userId:Number= this.json["userId"];
   //console.log("userId",this.userId);
-
+  pageData:any;
   postCode;
   address;
   propertyType;
@@ -162,10 +162,10 @@ export class PropertyDetailsComponent implements OnInit {
   getPropertyDetails(){
 
     this.propertyService.getPropertyDetails(this.userId).subscribe((data)=>{
-      console.log("data from property details",data);
+      console.log("data from property details fdgfdg",data);
       //console.log("data from property details",data.propertyAge);
        
-
+this.pageData=data;
       this.postCode=data.postCode;
       this.address=data.propertyAddress;
       this.propertyType=data.propertyType; 
@@ -174,7 +174,8 @@ export class PropertyDetailsComponent implements OnInit {
       this.isPropertyCovered=data.isPropertyCovered;
       this.propertyBuilt=data.propertyBuilt;
       console.log("propertyBuilt from property details",this.propertyBuilt);
-      this.tenureType=data.tenureType;
+      console.log("tenure type",this.tenureType);
+     this.tenureType=data.tenureType;
       this.proprtyBuilt(this.propertyBuilt);
       this.IsPropertyCovered(this.isPropertyCovered);
       this.tenureTypeSelected(this.tenureType);
@@ -201,9 +202,19 @@ export class PropertyDetailsComponent implements OnInit {
     }
 
     console.log("Data", data);
+    console.log("Data postcode", this.pageData);
+
+    if(this.pageData!=null){
+      this.propertyService.updatePropertyDetails(data,data.userId).subscribe();
+      //this.router.navigate(['/forms/content/(sidebar:valuation)']);
+      this.router.navigateByUrl('/content/(sidebar:valuation)');
+    }
+
+else{
+
     this.propertyService.propertyData(data).subscribe();
     //this.router.navigate(['/forms/content/(sidebar:valuation)']);
-    this.router.navigateByUrl('/content/(sidebar:valuation)');
+    this.router.navigateByUrl('/content/(sidebar:valuation)');}
   }
 
 // onSubmit(data: any) {
