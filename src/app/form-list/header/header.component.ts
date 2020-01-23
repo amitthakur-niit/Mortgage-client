@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthclientService } from 'src/app/services/authclient.service';
+import { LoginResponse } from 'src/app/Models/LoginResponse';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    
+    const userData = this.service.getLocalStorageValue('currentUser');
+    console.log("Inside Header :",userData.firstName);
+    this.userName = userData.firstName +" " +userData.lastName;
   }
 
 
