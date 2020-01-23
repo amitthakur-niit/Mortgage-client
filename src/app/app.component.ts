@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Mortgage-Client';
-  val=10;
-  IsLoading:Boolean = false;
+  
+  
 }

@@ -13,8 +13,8 @@ export class NotificationService {
   public notify(message,action='Close',duration=5000){
     this.zone.run(()=>{
       this.snackBar.open(message,action,{duration,
-        verticalPosition: 'top',
-          horizontalPosition:'right',
+        verticalPosition: 'bottom',
+          horizontalPosition:'center',
           panelClass:['success']
       });
     });
@@ -23,8 +23,8 @@ export class NotificationService {
   public alert(message,action='Close',duration=5000){
     this.zone.run(()=>{
       this.snackBar.open(message,action,{duration,
-        verticalPosition: 'top',
-        horizontalPosition:'right',
+        verticalPosition: 'bottom',
+        horizontalPosition:'center',
         panelClass:['warn']
       });
     });

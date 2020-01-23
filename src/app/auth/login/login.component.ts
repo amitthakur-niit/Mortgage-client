@@ -67,6 +67,9 @@ export class LoginComponent implements OnInit {
            this.notifyService.alert('Email Invalid !')
          }
 
+     }, error =>{
+        console.warn('An unknow error occured:',error)
+        this.notifyService.alert('An unknow error occured: "CORS POLICY VIOLATION"')
      });
 
     
