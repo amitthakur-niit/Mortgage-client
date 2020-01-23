@@ -34,7 +34,11 @@ export class ConfirmMortgageComponent implements OnInit {
   constructor(private apiService:FormlistService,private router: Router, private authService: AuthclientService) { }
 
   ngOnInit() {
-    this.apiService.fetchConfirmMortgageDetails().subscribe((data)=>{
+
+    const userData = this.authService.getLocalStorageValue('currentUser');
+    let id=userData.userId;
+
+    this.apiService.fetchConfirmMortgageDetails(id).subscribe((data)=>{
       console.log("confMortgageData",data);
       this.confMortgageData =data;
     }); 
