@@ -50,13 +50,8 @@ export class LoginComponent implements OnInit {
     this.authService.logInData(data).subscribe(val => {
       console.log("login : "+val)
       if (val) {
-      let userStatus = {
-        userId: val,
-        email: data.email
-      }
 
-     // localStorage.setItem("currentUser", JSON.stringify(userStatus));
-      this.authService.setLocalStorage("currentUser",userStatus);
+      this.authService.setLocalStorage("currentUser",val);
      
         this.router.navigateByUrl('/content/(sidebar:howToApply)');
         this.notifyService.notify('Login Successful');
