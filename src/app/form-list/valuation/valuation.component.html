@@ -1,6 +1,6 @@
 <div class="container">
 <div class="loading-spinner">
-    <!-- <app-loading-spinner overlay="true" diameter="50" strokeWidth="10" *ngIf="IsLoading"></app-loading-spinner> -->
+     <app-loading-spinner overlay="true" diameter="40" strokeWidth="0" *ngIf="IsLoading"></app-loading-spinner>
 </div>
     <br> <br>
     <div class="heading_1 bold">
@@ -15,10 +15,22 @@
         <label class="title">Is the property in Scotland ? *</label>
         <br>
         <br>
-        <div class="button_class">
+        <!-- <div class="button_class">
             <button mat-stroked-button class="button_class-yes " (click)="button_Yes()">Yes</button>
             <button mat-stroked-button id="no" class="" (click)="button_No()" >No</button>
-        </div>
+        </div> -->
+        <mat-button-toggle-group #circumstanceGroup="matButtonToggleGroup"
+            (change)="circumstanceValChange(circumstanceGroup.value)" class="button_class">
+            <mat-button-toggle value="1" class="button_class-yes" (click)="buttonToggleColorCircumstance(1)" id="yess">
+                Yes
+            </mat-button-toggle>
+            <mat-button-toggle value="0" class="button_class-yes" id="nos" (click)="buttonToggleColorCircumstance(0)">
+                No
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+
+
+
     </div>
 
     <br>
@@ -93,15 +105,21 @@
             property developer or boker *
         </label>
         <br>    <br>
-        <div class="button_class">
-            <button mat-stroked-button class="button_yes " (click)="button_yes()">Yes</button>
-            <button mat-stroked-button id="No" class="highlight" (click)="button_no()">No</button>
-        </div>
+        <mat-button-toggle-group #circumstanceGroup="matButtonToggleGroup"
+            (change)="circumstanceValChange(circumstanceGroup.value)" class="button_class">
+            <mat-button-toggle value="1" class="button_class-yes" (click)="buttonToggleColorCircumstance(2)" id="yes">
+                Yes
+            </mat-button-toggle>
+            <mat-button-toggle value="0" class="button_class-yes" id="no" (click)="buttonToggleColorCircumstance(3)">
+                No
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+
         <br>
     </div>
     <div class="navigation">
         <div class="navigation_button">
-            <button mat-stroked-button class="save_comeback" (click)="postAndNavigateBack()"value="" [disabled]="!formGroup.valid">Save & Comeback </button>
+            
             <button mat-stroked-button class="save_continue" (click)="postAndNavigateForward()" value="" [disabled]="!formGroup.valid">Save & continue</button>
         </div>
         <!-- <div class="navigation_link">

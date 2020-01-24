@@ -8,14 +8,15 @@ import { FormListModule } from './form-list/form-list.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialDesignModule } from './material-design/material-design.module';
 import { HttpClientModule } from '@angular/common/http';
-import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
+import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    LoadingSpinnerComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -24,8 +25,11 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     FormListModule,
     MaterialDesignModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonToggleModule,
+    MatButtonModule
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

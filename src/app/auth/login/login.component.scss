@@ -14,7 +14,7 @@
    max-width:  1000px;
    max-height: 1024px;
    margin-top: 32px;
-   height:65rem;
+   height:63.5rem;
    width:50%;
    margin: auto;
    background-color: #fff;
@@ -142,13 +142,16 @@ flex: 0 0 45%;
   display: flex;
   justify-content:space-between;
   padding:1.2rem;
-      .save_comeback,
-      .save_continue{
+      .save_comeback{
           background-color: red;
           color: #ffff;
           border-radius:15rem;
+          cursor:pointer;
 margin-left: -32px;     
 margin-top: -20px; }
+.save_comeback:disabled{
+  cursor: no-drop;
+}
 
   }
   
@@ -161,5 +164,6 @@ margin-top: -20px; }
   a{
       color: grey;
   }
+
 
 }

@@ -19,7 +19,8 @@ import { ResetPassowrdComponent } from './reset-passowrd/reset-passowrd.componen
     FormsModule,
     AuthRoutingModule,
     MaterialDesignModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ]
 })
 export class AuthModule { }
