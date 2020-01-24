@@ -1,4 +1,4 @@
-<auth-header></auth-header> 
+<auth-header></auth-header>
 <div class="container">
 
     <div class="header">
@@ -68,7 +68,7 @@
                         <!--Date of birth-->
                         <mat-form-field class="register-form-full-width">
                             <input matInput [matDatepicker]="dateOfBirth" formControlName="dateOfBirth" [min]="minDate"
-                            [max]="maxDate" placeholder="Date of Birth">
+                                [max]="maxDate" placeholder="Date of Birth">
                             <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
                             <mat-datepicker #dateOfBirth></mat-datepicker>
                         </mat-form-field>
@@ -91,7 +91,8 @@
                                 {{ required }}
                             </mat-error>
                             <mat-error *ngIf="formGroup.controls['password'].errors?.pattern">
-                                Minimum 8 characters and must contain atleast 1 uppercase, lowercase, speacial character and numeric.
+                                Minimum 8 characters and must contain atleast 1 uppercase, lowercase, speacial character
+                                and numeric.
                             </mat-error>
                         </mat-form-field>
 
@@ -99,9 +100,9 @@
                         <mat-form-field class="register-form-full-width">
                             <input type="password" matInput placeholder="Confirm password" value=""
                                 formControlName="cnfPassword">
-                                <mat-error *ngIf="formGroup.controls['cnfPassword'].errors?.required">
-                                    {{ required }}
-                                </mat-error>
+                            <mat-error *ngIf="formGroup.controls['cnfPassword'].errors?.required">
+                                {{ required }}
+                            </mat-error>
                         </mat-form-field>
 
                         <!--Security question-->
@@ -125,7 +126,8 @@
                         </mat-form-field>
 
                         <br>
-                        <button class="continue" mat-raised-button color="warn" [disabled]="!formGroup.valid">continue</button>
+                        <button class="continue" mat-raised-button color="warn"
+                            [disabled]="!formGroup.valid">continue</button>
 
                     </form>
 
@@ -139,6 +141,7 @@
                     </div>
 
                 </div>
+                <h3>Already have an account? <a href="#">Click Here</a></h3>
                 <div class="information-detail">
                     <h3>Important Information</h3>
                     <br>
