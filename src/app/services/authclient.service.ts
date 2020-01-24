@@ -66,7 +66,9 @@ getMessage(): Observable<any> {
 
 //LocalStorage Methods
 setLocalStorage(userKey,userValue){
+  if(window.localStorage){
   localStorage.setItem(userKey,JSON.stringify(userValue));
+  }
 }
 
 getLocalStorageValue(userKey){
@@ -95,6 +97,18 @@ checkAccess():boolean{
     return status;
   }
 
+  //isLoggedIn
+  /* isLoggedIn():boolean{
+    let status=false;
+    let userStatus:any = this.getLocalStorageValue('currentUser');
+    if(userStatus===null){
+      this.logout();
+     }
+    else{
+      status=true;
+    }
+    return status;
+  } */
   
 
 }
