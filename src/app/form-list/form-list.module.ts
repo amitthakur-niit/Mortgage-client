@@ -13,6 +13,9 @@ import { MaterialDesignModule } from '../material-design/material-design.module'
 import { ReactiveFormsModule } from '@angular/forms';
 import { OtherOccupantsComponent } from './other-occupants/other-occupants.component';
 import { HeaderComponent } from './header/header.component';
+import { AppModule } from '../app.module';
+import { LoadingSpinnerComponent } from '../shared/loading-spinner/loading-spinner.component';
+import { FeatureModule } from '../shared/feature.module';
 
 
 
@@ -26,7 +29,8 @@ import { HeaderComponent } from './header/header.component';
     CommonModule,
     FormListroutingModule,
     MaterialDesignModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FeatureModule
   
   ]
 })

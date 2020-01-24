@@ -18,10 +18,15 @@ rights<br> over the property while they're living in it </p>
 <b>Will there be anyone over the age of 17 living with you who is not named on the mortgage?*</b>
 <br>
 
-<div class="button_class">
-    <button mat-stroked-button class="button_class-yes" (click)="toggle()">Yes</button>
-    <button mat-stroked-button class="button_class-no" (click)="toggle()" [disabled]="">No</button>
-</div>
+<mat-button-toggle-group #circumstanceGroup="matButtonToggleGroup"
+(change)="circumstanceValChange(circumstanceGroup.value)" class="button_class">
+<mat-button-toggle value="1" class="button_class-yes" (click)="buttonToggleColorCircumstance(2)" id="yes">
+    Yes
+</mat-button-toggle>
+<mat-button-toggle value="0" class="button_class-yes" id="no" (click)="buttonToggleColorCircumstance(3)">
+    No
+</mat-button-toggle>
+</mat-button-toggle-group>
 <br>
 
 <div class="container">
@@ -48,26 +53,38 @@ rights<br> over the property while they're living in it </p>
 <br>
 </div>
 
-<div class="button_class">
-    <button mat-stroked-button class="button_class-yes" (click)="toggle()">Yes</button>
-    <button mat-stroked-button class="button_class-no" (click)="toggle()" [disabled]="">No</button>
-</div>
+<mat-button-toggle-group #circumstanceGroup="matButtonToggleGroup"
+(change)="circumstanceValChange(circumstanceGroup.value)" class="button_class">
+<mat-button-toggle value="1" class="button_class-yes" (click)="buttonToggleColorCircumstance(1)" id="yess">
+    Yes
+</mat-button-toggle>
+<mat-button-toggle value="0" class="button_class-yes" id="nos" (click)="buttonToggleColorCircumstance(0)">
+    No
+</mat-button-toggle>
+</mat-button-toggle-group>
+
 
 <br>
 
 <b>Do you want to submit this application without solicitor or conveyancer details and provide them later? This<br>
 could delay your application.*</b>
 <br>
-<div class="button_class">
-    <button mat-stroked-button class="button_class-yes" (click)="toggle()">Yes</button>
-    <button mat-stroked-button class="button_class-no" (click)="toggle()" [disabled]="">No</button>
-</div>
+<mat-button-toggle-group #circumstanceGroup="matButtonToggleGroup"
+(change)="circumstanceValChange(circumstanceGroup.value)" class="button_class">
+<mat-button-toggle value="1" class="button_class-yes" (click)="buttonToggleColorCircumstance(4)" id="yes1">
+    Yes
+</mat-button-toggle>
+<mat-button-toggle value="0" class="button_class-yes" id="nos1" (click)="buttonToggleColorCircumstance(5)">
+    No
+</mat-button-toggle>
+</mat-button-toggle-group>
+
 <br>
 
 <br>
 <div class="navigation">
     <div class="navigation_button">
-        <button mat-stroked-button class="save_comeback" value="">save_comeback </button>
+        <!-- <button mat-stroked-button class="save_comeback" value="">save_comeback </button> -->
         <button mat-stroked-button class="save_continue" (click)="postFormGroup()" value="">save_continue</button>
     </div>
     <br><br>
