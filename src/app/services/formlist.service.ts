@@ -12,6 +12,7 @@ export class FormlistService {
   //base url : zuul
   //Keep adding your service name with api
   private url='http://localhost:8765/';
+  
   constructor(private http:HttpClient) { }
 
   //Valuation Service

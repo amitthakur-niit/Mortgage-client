@@ -3,7 +3,7 @@ import { AuthclientService } from './authclient.service';
 import { Router } from '@angular/router';
 
 
-const AUTO_LOGOUT_TIME = 0.5 // in Minutes
+const AUTO_LOGOUT_TIME = 0.1 // in Minutes
 const CHECK_INTERVAL = 1000 // in ms
 const STORE_KEY = 'lastActivity'; 
 
