@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthclientService } from 'src/app/services/authclient.service';
+import { LoginResponse } from 'src/app/Models/LoginResponse';
 
 @Component({
   selector: 'app-header',
@@ -7,19 +8,19 @@ import { AuthclientService } from 'src/app/services/authclient.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  status:boolean=false;
+ 
+  userName:string='UserXOXO'
   constructor(private service: AuthclientService) { 
   //  this.check();
   }
 
   ngOnInit() {
-    this.check();
+    const userData = this.service.getLocalStorageValue('currentUser');
+    console.log("Inside Header :",userData.firstName);
+    this.userName = userData.firstName +" " +userData.lastName;
   }
 
-check(){
-  this.status=this.service.checkAccess();
-  console.log(this.status);
-}
+
 
 logout(){
   this.service.logout();

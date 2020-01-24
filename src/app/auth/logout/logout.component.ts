@@ -12,7 +12,7 @@ export class LogoutComponent implements OnInit {
   constructor(private service:AuthclientService, private notifyService : NotificationService) { }
 
   ngOnInit() {
-    this.notifyService.notify("User Logged Out");
+    
     this.service.logout();
   }
 

@@ -12,7 +12,6 @@ export class FormlistService {
   //base url : zuul
   //Keep adding your service name with api
   private url='http://localhost:8765/';
-  private urlP = 'http://localhost:9002/';
   constructor(private http:HttpClient) { }
 
   //Valuation Service
@@ -28,31 +27,31 @@ export class FormlistService {
 
       // propertyDetailsAll
       public PropertyDetailAll(): Observable<any>{
-        return this.http.get<any>(this.urlP + '/api/propertyDetailAll');
+        return this.http.get<any>(this.url + 'mortgage-service/api/propertyDetailAll');
       } 
 
 
        // propertyDetailsAll
        public PaymentDetailById(data:Number): Observable<any>{
-        return  this.http.get<any>(this.urlP + `api/getPaymentDetailsById/`+data);
+        return  this.http.get<any>(this.url + `mortgage-service/api/getPaymentDetailsById/`+data.toLocaleString());
       } 
 
     //property0details-serviceGet
-    public propertyDataById():Observable<any>{
-         return  this.http.get<any>(this.urlP + `api/propertyDetailsById/2`);
+    public propertyDataById(id:Number):Observable<any>{
+         return  this.http.get<any>(this.url + `mortgage-service/api/propertyDetailsById/`+id.toLocaleString());
          
         
         }
 
       //confirmMortgage
-      public fetchConfirmMortgageDetails():Observable<any>{
-        return this.http.get<any>(this.url + `mortgage-service/api/confirmMortgage/5`);  
+      public fetchConfirmMortgageDetails(id:Number):Observable<any>{
+        return this.http.get<any>(this.url + `mortgage-service/api/confirmMortgage/`+id);  
       }
 
 
       // ValuationService
-      public valuationDataById():Observable<valuation[]>{
-        return this.http.get<any>(this.urlP + '/api/valuation/29');
+      public valuationDataById(id:Number):Observable<valuation[]>{
+        return this.http.get<any>(this.url + 'mortgage-service/api/valuation/'+id.toLocaleString());
 
       }
 

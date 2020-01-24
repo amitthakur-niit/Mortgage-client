@@ -9,6 +9,8 @@ import { Forget } from '../auth/forgot-pasword/forgetPassword';
 import { Reset } from '../auth/reset-passowrd/resetPassword';
 import { PaymentDetails } from '../Models/PaymentDetails';
 import { stringify } from 'querystring';
+import { NotificationService } from './notification.service';
+import { LoginResponse } from '../Models/LoginResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +19,15 @@ export class AuthclientService {
 
   private url = 'http://localhost:8765/';
   public subject: BehaviorSubject<any> = new BehaviorSubject<any>([]);
-  constructor(private http: HttpClient, private router: Router) { }
+  
+  constructor(private http: HttpClient, private router: Router, private notify:NotificationService) { }
 
   //user-logIn service
-  logInData (requestBody: LogIn): Observable<BigInteger> {
-    return this.http.post<BigInteger>(this.url + 'user-registration-service/users/logIn', requestBody)
-  }
+  logInData (requestBody: LogIn):Observable<LoginResponse> {
+  //const login:LoginResponse;
+  return this.http.post<LoginResponse>(this.url + 'user-registration-service/users/logIn', requestBody)
+    
+    }
   
   //forgot-password
   forgotPaswd(requestBody:Question):Observable<any>{
@@ -64,7 +69,7 @@ setLocalStorage(userKey,userValue){
   localStorage.setItem(userKey,JSON.stringify(userValue));
 }
 
-getLocalStorageValue(userKey):String{
+getLocalStorageValue(userKey){
   return JSON.parse(localStorage.getItem(userKey));
 }
 
@@ -72,7 +77,8 @@ removeLocalStorageData(userKey){
   localStorage.removeItem(userKey);
 }
 logout(){
- localStorage.clear();
+  this.notify.notify("User Logged Out");
+  localStorage.clear();
 }
 
 //Check Access

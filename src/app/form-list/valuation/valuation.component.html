@@ -1,5 +1,7 @@
 <div class="container">
-
+<div class="loading-spinner">
+    <!-- <app-loading-spinner overlay="true" diameter="50" strokeWidth="10" *ngIf="IsLoading"></app-loading-spinner> -->
+</div>
     <br> <br>
     <div class="heading_1 bold">
         <b>
@@ -15,7 +17,7 @@
         <br>
         <div class="button_class">
             <button mat-stroked-button class="button_class-yes " (click)="button_Yes()">Yes</button>
-            <button mat-stroked-button id="no" class="highlight" (click)="button_No()" >No</button>
+            <button mat-stroked-button id="no" class="" (click)="button_No()" >No</button>
         </div>
     </div>
 

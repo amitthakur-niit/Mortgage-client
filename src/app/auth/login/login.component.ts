@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthclientService } from 'src/app/services/authclient.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { LoginResponse } from 'src/app/Models/LoginResponse';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   required: string = 'This field is required';
   email;
   pwd;
+ 
 
   constructor(private fb: FormBuilder, private authService: AuthclientService,
     private router: Router, private notifyService : NotificationService) {
@@ -46,30 +48,35 @@ export class LoginComponent implements OnInit {
 
   onSubmit(data: any) {
 
+    let userStatus:LoginResponse;
+    this.authService.logInData(data).subscribe(response => {
+        userStatus = response;
+        console.log("userStatus : "+ userStatus)  
 
-    this.authService.logInData(data).subscribe(val => {
-      console.log("login : "+val)
-      if (val) {
-      let userStatus = {
-        userId: val,
-        email: data.email
-      }
+        if(userStatus.message.includes('authenticated')){
+          this.authService.setLocalStorage("currentUser", userStatus);
+          this.router.navigateByUrl('/content/(sidebar:howToApply)');
+          this.notifyService.notify('Login Successful')
+    
+         }
 
-     // localStorage.setItem("currentUser", JSON.stringify(userStatus));
-      this.authService.setLocalStorage("currentUser",userStatus);
-     
-        this.router.navigateByUrl('/content/(sidebar:howToApply)');
-        this.notifyService.notify('Login Successful');
-      } else {
-       
-        this.notifyService.alert('Wrong credentials');
-      }
+         if(userStatus.message.includes('Password incorrect!')){
+           this.notifyService.alert('Password Incorrect!')
+         }
+         if(userStatus.message.includes(`Email id doesn't match!`)){
+           this.notifyService.alert('Email Invalid !')
+         }
 
+     }, error =>{
+        console.warn('An unknow error occured:',error)
+        this.notifyService.alert('An unknow error occured: "CORS POLICY VIOLATION"')
+     });
 
-    });
-
+    
 
   }
 
-  }
+}
+
+
 

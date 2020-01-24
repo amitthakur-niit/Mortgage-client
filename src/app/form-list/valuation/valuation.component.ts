@@ -19,6 +19,9 @@ export class ValuationComponent implements OnInit, OnDestroy {
   required: string = 'This field is required';
   maxLength:string = 'MaxLength is 10'
   subscription : Subscription;
+  IsLoading:Boolean = false;  
+
+
   constructor(private formBuilder: FormBuilder, private service: FormlistService, private router : Router, private authService:AuthclientService, private notifyService : NotificationService) { }
 
   details: any = [
@@ -28,8 +31,12 @@ export class ValuationComponent implements OnInit, OnDestroy {
   ];
 
   ngOnInit() {
-    this.createForm();
     
+    this.createForm();
+    /* this.buttonYes1 = document.querySelector('.button_class-yes').classList;
+    this.buttonYes2 = document.querySelector('.button_yes').classList;
+    this.buttonNo1 = document.getElementById('No').classList;
+    this.buttonNo2 = document.getElementById('no').classList; */
   }
 
   createForm() {
@@ -45,44 +52,17 @@ export class ValuationComponent implements OnInit, OnDestroy {
 
   }
 
-  button_Yes(){
-    this.isPropertyInScotland = 1;
-    console.log(this.isPropertyInScotland);
-    this.getButtonClass1();
-  }
-  button_No(){
-    this.isPropertyInScotland = 0;
-    console.log(this.isPropertyInScotland);
-    this.getButtonClass1();
-  }
-
-  private getButtonClass1() {
-    document.querySelector('.button_class-yes').classList.toggle('highlight');
-    document.getElementById('no').classList.add('highlight');
-  }
+  
 
   
 
-  button_yes(){
-    this.getButtonClass2();
-  }
-
-  button_no(){
-
-    this.getButtonClass2();
-  }
-
-  private getButtonClass2() {
-    document.querySelector('.button_yes').classList.toggle('highlight');
-    document.getElementById('No').classList.toggle('highlight');
-  }
-
   postFormGroup(){
+    this.IsLoading= true;
     let status:Boolean=false;  
-    let userId = this.authService.getLocalStorageValue('currentUser');
+    let userData = this.authService.getLocalStorageValue('currentUser');
     
     let valuationData={
-         userId:userId,
+         userId:userData.userId,
          isPropertyInScotland : this.isPropertyInScotland,
          contactPerson : this.formGroup.value.ContactPerson,
          contactName : this.formGroup.value.ContactName,
@@ -93,6 +73,7 @@ export class ValuationComponent implements OnInit, OnDestroy {
     //console.log(this.formGroup.value.ContactPerson);
      return this.service.postValuationData(valuationData).subscribe((data)=>{
       
+      this.IsLoading= false;
      // console.log("Check response",data)
       this.notifyService.notify('Valuation details posted!')
       //status = true;
@@ -100,6 +81,7 @@ export class ValuationComponent implements OnInit, OnDestroy {
     },
     (error)=>{
       console.log("an error occured:",error)
+      this.IsLoading= false;
       this.notifyService.alert('Oops! Something went wrong')
     });
 

@@ -12,124 +12,91 @@ import { PaymentDetails } from 'src/app/Models/PaymentDetails';
   styleUrls: ['./review-and-submit.component.scss']
 })
 export class ReviewAndSubmitComponent implements OnInit {
-  value : valuation[];
+  value;
   prop: Property[];
   pay: PaymentDetails;
+  userId: Number;
 
 
-  // sortCode : Number;
-  // accountNumber : Number;
-  // accountHolderName : String;
-  // currentCircumstances: Number;
-  // dayOfPayment : Number;
- 
+
   displayedColumns2: string[] = ['isPropertyInScotland', 'contactPerson', 'contactName', 'contactNumber'];
-  displayedColumns: string[] = ['userId','property_id','postCode','propertyType', 'numberOfBedrooms', 'propertyBuilt', 'propertyAge', 'isPropertyCovered', 'tenureType' ];
-  displayedColumns3: string[] = ['sortCode','accountNumber','accountHolderName','currentCircumstances','dayofPayment'];
+  displayedColumns: string[] = ['userId', 'property_id', 'postCode', 'propertyType', 'numberOfBedrooms', 'propertyBuilt', 'propertyAge', 'isPropertyCovered', 'tenureType'];
+  displayedColumns3: string[] = ['sortCode', 'accountNumber', 'accountHolderName', 'currentCircumstances', 'dayofPayment'];
 
 
-  dataSource:any ;
-  dataSource2:any ;
-  dataSource3:any;
+  dataSource: any;
+  dataSource2: any;
+  dataSource3: any;
 
- //  dataSource2 = new MatTableDataSource<valuation>(this.value);
-  
- 
+  constructor(private formlistService: FormlistService, private router: Router, ) { }
 
-  fetchValuationById() : void{
-   this.formlistService.valuationDataById().subscribe(
-    resultArray  =>{ this.value = resultArray
-                    this.dataSource2 =resultArray
-                    console.log("resultArray from valutaionById",resultArray);
 
-    }, error=>{
-       console.log("Error :: " + error)
-    }
+
+  ngOnInit(): void {
+    const currentUserData = JSON.parse(localStorage.getItem('currentUser'))
+    console.log("resultArray from valutaionById", currentUserData.userId);
+    this.userId = currentUserData.userId;
+
+
+    this.fetchPropertdetailsById();
+    this.fetchValuationById();
+    this.fetchPaymentById();
     
+  }
+
+  fetchValuationById(): void {
+    this.formlistService.valuationDataById(this.userId).subscribe(
+      resultArray => {
+      this.value = resultArray
+        this.dataSource2 = resultArray
+        console.log("resultArray from valutaionById", resultArray);
+
+      }, error => {
+        console.log("Error :: " + JSON.stringify(error))
+      }
+
     )
 
   }
 
   fetchPropertdetailsById(): void {
-     this.formlistService.propertyDataById()
-        .subscribe(
-             resultArray => {this.prop = resultArray
-                            this.dataSource = resultArray
-                            console.log("resultArray from propertyByID",resultArray);
-
-            },
-             error => {console.log("Error :: " + error)
-          }
-        )
- }
-
-
-// fetchPropertyAlldetails(): void {
-//   this.dataSource = new MatTableDataSource<Property>(this.prop);
-
-//   this.formlistService.PropertyDetailAll()
-//       .subscribe(
-//           resultArray => {this.prop = resultArray
-//                           this.dataSource = resultArray
-//                           console.log("resultArray from propertyAll",resultArray);
-
-//           },
-//           error => {console.log("Error :: " + error)
-//         }
-//       )
-// }
-
-
-// fetchValuationsAlldetails(): void {
-//   this.dataSource2 = new MatTableDataSource<valuation>(this.value);
-//   this.formlistService.valuationsAll()
-//       .subscribe(
-//           resultArray => {
-//             this.value = resultArray
-//             this.dataSource2 = resultArray
-//             console.log("resultArray from ValuationAll",this.dataSource2);
-//           },
-//           error => {console.log("Error :: " + error)
-//         }
-//       )
-// }
-
-
-fetchPaymentById(): void {
- // this.dataSource3 = new MatTableDataSource<PaymentDetails>(this.pay);
-  //user id hardcoded  
-  this.formlistService.PaymentDetailById(12)
+    this.formlistService.propertyDataById(this.userId)
       .subscribe(
-          resultArray => {this.pay = resultArray
-                          this.dataSource3 = resultArray
-                          console.log("resultArray33 from pay",this.dataSource3);
-          },
-          error => {console.log("Error :: " + error)
+        resultArray => {
+        this.prop = resultArray
+          this.dataSource = resultArray
+          console.log("resultArray from propertyByID", resultArray);
+
+        },
+        error => {
+          console.log("Error :: " + JSON.stringify(error))
         }
       )
-}
+  }
 
+  fetchPaymentById(): void {
 
-
-  ngOnInit(): void {
-    //this.fetchPropertydetails();
-    this.fetchPropertdetailsById();
-   this.fetchValuationById();
-   // this.fetchPropertyAlldetails();
-   // this.fetchValuationsAlldetails();
-    this.fetchPaymentById();
-
+    this.formlistService.PaymentDetailById(this.userId)
+      .subscribe(
+        resultArray => {
+        this.pay = resultArray
+          this.dataSource3 = resultArray
+          console.log("resultArray33 from pay", this.dataSource3);
+        },
+        error => {
+          console.log("Error :: " + JSON.stringify(error))
+        }
+      )
   }
 
 
 
 
-  constructor(private formlistService: FormlistService , private router: Router ) {
 
-  // this.dataSource = new MatTableDataSource<Property>(this.prop);
-   // this.dataSource2 = new MatTableDataSource<valuation>(this.value);
-      
-     }
+
+
+
+
 
 
 }

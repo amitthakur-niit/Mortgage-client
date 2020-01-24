@@ -10,15 +10,23 @@ export class NotificationService {
 
 
 
-  public notify(message,action='success',duration=3000){
+  public notify(message,action='Close',duration=5000){
     this.zone.run(()=>{
-      this.snackBar.open(message,action,{duration});
+      this.snackBar.open(message,action,{duration,
+        verticalPosition: 'bottom',
+          horizontalPosition:'center',
+          panelClass:['success']
+      });
     });
   }
 
-  public alert(message,action='alert',duration=3000){
+  public alert(message,action='Close',duration=5000){
     this.zone.run(()=>{
-      this.snackBar.open(message,action,{duration});
+      this.snackBar.open(message,action,{duration,
+        verticalPosition: 'bottom',
+        horizontalPosition:'center',
+        panelClass:['warn']
+      });
     });
   }
 }
