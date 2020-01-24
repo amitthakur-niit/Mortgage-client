@@ -1,5 +1,7 @@
 <div class="container">
-
+<div class="loading-spinner">
+    <!-- <app-loading-spinner overlay="true" diameter="50" strokeWidth="10" *ngIf="IsLoading"></app-loading-spinner> -->
+</div>
     <br> <br>
     <div class="heading_1 bold">
         <b>
@@ -14,8 +16,8 @@
         <br>
         <br>
         <div class="button_class">
-            <button mat-stroked-button class="button_class-yes" (click)="toggle()">Yes</button>
-            <button mat-stroked-button class="button_class-no" (click)="toggle()" [disabled]="">No</button>
+            <button mat-stroked-button class="button_class-yes " (click)="button_Yes()">Yes</button>
+            <button mat-stroked-button id="no" class="" (click)="button_No()" >No</button>
         </div>
     </div>
 
@@ -55,7 +57,7 @@
             </mat-form-field>
 
             <mat-form-field class="contact-form-full-width">
-                <input matInput placeholder="Contact name" value="" formControlName="ContactName">
+                <input matInput placeholder="Contact name*" value="" formControlName="ContactName">
                 <mat-error
                     *ngIf="!formGroup.controls['ContactName'].valid && formGroup.controls['ContactName'].touched">
                     {{ required }}
@@ -63,10 +65,15 @@
             </mat-form-field>
 
             <mat-form-field class="contact-form-full-width">
-                <input type="number" matInput placeholder="Contact number" value="" formControlName="ContactNumber">
+                <input type="number" matInput placeholder="Contact number*" value="" formControlName="ContactNumber">
                 <mat-error
                     *ngIf="!formGroup.controls['ContactNumber'].valid && formGroup.controls['ContactNumber'].touched">
                     {{ required }}
+                </mat-error>
+                
+                <mat-error
+                    *ngIf="!formGroup.controls['ContactNumber'].valid && formGroup.controls['ContactNumber'].touched && formGroup.controls['ContactNumber'].maxlength ">
+                    {{ maxLength }}
                 </mat-error>
             </mat-form-field>
         </form>
@@ -85,21 +92,22 @@
             using an estate agent,
             property developer or boker *
         </label>
+        <br>    <br>
         <div class="button_class">
-            <button mat-stroked-button class="button_class-yes">Yes</button>
-            <button mat-stroked-button class="button_class-no">No</button>
+            <button mat-stroked-button class="button_yes " (click)="button_yes()">Yes</button>
+            <button mat-stroked-button id="No" class="highlight" (click)="button_no()">No</button>
         </div>
         <br>
     </div>
     <div class="navigation">
         <div class="navigation_button">
-            <button mat-stroked-button class="save_comeback" value="">save_comeback </button>
-            <button mat-stroked-button class="save_continue" (click)="postFormGroup()" value="">save_continue</button>
+            <button mat-stroked-button class="save_comeback" (click)="postAndNavigateBack()"value="" [disabled]="!formGroup.valid">Save & Comeback </button>
+            <button mat-stroked-button class="save_continue" (click)="postAndNavigateForward()" value="" [disabled]="!formGroup.valid">Save & continue</button>
         </div>
-        <div class="navigation_link">
-            <a routerLink=".">Back</a>
-            <a routerLink=".">Cancel</a>
-        </div>
+        <!-- <div class="navigation_link">
+            <a [routerLink]="[{ outlets: { sidebar: ['propertyDetails'] } }]">Back</a>
+            <a [routerLink]="[{ outlets: { sidebar: ['otherOccupants'] } }]">Cancel</a>
+        </div> -->
 
 
     </div>

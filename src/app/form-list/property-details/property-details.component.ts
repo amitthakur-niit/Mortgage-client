@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { FormlistService } from 'src/app/services/formlist.service';
 
 import { Router,Route } from '@angular/router';
-import { Key } from 'protractor';
+import { NotificationService } from 'src/app/services/notification.service';
 
 
 
@@ -53,7 +53,7 @@ export class PropertyDetailsComponent implements OnInit {
  
   isPropertyCovered;
   tenureType;
-  constructor(private formBuilder: FormBuilder, private propertyService: FormlistService,private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private propertyService: FormlistService,private router: Router, private notifyService:NotificationService) { }
 
   proprtyBuilt(v: string) {
     console.log("After fetching data",v);
@@ -197,33 +197,25 @@ this.pageData=data;
       propertyBuilt: this.propertyBuilt,
       isPropertyCovered: this.isPropertyCovered,
       tenureType: this.tenureType,
-      postCode: this.formGroup.value.postCode,
-      userId:this.userId
+	   postCode: '',
     }
 
     console.log("Data", data);
-    console.log("Data postcode", this.pageData);
-
-    if(this.pageData!=null){
-      this.propertyService.updatePropertyDetails(data,data.userId).subscribe();
-      //this.router.navigate(['/forms/content/(sidebar:valuation)']);
-      this.router.navigateByUrl('/content/(sidebar:valuation)');
-    }
-
-else{
-
-    this.propertyService.propertyData(data).subscribe();
-    //this.router.navigate(['/forms/content/(sidebar:valuation)']);
-    this.router.navigateByUrl('/content/(sidebar:valuation)');}
+    this.propertyService.propertyData(data).subscribe( data =>{
+      console.log("property details response:", data)
+      if(data!==null){
+        this.notifyService.notify('Property Details Added')
+      }
+    }, error =>{
+      console.log('Property Details Error Response :',error)
+      this.notifyService.alert('Oops! something went wrong')
+    });
+    
+    this.router.navigateByUrl('/content/(sidebar:valuation)');
   }
 
-// onSubmit(data: any) {
-//   console.log("Data",data);
-//  // this.propertyService.propertyData(data).subscribe();
-//   this.router.navigateByUrl('/content/(sidebar:howToApply)');
 
-// }
-
+  //getLocalStorage
 
 }
 

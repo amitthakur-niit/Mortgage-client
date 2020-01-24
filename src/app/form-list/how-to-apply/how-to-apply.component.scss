@@ -1,7 +1,6 @@
 .head{
   text-align: center;
   }
-
 mat-grid-tile {
     background: lightblue;
   }
@@ -19,7 +18,7 @@ mat-grid-tile {
     display: table;
     clear: both;
   }
-
+ 
   .heading_1 {
  
     font-size: 18px;  
@@ -107,19 +106,16 @@ h1{
  .contact-form-full-width {
    width: 30rem;
  }
-
 .button_class{
    
    max-width: 50rem;
    display : flex;
    justify-content: space-evenly;
-
    &-no{
        background-color: red;
        color: white;
    }
 }
-
 .navigation{
    padding:2rem 2rem;
    &_button{
@@ -149,15 +145,7 @@ h1{
 
 }
 
- .valuation-form{
-   
-   
-}
-
-.your-purchase{
-  
-
-}
+ 
 
 .message{
 

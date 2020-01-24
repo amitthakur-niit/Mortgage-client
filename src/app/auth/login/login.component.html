@@ -6,7 +6,7 @@
 </div>
 <br><br>
   <div class="form-container text">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" class="register-form">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" class="register-form" >
      <!--Email address-->
      <mat-form-field class="register-form-full-width">
       <input type="text" matInput placeholder="Email address" value="" formControlName="email">
@@ -29,13 +29,13 @@
   
   <div class="navigation">
     <div class="navigation_button">
-        <button mat-stroked-button class="save_comeback" value="">Log In </button>
+        <button mat-stroked-button class="save_comeback" [disabled]="!loginForm.valid">Log In </button>
     </div>
     
 
 
 </div>
-<h5>click here if forget your password</h5>
+<h5>Click here if forget your password</h5>
 <a routerLink="/auth/forgotPassword">forget password</a>
 <br>
 <a routerLink="/auth/register">register here</a>

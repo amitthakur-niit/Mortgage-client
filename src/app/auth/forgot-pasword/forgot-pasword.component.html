@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="header">
+</div>
+  <div class="form-container text">
+  <form [formGroup]="forgetPasswordForm" id="abc" (ngSubmit)="onSubmit(forgetPasswordForm.value)" class="register-form" >
+    <br>
+    <!--Email address-->
+     <mat-form-field class="register-form-full-width">
+      <input type="text" matInput placeholder="Email address" value=""  formControlName="email">
+      <mat-error *ngIf="forgetPasswordForm.controls['email'].errors?.required">
+        {{ required }}
+    </mat-error>
+    <mat-error *ngIf="emailToggle">
+        Please enter the valid email address.
+    </mat-error>
+    
+  </mat-form-field>
+ 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button *ngIf="!toggle2" class="continue" mat-raised-button  color="warn">Submit</button>
+
+</form>
+<hr>
+
+
+</div>
+
+<div class="header">
+</div>
+  <div class="form-container text" [hidden]="!toggle">
+  <form [formGroup]="forgetPasswordQForm" (ngSubmit)="onSubmit2(forgetPasswordQForm.value)" class="register-form" [hidden]="!toggle" disabled>
+    
+    <div class="alignItems">
+      
+    <!--Question-->
+     <mat-form-field class="register-form-full-width" >
+      <input type="text" matInput placeholder="Question" value= "{{question}}"  formControlName="question2" [disabled]="true" >
+      <mat-error
+          *ngIf="!forgetPasswordQForm.controls['question2'].valid && forgetPasswordQForm.controls['question2'].touched">
+      
+      </mat-error>
+  </mat-form-field>
+
+   <!--Answer-->
+     <mat-form-field class="register-form-full-width"> 
+      <input type="text" matInput placeholder="Answer" value= "{{answer}}"  formControlName="answer" disabled >
+      <mat-error
+          *ngIf="!forgetPasswordQForm.controls['answer'].valid && forgetPasswordQForm.controls['answer'].touched">
+      
+      </mat-error>
+  </mat-form-field>
+  </div>
+ 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button class="continue" mat-raised-button  color="warn">Submit</button>
+
+</form>
+<hr>
+
+
+</div>
+</div>
+
+
+
+

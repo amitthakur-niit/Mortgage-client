@@ -210,8 +210,7 @@
 <div class="navigation">
     <div class="navigation_button">
         <button mat-stroked-button class="save_comeback" value="">save_comeback </button>
-        <button mat-stroked-button class="save_continue" (click)="onSubmit()" value="">save_continue</button>
-
+        <button mat-stroked-button class="save_continue" (click)="onSubmit()" value="" [disabled]="!formGroup.valid">save_continue</button>
     </div>
     <div class="navigation_link">
         <a routerLink=".">Back</a>

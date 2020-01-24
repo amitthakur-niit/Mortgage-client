@@ -1,18 +1,19 @@
 export interface Property{
-      propertyAddress: String;
+
+	   
+	   postCode: String;
+	   propertyAddress: String;
 	
-	  propertyType: String;
+	   propertyType: String;
 	
-	  numberOfBedrooms: Number;
+	   numberOfBedrooms: Number;
 	
-	  propertyBuilt : String; 
+	   propertyBuilt : String; 
 	
-	  propertyAge : Number;
+	   propertyAge : Number;
 	
-	  isPropertyCovered:String; 
+	   isPropertyCovered:String; 
 	
-	  tenureType: String;
-	  
-	  postCode: String;
+	   tenureType: String;
     
 }
