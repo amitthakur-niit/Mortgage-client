@@ -53,7 +53,27 @@ export class ValuationComponent implements OnInit, OnDestroy {
   }
 
   
+  buttonToggleColorCircumstance(v:Number){
 
+    if(v===0){
+     document.getElementById('nos').classList.add('highlight');
+     document.getElementById('yess').classList.remove('highlight');
+   }
+ 
+   if(v===1){
+   document.getElementById('yess').classList.add('highlight');
+   document.getElementById('nos').classList.remove('highlight');
+   }
+   if(v===3){
+    document.getElementById('no').classList.add('highlight');
+    document.getElementById('yes').classList.remove('highlight');
+  }
+
+  if(v===2){
+  document.getElementById('yes').classList.add('highlight');
+  document.getElementById('no').classList.remove('highlight');
+  }
+ }
   
 
   postFormGroup(){
@@ -77,7 +97,7 @@ export class ValuationComponent implements OnInit, OnDestroy {
      // console.log("Check response",data)
       this.notifyService.notify('Valuation details posted!')
       //status = true;
-      
+      this.router.navigateByUrl('/content/(sidebar:otherOccupants)');
     },
     (error)=>{
       console.log("an error occured:",error)
@@ -97,7 +117,7 @@ export class ValuationComponent implements OnInit, OnDestroy {
       */
 
      this.postFormGroup();
-     this.router.navigateByUrl('/content/(sidebar:otherOccupants)');
+    
 
     }
 

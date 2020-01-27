@@ -35,6 +35,8 @@
         .save_continue{
             background-color: rgb(245, 42, 42);
             border-radius:15rem;
+            color:#ffff;
+            margin-left: auto;
         }
 
     }
@@ -61,3 +63,29 @@ font-weight: normal;
 }
 
 }
+
+
+.button_class{
+     
+    max-width: 20rem;
+    display : flex;
+    justify-content: space-evenly;
+
+    &-no{
+        background-color: rgb(245, 37, 37);
+        color: white;
+    }
+  }
+
+  .button_class-yes{
+    width: 80rem;
+    
+}
+.button_class-no{
+    width: 80rem;
+}
+
+.highlight{
+    background-color: red;
+    color:#ffff
+  }

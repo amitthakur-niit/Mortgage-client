@@ -71,11 +71,13 @@
      padding:1.2rem;
          .save_comeback,
          .save_continue{
-             background-color: rgb(250, 85, 85);
+             background-color: rgb(245, 37, 37);
              border-radius:15rem;
              //color: darken($color: #575555, $amount: 1);
              cursor: pointer;
              border: none;
+             color: #ffff;
+             margin-left: auto;
          }
  
      }
@@ -100,4 +102,25 @@
     overflow: hidden;
   }
 
- 
+  .button_class{
+     
+    max-width: 20rem;
+    display : flex;
+    justify-content: space-evenly;
+
+    &-no{
+        background-color: rgb(245, 37, 37);
+    }
+  }
+
+  .button_class-yes{
+    width: 80rem;
+}
+.button_class-no{
+    width: 80rem;
+}
+
+.highlight{
+    background-color: red;
+    color:#ffff;
+  }
