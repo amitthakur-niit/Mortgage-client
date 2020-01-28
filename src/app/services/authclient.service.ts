@@ -39,10 +39,6 @@ export class AuthclientService {
     return this.http.post<any>(this.url + 'user-registration-service/users/register', requestBody)
   }
 
-  updatePaymentDetails (requestBody: PaymentDetails): Observable<any> {
-    return this.http.post<any>(this.url + 'mortgage-service/api/payment-details', requestBody)
-  }
-
   forgotPaswd2(requestBody:Forget):Observable<any>{
 
     return this.http.post<any>(this.url + 'user-registration-service/users/forgetPassword/reset', requestBody)
@@ -79,7 +75,8 @@ removeLocalStorageData(userKey){
   localStorage.removeItem(userKey);
 }
 logout(){
-  this.notify.notify("User Logged Out");
+
+ // this.notify.notify("User Logged Out");
   localStorage.clear();
 }
 
@@ -110,5 +107,4 @@ checkAccess():boolean{
     return status;
   } */
   
-
 }
