@@ -20,48 +20,27 @@
         <label class="title">Please tell us the address of the property you want to mortgage</label>
         <br>
         <br>
-
     </div>
-
-
     <br>
-
-
-
-
     <div class="para">
         <p class="para__info"></p>
     </div>
-    <form [formGroup]="formGroup" (ngSubmit)="onSelect()" class="contact-form">
-
-       
-
+    <form [formGroup]="formGroup"  class="contact-form">
     <div class="valuation-form">
-
-        <p class="question"></p>
-
-        <div class="navigation_button">
-
                 <mat-form-field class="contact-form-full-width" >
-                    <input matInput placeholder="Postcode" value="" formControlName="Postcode" >
-                    <mat-error *ngIf="!formGroup.controls['Postcode'].valid && formGroup.controls['Postcode'].touched">
+                    <input type="number" onKeyPress="if(this.value.length==7) return false;"  matInput placeholder="PostCode" [(ngModel)]="postCode" formControlName="postCode" >
+                    <mat-error *ngIf="!formGroup.controls['postCode'].valid && formGroup.controls['postCode'].touched">
                         {{ required }}
                     </mat-error> 
-
+                  
 
                 </mat-form-field>
                 <!-- <div class="navigation">
-
                     <button mat-stroked-button class="save_comeback" value="">Find another address </button>
                 </div>
                 <div class="navigation">
                     <p><u>or enter manually</u></p>
                 </div> -->
-
-
-
-            </div>
-
             <!-- <mat-form-field class="contact-form-full-width"   >
                 <input type="number" matInput placeholder="Address" value="" formControlName="Address">
                 <mat-error *ngIf="!formGroup.controls['Address'].valid && formGroup.controls['Address'].touched">
@@ -70,16 +49,12 @@
             </mat-form-field> -->
             
             <mat-form-field class="contact-form-full-width"  > 
-                <input matInput placeholder="Address" value="" formControlName="Address" >
+                <input matInput maxlength="50" placeholder="Address" [(ngModel)]="address" formControlName="Address" >
                 <mat-error *ngIf="!formGroup.controls['Address'].valid && formGroup.controls['Address'].touched">
                     {{ required }}
                 </mat-error>
             </mat-form-field>
     </div>
-
-
-
-
     <div class="heading_2 bold">
         <b>
             <p>Your property details</p>
@@ -88,9 +63,9 @@
     <hr class="line">
     <br>
     <mat-form-field class="contact-form-full-width">
-        <mat-label>Property type*</mat-label>
-        <mat-select formControlName="propertyType" >
-            <mat-option *ngFor="let property of properties" [value]="property.value">
+        <mat-label>Property type</mat-label>
+        <mat-select formControlName="propertyType" [(ngModel)]="propertyType" >
+            <mat-option *ngFor="let property of properties"  [value]="property.value">
                 {{property.viewValue}}
             </mat-option>
         </mat-select>
@@ -100,43 +75,33 @@
     </mat-form-field>
 
     <mat-form-field class="contact-form-full-width">
-        <input  type="number" matInput placeholder="Number Of Bedrooms" value=""  formControlName="NumberOfBedrooms" >
+        <input  type="number" onKeyPress="if(this.value.length==1) return false;"  matInput placeholder="Number Of Bedrooms" [(ngModel)]="noOfBedrooms"  formControlName="NumberOfBedrooms" >
         <mat-error *ngIf="!formGroup.controls['NumberOfBedrooms'].valid && formGroup.controls['NumberOfBedrooms'].touched">
             {{ required }}
         </mat-error>
     </mat-form-field>
-
-
-
     <div class="your-purchase">
-        <label class="title">Approximately when was the property built?*
+        <label class="title">Approximately when was the property built?<span class="astrick">*</span>
         </label></div>
     <br>
-    <div class="button_class">
+        <button mat-stroked-button type="button" (click)="proprtyBuilt('1914')" [ngClass]="buttonClass1">Before 1914</button>
+        <button mat-stroked-button type="button" (click)="proprtyBuilt('1914 to 1944')" [ngClass]="buttonClass2" >1914 to 1944</button>
+        <button mat-stroked-button type="button" (click)="proprtyBuilt('1945 to 1980')" [ngClass]="buttonClass3" >1945 to 1980</button>
+        <button mat-stroked-button type="button" (click)="proprtyBuilt('After 1980')" [ngClass]="buttonClass4" >After 1980</button>
     
-        <button mat-stroked-button value="1914" (click)="proprtyBuilt('1914')" [ngClass]="buttonClass1">Before 1914</button>
-        <button mat-stroked-button value="" (click)="proprtyBuilt('1914 to 1944')" [ngClass]="buttonClass2" >1914 to 1944</button>
-        <button mat-stroked-button value="" (click)="proprtyBuilt('1945 to 1980')" [ngClass]="buttonClass3" >1945 to 1980</button>
-        <button mat-stroked-button value="" (click)="proprtyBuilt('After 1980')" [ngClass]="buttonClass4" >After 1980</button>
-    
-    </div>
     <br>
-
     <div>
-        
-
-
             <!-- <mat-label>How old is the property*</mat-label>
             <mat-select formControlName="age">
                 <mat-option *ngFor="let food of foods" [value]="food.value">
                     {{food.viewValue}}
                 </mat-option>
             </mat-select> -->
-        
+        <br>
 
          <mat-form-field class="contact-form-full-width">
             <mat-label>How old is the property*</mat-label>
-            <mat-select type="number" formControlName="propertyAge">
+            <mat-select  formControlName="propertyAge" [(ngModel)]="propertyAge"  >
                 <mat-option  *ngFor="let properties of oldProperties" [value]="properties.value">
                     {{properties.viewValue}}
                 </mat-option>
@@ -151,28 +116,26 @@
     <div>
         <div class="your-purchase">
 
-            <label class="title">Is the property covered by a structure warranty(e.g. NHBC cover)?* ?
+            <label class="title">Is the property covered by a structure warranty(e.g. NHBC cover)?<span class="astrick">*</span>
             </label>
             <br><br>
             <div>                  
-                 <button mat-stroked-button value="yes" (click)="IsPropertyCovered('Y')" [ngClass]="buttonClassY" class="">Yes</button>&nbsp;&nbsp;
-                <button mat-stroked-button value="no" (click)="IsPropertyCovered('N')" [ngClass]="buttonClassN"  class="">No</button> 
+                 <button mat-stroked-button value="yes" type="button" (click)="IsPropertyCovered('Y')" [ngClass]="buttonClassY" class="">Yes</button>&nbsp;&nbsp;
+                <button mat-stroked-button value="no" type="button" (click)="IsPropertyCovered('N')" [ngClass]="buttonClassN"  class="">No</button> 
              </div> 
             <br>
         </div>
     </div>
 
     <div class="your-purchase">
-        <label class="title">Tenure type*
+        <label class="title">Tenure type<span class="astrick">*</span>
         </label><br><br>
-        <div class="button_class">
            
-            <button mat-stroked-button value="freehold" [ngClass]="buttonClassF" (click)="tenureTypeSelected('freehold')" >Freehold</button>
-            <button mat-stroked-button  value="leasehold" [ngClass]="buttonClassL" (click)="tenureTypeSelected('leasehold')" >Leasehold</button>
-            <button mat-stroked-button value="commonhold" [ngClass]="buttonClassC" (click)="tenureTypeSelected('commonhold')" >Commonhold</button>
-            <button mat-stroked-button value="absolutetitle" [ngClass]="buttonClassA" (click)="tenureTypeSelected('absolutetitle')"  >Absolute title/feudal</button>
+            <button mat-stroked-button  type="button" value="freehold" [ngClass]="buttonClassF" (click)="tenureTypeSelected('freehold')" >Freehold</button>
+            <button mat-stroked-button type="button" value="leasehold" [ngClass]="buttonClassL" (click)="tenureTypeSelected('leasehold')" >Leasehold</button>
+            <button mat-stroked-button type="button" value="commonhold" [ngClass]="buttonClassC" (click)="tenureTypeSelected('commonhold')" >Commonhold</button>
+            <button mat-stroked-button type="button" value="absolutetitle" [ngClass]="buttonClassA" (click)="tenureTypeSelected('absolutetitle')"  >Absolute title/feudal</button>
         
-        </div> 
         <br>
     </div>
   <!-- <div>
@@ -208,13 +171,13 @@
 
 <div class="navigation">
     <div class="navigation_button">
-        <button mat-stroked-button class="save_comeback" value="">save_comeback </button>
-        <button mat-stroked-button class="save_continue" (click)="onSubmit()" value="" [disabled]="!formGroup.valid">save_continue</button>
+    <!--  <button hidden mat-stroked-button class="save_comeback" value="" disabled>save_comeback </button> -->
+        <button mat-stroked-button class="save_continue"  (click)="onSelect()" value="" [disabled]="!formGroup.valid">save_continue</button>
     </div>
-    <div class="navigation_link">
+<!--     <div class="navigation_link">
         <a routerLink=".">Back</a>
         <a routerLink=".">Cancel</a>
-    </div>    
+    </div>     -->
 </div>
 
 <br>

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Property } from '../Models/property';
 import { Observable } from 'rxjs';
 import { valuation } from '../Models/valuation';
+import { PaymentDetails } from '../Models/PaymentDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class FormlistService {
 
   //base url : zuul
   //Keep adding your service name with api
-  private url='http://localhost:8765/';
-  
-  constructor(private http:HttpClient) { }
+  private url = 'http://localhost:8765/';
+
+  constructor(private http: HttpClient) { }
 
   //Valuation Service
   postValuationData(data: any) {
@@ -42,6 +43,12 @@ export class FormlistService {
 
   }
 
+  getPropertyDetails(data: Number) {
+    return this.http.get<any>(this.url + 'mortgage-service/api/propertyDetailsById/' + data);
+
+    // throw new Error("Method not implemented.");
+  }
+
   //confirmMortgage
   public fetchConfirmMortgageDetails(id: Number): Observable<any> {
     return this.http.get<any>(this.url + `mortgage-service/api/confirmMortgage/` + id);
@@ -67,4 +74,14 @@ export class FormlistService {
 
 
   }
+
+  savePaymentDetails(requestBody: PaymentDetails): Observable<any> {
+    return this.http.post<any>(this.url + 'mortgage-service/api/payment-details', requestBody)
+  }
+
+
+  updatePaymentDetails(requestBody: PaymentDetails): Observable<any> {
+    return this.http.put<any>(this.url + 'mortgage-service/api/update/payment-details', requestBody)
+  }
+
 }

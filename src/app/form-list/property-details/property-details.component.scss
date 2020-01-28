@@ -70,13 +70,17 @@
      display: flex;
      justify-content:space-between;
      padding:1.2rem;
-         .save_comeback,
          .save_continue{
              background-color: red;
              border-radius:15rem;
              color:darken($color: #000000, $amount: 0);
              border:none;
          }
+         .save_continue:disabled{
+            color: rgb(37, 35, 35);
+           cursor: no-drop;
+       }
+
  
      }
      
@@ -101,6 +105,10 @@
  .your-purchase{
     
  
+ }
+
+ .astrick{
+     color:red;
  }
 
  .message{
