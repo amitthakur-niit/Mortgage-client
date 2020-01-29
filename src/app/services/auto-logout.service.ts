@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { AuthclientService } from './authclient.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 const AUTO_LOGOUT_TIME = 1 // in Minutes
@@ -21,7 +21,7 @@ export class AutoLogoutService {
 
   ) {
 
-    this.check();
+    //this.check();
     this.initListener();
     this.initTimer();
   }
@@ -65,11 +65,13 @@ export class AutoLogoutService {
     const isTimedOut = timeDifference < 0;
 
     this.ngZone.run(() => {
-
+      let urlInfo=this.router.url;
       if (!this.auth.checkAccess()) {
         this.auth.logout();
+        if(urlInfo.includes("content")){
+          this.router.navigate(['/']);
+        }
       }
-
       else if (isTimedOut) {
         console.log('User logged out');
         this.router.navigateByUrl('/login');
