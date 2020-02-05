@@ -86,7 +86,7 @@ checkAccess():boolean{
     let userStatus:any = this.getLocalStorageValue('currentUser');
     if(userStatus===null){
       this.logout();
-      this.router.navigate(['/']);
+     // this.router.navigate(['/']);
     }
     else{
       status=true;

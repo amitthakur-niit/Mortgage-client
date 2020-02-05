@@ -26,10 +26,14 @@
           {{ required }}
       </mat-error>
   </mat-form-field>
+
+  <div>
+    <re-captcha (resolved)="resolved($event)" siteKey={{public_key}}></re-captcha>
+  </div>
   
   <div class="navigation">
     <div class="navigation_button">
-        <button mat-stroked-button class="save_comeback" [disabled]="!loginForm.valid">Log In </button>
+        <button mat-stroked-button class="save_comeback" [disabled]="!loginForm.valid || token=='' || !token">Log In </button>
     </div>
     
 
