@@ -10,7 +10,7 @@ import { AutoLogoutService } from 'src/app/services/auto-logout.service';
 })
 export class ContentComponent implements OnInit {
 
-  constructor( private service:AuthclientService, private autologout : AutoLogoutService) { }
+  constructor( private service:AuthclientService, private autologout : AutoLogoutService,private route : Router) { }
 
   ngOnInit() {
     this.service.checkAccess();

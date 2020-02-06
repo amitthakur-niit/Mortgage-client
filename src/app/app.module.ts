@@ -22,7 +22,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    FormListModule,
+   // FormListModule,
     MaterialDesignModule,
     BrowserAnimationsModule,
     HttpClientModule,

@@ -12,13 +12,12 @@ import { OtherOccupantsComponent } from './other-occupants/other-occupants.compo
 
 
 const routes: Routes = [
-    {
+  /*   {
         path:'', 
-        redirectTo:'/content/howToApply',
-        pathMatch:'full'
-    },
-   
-
+        component: ContentComponent
+        //redirectTo:'/content', //     /(sidebar:howToApply)',
+       // pathMatch:'full'
+    } ,*/
     {
       path:'content',
       component: ContentComponent,
