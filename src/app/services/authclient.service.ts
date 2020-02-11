@@ -25,7 +25,7 @@ export class AuthclientService {
   //user-logIn service
   logInData (requestBody: LogIn):Observable<LoginResponse> {
   //const login:LoginResponse;
-  return this.http.post<LoginResponse>(this.url + 'user-registration-service/users/logIn', requestBody)
+  return this.http.post<LoginResponse>(this.url + 'authenticate', requestBody)
     
     }
   

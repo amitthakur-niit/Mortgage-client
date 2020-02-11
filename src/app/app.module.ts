@@ -9,27 +9,29 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialDesignModule } from './material-design/material-design.module';
 import { HttpClientModule } from '@angular/common/http';
 
-import {MatButtonModule} from '@angular/material/button';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { FeatureModule } from './shared/feature.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-   // FormListModule,
+    // FormListModule,
+    FeatureModule,
     MaterialDesignModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatButtonToggleModule,
     MatButtonModule
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })

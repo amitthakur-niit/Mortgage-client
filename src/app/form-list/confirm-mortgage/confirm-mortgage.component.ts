@@ -47,12 +47,12 @@ export class ConfirmMortgageComponent implements OnInit {
   }
   
   public selectDiffMortgage(){
-    this.router.navigateByUrl('/content/(sidebar:mortgageOptions)');
+    this.router.navigateByUrl('form/content/(sidebar:mortgageOptions)');
   };
 
 
   Navigate(){
-    this.router.navigateByUrl('/content/(sidebar:propertyDetails)');
+    this.router.navigateByUrl('form/content/(sidebar:propertyDetails)');
   }
 
   //getLocalStorageData

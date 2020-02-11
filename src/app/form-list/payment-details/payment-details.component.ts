@@ -86,7 +86,7 @@ export class PaymentDetailsComponent implements OnInit {
     this.paymentDetailsService.savePaymentDetails(data).subscribe(val => {
       if (val.userId != null) {
         this.notifyService.notify('Payment Successful!')
-        this.router.navigateByUrl('/content/(sidebar:reviewSubmit)');
+        this.router.navigateByUrl('form/content/(sidebar:reviewSubmit)');
       }
     }, error => {
       this.notifyService.alert('Something went wrong!')
@@ -97,7 +97,7 @@ export class PaymentDetailsComponent implements OnInit {
     this.paymentDetailsService.updatePaymentDetails(data).subscribe(val => {
       if (val.userId != null) {
         this.notifyService.notify('Payment updated Successfully!')
-        this.router.navigateByUrl('/content/(sidebar:reviewSubmit)');
+        this.router.navigateByUrl('form/content/(sidebar:reviewSubmit)');
       }
     }, error => {
       this.notifyService.alert('Something went wrong!')
