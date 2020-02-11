@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
         if(userStatus.message.includes('authenticated')){
           this.authService.setLocalStorage("currentUser", userStatus);
-          this.router.navigateByUrl('/content/(sidebar:howToApply)');
+          this.router.navigateByUrl('form/content/(sidebar:howToApply)');                
           this.notifyService.notify('Login Successful')
     
          }

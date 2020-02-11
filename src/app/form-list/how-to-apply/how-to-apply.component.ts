@@ -18,7 +18,7 @@ export class HowToApplyComponent implements OnInit {
   public continueOnline(){
     //console.log("Route pending...to mortgage options page..");
     
-    this.router.navigateByUrl('/content/(sidebar:mortgageOptions)');
+    this.router.navigateByUrl('form/content/(sidebar:mortgageOptions)');
   }
 
 
