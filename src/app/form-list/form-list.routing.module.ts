@@ -9,7 +9,9 @@ import { ReviewAndSubmitComponent } from './review-and-submit/review-and-submit.
 import { ConfirmMortgageComponent } from './confirm-mortgage/confirm-mortgage.component';
 import { ContentComponent } from './content/content.component';
 import { OtherOccupantsComponent } from './other-occupants/other-occupants.component';
-
+import { PropertyDataResolver } from '../resolvers/property-data-resolver.service';
+import {PaymentDataResolver} from '../resolvers/payment-data-resolver.service';
+import {ValuationDataResolver} from '../resolvers/valuation-data-resolver.service';
 
 const routes: Routes = [
   /*   {
@@ -51,8 +53,12 @@ const routes: Routes = [
           {
             path : 'reviewSubmit',
             component : ReviewAndSubmitComponent,
-            outlet:'sidebar'
-          },
+            outlet:'sidebar',
+            resolve :[ {propertyDetails : PropertyDataResolver},
+                        {valuationDetails:ValuationDataResolver},
+                        {paymentDetails:PaymentDataResolver}
+            ]
+            },
           {
             path : 'confirmMortgage',
             component : ConfirmMortgageComponent,

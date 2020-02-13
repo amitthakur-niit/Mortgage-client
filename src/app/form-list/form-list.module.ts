@@ -16,6 +16,9 @@ import { HeaderComponent } from './header/header.component';
 import { AppModule } from '../app.module';
 import { LoadingSpinnerComponent } from '../shared/loading-spinner/loading-spinner.component';
 import { FeatureModule } from '../shared/feature.module';
+import { PropertyDataResolver } from '../resolvers/property-data-resolver.service';
+import { PaymentDataResolver } from '../resolvers/payment-data-resolver.service';
+import { ValuationDataResolver } from '../resolvers/valuation-data-resolver.service';
 
 
 
@@ -32,6 +35,17 @@ import { FeatureModule } from '../shared/feature.module';
     ReactiveFormsModule,
     FeatureModule
   
+  ],
+  providers:[
+    {
+      provide:PropertyDataResolver
+    },
+    {
+      provide: PaymentDataResolver
+    },
+    {
+      provide:ValuationDataResolver
+    }
   ]
 })
 export class FormListModule { }
