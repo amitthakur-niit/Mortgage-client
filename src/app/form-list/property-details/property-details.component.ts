@@ -210,7 +210,7 @@ export class PropertyDetailsComponent implements OnInit {
       console.log("property details response:", data)
       if (data !== null) {
         this.notifyService.notify('Property Details Added');
-        this.router.navigateByUrl('/content/(sidebar:valuation)');
+        this.router.navigateByUrl('form/content/(sidebar:valuation)');
       }
     }, error => {
       console.log('Property Details Error Response :', error)
@@ -241,7 +241,7 @@ export class PropertyDetailsComponent implements OnInit {
       console.log("property details response:", data)
       if (data !== null) {
         this.notifyService.notify('Property Details Added');
-        this.router.navigateByUrl('/content/(sidebar:valuation)');
+        this.router.navigateByUrl('form/content/(sidebar:valuation)');
       }
     }, error => {
       console.log('Property Details Error Response :', error)

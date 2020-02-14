@@ -9,7 +9,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { ForgotPaswordComponent } from './forgot-pasword/forgot-pasword.component';
 import { ResetPassowrdComponent } from './reset-passowrd/reset-passowrd.component';
-
+import { RecaptchaModule } from 'ng-recaptcha';
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import { ResetPassowrdComponent } from './reset-passowrd/reset-passowrd.componen
     AuthRoutingModule,
     MaterialDesignModule,
     ReactiveFormsModule,
-    
+    RecaptchaModule
   ]
 })
 export class AuthModule { }

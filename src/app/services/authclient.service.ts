@@ -25,7 +25,7 @@ export class AuthclientService {
   //user-logIn service
   logInData (requestBody: LogIn):Observable<LoginResponse> {
   //const login:LoginResponse;
-  return this.http.post<LoginResponse>(this.url + 'user-registration-service/users/logIn', requestBody)
+  return this.http.post<LoginResponse>(this.url + 'authenticate', requestBody)
     
     }
   
@@ -86,7 +86,7 @@ checkAccess():boolean{
     let userStatus:any = this.getLocalStorageValue('currentUser');
     if(userStatus===null){
       this.logout();
-      this.router.navigate(['/']);
+     // this.router.navigate(['/']);
     }
     else{
       status=true;

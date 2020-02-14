@@ -37,7 +37,7 @@ export class MortgageOptionsComponent implements OnInit {
 
   public selectAction(element) {
 
-    this.router.navigateByUrl('/content/(sidebar:confirmMortgage)', element);
+    this.router.navigateByUrl('form/content/(sidebar:confirmMortgage)', element);
   }
 
 }

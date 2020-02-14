@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthclientService } from 'src/app/services/authclient.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { LoginResponse } from 'src/app/Models/LoginResponse';
+import { CaptchaService } from 'src/app/services/captcha.service';
 
 
 @Component({
@@ -18,10 +19,11 @@ export class LoginComponent implements OnInit {
   required: string = 'This field is required';
   email;
   pwd;
- 
+  token: String = '';
+ public_key:string='6LfxzNMUAAAAAHhjYQ8gpxOWVot72dWOMaDuvQcL';
 
   constructor(private fb: FormBuilder, private authService: AuthclientService,
-    private router: Router, private notifyService : NotificationService) {
+    private router: Router, private notifyService : NotificationService, private captchaService:CaptchaService) {
 
   }
 
@@ -47,15 +49,15 @@ export class LoginComponent implements OnInit {
   // }
 
   onSubmit(data: any) {
-
     let userStatus:LoginResponse;
+    data.recaptchaResponse=this.token;
     this.authService.logInData(data).subscribe(response => {
         userStatus = response;
         console.log("userStatus : "+ userStatus)  
 
         if(userStatus.message.includes('authenticated')){
           this.authService.setLocalStorage("currentUser", userStatus);
-          this.router.navigateByUrl('/content/(sidebar:howToApply)');
+          this.router.navigateByUrl('form/content/(sidebar:howToApply)');                
           this.notifyService.notify('Login Successful')
     
          }
@@ -71,10 +73,13 @@ export class LoginComponent implements OnInit {
         console.warn('An unknow error occured:',error)
         this.notifyService.alert('An unknow error occured: "CORS POLICY VIOLATION"')
      });
-
-    
-
   }
+
+  resolved(captchaResponse: string) {
+    this.token = captchaResponse;
+    console.log(`Resolved captcha with response ${captchaResponse}:`);
+  }
+
 
 }
 

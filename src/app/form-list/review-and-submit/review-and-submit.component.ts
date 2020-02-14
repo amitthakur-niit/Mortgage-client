@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormlistService } from 'src/app/services/formlist.service';
 import { Property } from 'src/app/Models/property';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { valuation } from 'src/app/Models/valuation';
 import { MatTableDataSource } from '@angular/material';
 import { PaymentDetails } from 'src/app/Models/PaymentDetails';
@@ -28,7 +28,7 @@ export class ReviewAndSubmitComponent implements OnInit {
   dataSource2: any = [];
   dataSource3: any = [];
 
-  constructor(private formlistService: FormlistService, private router: Router, ) { }
+  constructor(private formlistService: FormlistService, private router: Router,private route : ActivatedRoute ) { }
 
 
 
@@ -38,9 +38,12 @@ export class ReviewAndSubmitComponent implements OnInit {
     this.userId = currentUserData.userId;
 
 
-    this.fetchPropertdetailsById();
-    this.fetchValuationById();
-    this.fetchPaymentById();
+    //this.fetchPropertdetailsById();
+    //this.fetchValuationById();
+    //this.fetchPaymentById();
+    this.ResolvePaymentData();
+    this.ResolvePropertyData();
+    this.ResolveValuationData();
     
   }
 
@@ -90,6 +93,16 @@ export class ReviewAndSubmitComponent implements OnInit {
   }
 
 
+  ResolvePaymentData(){
+    this.dataSource3 = this.route.snapshot.data.paymentDetails;
+  }
+  ResolvePropertyData(){
+      this.dataSource = this.route.snapshot.data.propertyDetails;
+
+  }
+  ResolveValuationData(){
+    this.dataSource2 = this.route.snapshot.data.valuationDetails;
+  }
 
 
 
