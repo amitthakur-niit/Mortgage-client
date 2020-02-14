@@ -24,9 +24,9 @@ export class ReviewAndSubmitComponent implements OnInit {
   displayedColumns3: string[] = ['sortCode', 'accountNumber', 'accountHolderName', 'currentCircumstances', 'dayofPayment'];
 
 
-  dataSource: any;
-  dataSource2: any;
-  dataSource3: any;
+  dataSource: any =[];
+  dataSource2: any = [];
+  dataSource3: any = [];
 
   constructor(private formlistService: FormlistService, private router: Router, ) { }
 
